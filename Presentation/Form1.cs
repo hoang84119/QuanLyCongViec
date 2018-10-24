@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using Presentation.User_controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,16 @@ namespace Presentation
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void acDSCV_Click(object sender, EventArgs e)
+        {
+            if(!container.Contains(ucDanhSachCongViec.Instance))
+            {
+                container.Controls.Add(ucDanhSachCongViec.Instance);
+                ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
+            }
+            ucDanhSachCongViec.Instance.BringToFront();
         }
     }
 }
