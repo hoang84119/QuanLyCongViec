@@ -53,6 +53,10 @@
             // 
             // gcDanhSachCongViec
             // 
+            this.gcDanhSachCongViec.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gcDanhSachCongViec.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gcDanhSachCongViec.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gcDanhSachCongViec.Appearance.Row.Options.UseFont = true;
             this.gcDanhSachCongViec.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcMaCV,
             this.gcTenCV,
@@ -71,6 +75,7 @@
             this.gcMaCV.Name = "gcMaCV";
             this.gcMaCV.Visible = true;
             this.gcMaCV.VisibleIndex = 0;
+            this.gcMaCV.Width = 45;
             // 
             // gcTenCV
             // 
@@ -79,6 +84,7 @@
             this.gcTenCV.Name = "gcTenCV";
             this.gcTenCV.Visible = true;
             this.gcTenCV.VisibleIndex = 1;
+            this.gcTenCV.Width = 87;
             // 
             // gcNguoiGiao
             // 
@@ -87,6 +93,7 @@
             this.gcNguoiGiao.Name = "gcNguoiGiao";
             this.gcNguoiGiao.Visible = true;
             this.gcNguoiGiao.VisibleIndex = 2;
+            this.gcNguoiGiao.Width = 87;
             // 
             // gcNgayGiao
             // 
@@ -95,6 +102,7 @@
             this.gcNgayGiao.Name = "gcNgayGiao";
             this.gcNgayGiao.Visible = true;
             this.gcNgayGiao.VisibleIndex = 3;
+            this.gcNgayGiao.Width = 87;
             // 
             // gcNgayHetHan
             // 
@@ -103,6 +111,7 @@
             this.gcNgayHetHan.Name = "gcNgayHetHan";
             this.gcNgayHetHan.Visible = true;
             this.gcNgayHetHan.VisibleIndex = 4;
+            this.gcNgayHetHan.Width = 87;
             // 
             // gcTrangThai
             // 
@@ -111,6 +120,7 @@
             this.gcTrangThai.Name = "gcTrangThai";
             this.gcTrangThai.Visible = true;
             this.gcTrangThai.VisibleIndex = 5;
+            this.gcTrangThai.Width = 95;
             // 
             // ucDanhSachCongViec
             // 

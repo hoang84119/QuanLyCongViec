@@ -33,9 +33,13 @@ namespace Presentation
         public virtual DbSet<PHANCONG> PHANCONG { get; set; }
         public virtual DbSet<PHONGBAN> PHONGBAN { get; set; }
     
-        public virtual ObjectResult<DanhSachCongViec_Result> DanhSachCongViec()
+        public virtual ObjectResult<DanhSachCongViec_Result> DanhSachCongViec(Nullable<int> maNV)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DanhSachCongViec_Result>("DanhSachCongViec");
+            var maNVParameter = maNV.HasValue ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DanhSachCongViec_Result>("DanhSachCongViec", maNVParameter);
         }
     }
 }

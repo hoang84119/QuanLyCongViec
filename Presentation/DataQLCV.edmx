@@ -159,7 +159,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="DanhSachCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DanhSachCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="QLCONGVIECModelStoreContainer">
           <EntitySet Name="CONGVIEC" EntityType="Self.CONGVIEC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DUAN" EntityType="Self.DUAN" Schema="dbo" store:Type="Tables" />
@@ -411,7 +413,9 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
-          <FunctionImport Name="DanhSachCongViec" ReturnType="Collection(QLCONGVIECModel.DanhSachCongViec_Result)" />
+          <FunctionImport Name="DanhSachCongViec" ReturnType="Collection(QLCONGVIECModel.DanhSachCongViec_Result)">
+            <Parameter Name="MaNV" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DanhSachCongViec_Result">
           <Property Type="Int32" Name="MaCongViec" Nullable="false" />

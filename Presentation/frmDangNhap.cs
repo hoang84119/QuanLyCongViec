@@ -40,13 +40,12 @@ namespace Presentation
                 }
                 else
                 {
-                    frmQuanLyCongViec frmQuanLy = new frmQuanLyCongViec();
                     foreach(NHANVIEN nv in nhanVien)
                     {
-                        frmQuanLy.User = nv;
+                        frmQuanLyCongViec.Instance.User = nv;
                     }
                     this.Hide();
-                    frmQuanLy.ShowDialog();
+                    frmQuanLyCongViec.Instance.ShowDialog();
                     this.Close();
                 }
             }

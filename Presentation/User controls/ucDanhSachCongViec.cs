@@ -36,7 +36,7 @@ namespace Presentation.User_controls
         private void ucDanhSachCongViec_Load(object sender, EventArgs e)
         {
             var BangCongViec = db.CONGVIEC;
-            ObjectResult<DanhSachCongViec_Result> ds = db.DanhSachCongViec();
+            ObjectResult<DanhSachCongViec_Result> ds = db.DanhSachCongViec(frmQuanLyCongViec.Instance.User.MaNhanVien);
             gvDanhSachCongViec.DataSource = ds;
         }
     }

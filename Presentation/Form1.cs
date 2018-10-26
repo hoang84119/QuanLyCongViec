@@ -13,6 +13,17 @@ namespace Presentation
 {
     public partial class frmQuanLyCongViec : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        private static frmQuanLyCongViec _instance;
+
+        public static frmQuanLyCongViec Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new frmQuanLyCongViec();
+                return _instance;
+            }
+        }
         private NHANVIEN user;
 
         public frmQuanLyCongViec()
@@ -34,7 +45,8 @@ namespace Presentation
 
         private void frmQuanLyCongViec_Load(object sender, EventArgs e)
         {
-            //string txt = user.HoTen;
+            container.Controls.Add(ucDanhSachCongViec.Instance);
+            ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
         }
     }
 }
