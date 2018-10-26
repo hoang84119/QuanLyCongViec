@@ -11,12 +11,16 @@ using System.Windows.Forms;
 
 namespace Presentation
 {
-    public partial class Form1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class frmQuanLyCongViec : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        public Form1()
+        private NHANVIEN user;
+
+        public frmQuanLyCongViec()
         {
             InitializeComponent();
         }
+
+        public NHANVIEN User { get => user; set => user = value; }
 
         private void acDSCV_Click(object sender, EventArgs e)
         {

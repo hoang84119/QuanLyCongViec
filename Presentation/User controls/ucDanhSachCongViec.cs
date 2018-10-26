@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 
 namespace Presentation.User_controls
 {
@@ -34,13 +35,9 @@ namespace Presentation.User_controls
 
         private void ucDanhSachCongViec_Load(object sender, EventArgs e)
         {
-            //var BangCongViec = db.CONGVIEC.Join(db.CONGVIEC,
-            //cv => cv.MaCongViec,
-            //pc => pc.MaCongViec,
-            //(cv, pc) => new { CONGVIEC = cv, PHANCONG = pc });
             var BangCongViec = db.CONGVIEC;
-            
-            gvDanhSachCongViec.DataSource = BangCongViec.ToList();
+            ObjectResult<DanhSachCongViec_Result> ds = db.DanhSachCongViec();
+            gvDanhSachCongViec.DataSource = ds;
         }
     }
 }

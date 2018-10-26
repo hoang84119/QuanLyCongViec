@@ -61,6 +61,7 @@
             this.gcNgayHetHan,
             this.gcTrangThai});
             this.gcDanhSachCongViec.GridControl = this.gvDanhSachCongViec;
+            this.gcDanhSachCongViec.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gcDanhSachCongViec.Name = "gcDanhSachCongViec";
             // 
             // gcMaCV

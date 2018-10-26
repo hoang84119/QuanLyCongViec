@@ -17,14 +17,28 @@ namespace Presentation
             InitializeComponent();
         }
 
-        private void btnthoat_Click(object sender, EventArgs e)
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void frmDangNhap_Load(object sender, EventArgs e)
+        private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            
+            using (var db = new QLCONGVIECEntities())
+            {
+                IEnumerable<NHANVIEN> nhanVien = from nv in db.NHANVIEN
+                               where nv.TenDangNhap == txtTenDangNhap.Text && nv.MatKhau == txtMatKhau.Text
+                               select nv;
+                if(nhanVien.ToList().Count==0)
+                {
+                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                }
+            }
         }
     }
 }
