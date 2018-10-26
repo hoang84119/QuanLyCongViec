@@ -16,5 +16,15 @@ namespace Presentation
         {
             InitializeComponent();
         }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
