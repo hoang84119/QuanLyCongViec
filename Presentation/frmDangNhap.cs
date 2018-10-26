@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Presentation
 {
-    public partial class frmDangNhap : Form
+    public partial class frmDangNhap : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         public frmDangNhap()
         {
@@ -34,9 +34,20 @@ namespace Presentation
                 IEnumerable<NHANVIEN> nhanVien = from nv in db.NHANVIEN
                                where nv.TenDangNhap == txtTenDangNhap.Text && nv.MatKhau == txtMatKhau.Text
                                select nv;
-                if(nhanVien.ToList().Count==0)
+                if(nhanVien.Count()==0)
                 {
-                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu", "Thông báo",MessageBoxButtons.OK);
+                }
+                else
+                {
+                    frmQuanLyCongViec frmQuanLy = new frmQuanLyCongViec();
+                    foreach(NHANVIEN nv in nhanVien)
+                    {
+                        frmQuanLy.User = nv;
+                    }
+                    this.Hide();
+                    frmQuanLy.ShowDialog();
+                    this.Close();
                 }
             }
         }

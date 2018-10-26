@@ -31,5 +31,10 @@ namespace Presentation
             }
             ucDanhSachCongViec.Instance.BringToFront();
         }
+
+        private void frmQuanLyCongViec_Load(object sender, EventArgs e)
+        {
+            //string txt = user.HoTen;
+        }
     }
 }
