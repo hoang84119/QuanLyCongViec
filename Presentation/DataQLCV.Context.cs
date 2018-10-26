@@ -12,6 +12,8 @@ namespace Presentation
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QLCONGVIECEntities : DbContext
     {
@@ -30,5 +32,10 @@ namespace Presentation
         public virtual DbSet<NHANVIEN> NHANVIEN { get; set; }
         public virtual DbSet<PHANCONG> PHANCONG { get; set; }
         public virtual DbSet<PHONGBAN> PHONGBAN { get; set; }
+    
+        public virtual ObjectResult<DanhSachCongViec_Result> DanhSachCongViec()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DanhSachCongViec_Result>("DanhSachCongViec");
+        }
     }
 }

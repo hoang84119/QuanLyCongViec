@@ -39,6 +39,7 @@ namespace Presentation.User_controls
             //pc => pc.MaCongViec,
             //(cv, pc) => new { CONGVIEC = cv, PHANCONG = pc });
             var BangCongViec = db.CONGVIEC;
+            
             gvDanhSachCongViec.DataSource = BangCongViec.ToList();
         }
     }

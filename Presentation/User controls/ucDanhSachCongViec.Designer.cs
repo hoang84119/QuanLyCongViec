@@ -82,7 +82,7 @@
             // gcNguoiGiao
             // 
             this.gcNguoiGiao.Caption = "Người giao";
-            this.gcNguoiGiao.FieldName = "NguoiGiao";
+            this.gcNguoiGiao.FieldName = "HoTen";
             this.gcNguoiGiao.Name = "gcNguoiGiao";
             this.gcNguoiGiao.Visible = true;
             this.gcNguoiGiao.VisibleIndex = 2;

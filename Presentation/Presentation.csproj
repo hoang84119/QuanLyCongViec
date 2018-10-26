@@ -67,6 +67,9 @@
     <Compile Include="CONGVIEC.cs">
       <DependentUpon>DataQLCV.tt</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachCongViec_Result.cs">
+      <DependentUpon>DataQLCV.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataQLCV.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

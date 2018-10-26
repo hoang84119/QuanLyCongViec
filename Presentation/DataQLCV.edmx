@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLCONGVIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLCONGVIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CONGVIEC">
           <Key>
             <PropertyRef Name="MaCongViec" />
@@ -159,6 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DanhSachCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="QLCONGVIECModelStoreContainer">
           <EntitySet Name="CONGVIEC" EntityType="Self.CONGVIEC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DUAN" EntityType="Self.DUAN" Schema="dbo" store:Type="Tables" />
@@ -198,8 +199,7 @@
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLCONGVIECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -411,7 +411,16 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
+          <FunctionImport Name="DanhSachCongViec" ReturnType="Collection(QLCONGVIECModel.DanhSachCongViec_Result)" />
         </EntityContainer>
+        <ComplexType Name="DanhSachCongViec_Result">
+          <Property Type="Int32" Name="MaCongViec" Nullable="false" />
+          <Property Type="String" Name="TenCV" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="HoTen" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="NgayGiao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHetHan" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TrangThai" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -480,6 +489,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DanhSachCongViec" FunctionName="QLCONGVIECModel.Store.DanhSachCongViec">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLCONGVIECModel.DanhSachCongViec_Result">
+                <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />
+                <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
+                <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
