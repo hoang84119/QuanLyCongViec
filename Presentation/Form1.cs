@@ -24,29 +24,48 @@ namespace Presentation
                 return _instance;
             }
         }
+
         private NHANVIEN user;
+        public NHANVIEN User { get => user; set => user = value; }
+        private QLCONGVIECEntities dbQuanLyCV;
+        public QLCONGVIECEntities DbQuanLyCV
+        {
+            get
+            {
+                if (dbQuanLyCV == null)
+                {
+                    dbQuanLyCV = new QLCONGVIECEntities();
+                }
+                return dbQuanLyCV;
+            }
+        }
 
         public frmQuanLyCongViec()
         {
             InitializeComponent();
         }
 
-        public NHANVIEN User { get => user; set => user = value; }
+        
 
         private void acDSCV_Click(object sender, EventArgs e)
         {
-            if(!container.Contains(ucDanhSachCongViec.Instance))
-            {
-                container.Controls.Add(ucDanhSachCongViec.Instance);
-                ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
-            }
-            ucDanhSachCongViec.Instance.BringToFront();
+
         }
 
         private void frmQuanLyCongViec_Load(object sender, EventArgs e)
         {
             container.Controls.Add(ucDanhSachCongViec.Instance);
             ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
+        }
+
+        private void acNhanVien_Click(object sender, EventArgs e)
+        {
+            if(!container.Controls.Contains(ucNhanVien.Instance))
+            {
+                container.Controls.Add(ucNhanVien.Instance);
+                ucNhanVien.Instance.Dock = DockStyle.Fill;
+            }
+            ucNhanVien.Instance.BringToFront();
         }
     }
 }

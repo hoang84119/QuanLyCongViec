@@ -45,6 +45,7 @@
           <Property Name="MaPhongBan" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HinhDaiDien" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="PHANCONG">
           <Key>
@@ -257,6 +258,7 @@
           <NavigationProperty Name="PHONGBAN" Relationship="Self.FRK_ND_PB" FromRole="NHANVIEN" ToRole="PHONGBAN" />
           <NavigationProperty Name="PHANCONG" Relationship="Self.FRK_NNCV_NV" FromRole="NHANVIEN" ToRole="PHANCONG" />
           <NavigationProperty Name="PHONGBAN1" Relationship="Self.FRK_TP_NV" FromRole="NHANVIEN" ToRole="PHONGBAN" />
+          <Property Name="HinhDaiDien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PHANCONG">
           <Key>
@@ -414,7 +416,7 @@
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
           <FunctionImport Name="DanhSachCongViec" ReturnType="Collection(QLCONGVIECModel.DanhSachCongViec_Result)">
-            <Parameter Name="MaNV" Mode="In" Type="Int32" />
+          <Parameter Name="MaNV" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DanhSachCongViec_Result">
@@ -464,6 +466,7 @@
           <EntitySetMapping Name="NHANVIEN">
             <EntityTypeMapping TypeName="QLCONGVIECModel.NHANVIEN">
               <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="HinhDaiDien" ColumnName="HinhDaiDien" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />

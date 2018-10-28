@@ -28,7 +28,7 @@ namespace Presentation.User_controls
         }
 
         static QLCONGVIECEntities db = new QLCONGVIECEntities();
-        public ucDanhSachCongViec()
+        private ucDanhSachCongViec()
         {
             InitializeComponent();
         }

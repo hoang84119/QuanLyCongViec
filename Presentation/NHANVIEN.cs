@@ -11,7 +11,10 @@ namespace Presentation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Drawing;
+    using System.IO;
+
     public partial class NHANVIEN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -32,6 +35,20 @@ namespace Presentation
         public string MaPhongBan { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
+        public string HinhDaiDien { get; set; }
+        [NotMapped]
+        public Image Hinh
+        {
+            get
+            {
+                if(!string.IsNullOrEmpty(HinhDaiDien))
+                {
+                    if (File.Exists("../../Images/"+HinhDaiDien))
+                        return Image.FromFile("../../Images/"+HinhDaiDien);
+                }
+                return null;
+            }
+        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONGVIEC> CONGVIEC { get; set; }
