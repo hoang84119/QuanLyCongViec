@@ -49,13 +49,19 @@ namespace Presentation
 
         private void acDSCV_Click(object sender, EventArgs e)
         {
-
+            if (!container.Controls.Contains(ucDanhSachCongViec.Instance))
+            {
+                container.Controls.Add(ucDanhSachCongViec.Instance);
+                ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
+            }
+            ucDanhSachCongViec.Instance.BringToFront();
         }
 
         private void frmQuanLyCongViec_Load(object sender, EventArgs e)
         {
-            container.Controls.Add(ucDanhSachCongViec.Instance);
-            ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
+            //container.Controls.Add(ucDanhSachCongViec.Instance);
+            //ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
+            
         }
 
         private void acNhanVien_Click(object sender, EventArgs e)

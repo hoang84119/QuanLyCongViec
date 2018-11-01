@@ -35,7 +35,7 @@
             this.acThemCongViec = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acThemDuAn = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acCongViecDaGiao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acCongViecDuocGiao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acDSCV = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acThongKe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acQuanLy = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -88,10 +88,10 @@
             this.acThemCongViec,
             this.acThemDuAn,
             this.acCongViecDaGiao,
-            this.acCongViecDuocGiao,
+            this.acDSCV,
             this.acThongKe});
             this.acCongViec.Expanded = true;
-            this.acCongViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
+            this.acCongViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acCongViec.ImageOptions.Image")));
             this.acCongViec.Name = "acCongViec";
             this.acCongViec.Text = "Công việc";
             // 
@@ -113,11 +113,12 @@
             this.acCongViecDaGiao.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acCongViecDaGiao.Text = "Công việc đã giao";
             // 
-            // acCongViecDuocGiao
+            // acDSCV
             // 
-            this.acCongViecDuocGiao.Name = "acCongViecDuocGiao";
-            this.acCongViecDuocGiao.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acCongViecDuocGiao.Text = "Công việc được giao";
+            this.acDSCV.Name = "acDSCV";
+            this.acDSCV.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acDSCV.Text = "Công việc được giao";
+            this.acDSCV.Click += new System.EventHandler(this.acDSCV_Click);
             // 
             // acThongKe
             // 
@@ -131,7 +132,7 @@
             this.acNhanVien,
             this.acDanhSachPhongBan});
             this.acQuanLy.Expanded = true;
-            this.acQuanLy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acDSCV.ImageOptions.Image")));
+            this.acQuanLy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acQuanLy.ImageOptions.Image")));
             this.acQuanLy.Name = "acQuanLy";
             this.acQuanLy.Text = "Quản lý";
             // 
@@ -214,7 +215,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acThemCongViec;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acThemDuAn;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acCongViecDaGiao;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acCongViecDuocGiao;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acDSCV;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acNhanVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDanhSachPhongBan;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acThongKe;
