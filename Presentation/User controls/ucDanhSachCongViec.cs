@@ -25,6 +25,7 @@ namespace Presentation.User_controls
                     _instance = new ucDanhSachCongViec();
                 return _instance;
             }
+            set => _instance = value;
         }
 
         static QLCONGVIECEntities db = new QLCONGVIECEntities();
@@ -36,7 +37,8 @@ namespace Presentation.User_controls
         private void ucDanhSachCongViec_Load(object sender, EventArgs e)
         {
             var BangCongViec = db.CONGVIEC;
-            ObjectResult<DanhSachCongViec_Result> ds = db.DanhSachCongViec(frmQuanLyCongViec.Instance.User.MaNhanVien);
+            NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
+            ObjectResult<CongViecDuocGiao_Result> ds = db.CongViecDuocGiao(user.MaNhanVien);
             gvDanhSachCongViec.DataSource = ds;
         }
     }

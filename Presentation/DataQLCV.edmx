@@ -163,7 +163,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="DanhSachCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="CongViecDuocGiao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaNV" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="QLCONGVIECModelStoreContainer">
@@ -421,17 +421,18 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
-          <FunctionImport Name="DanhSachCongViec" ReturnType="Collection(QLCONGVIECModel.DanhSachCongViec_Result)">
-          <Parameter Name="MaNV" Mode="In" Type="Int32" />
+          <FunctionImport Name="CongViecDuocGiao" ReturnType="Collection(QLCONGVIECModel.CongViecDuocGiao_Result)">
+            <Parameter Name="MaNV" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="DanhSachCongViec_Result">
+        <ComplexType Name="CongViecDuocGiao_Result">
           <Property Type="Int32" Name="MaCongViec" Nullable="false" />
           <Property Type="String" Name="TenCV" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="HoTen" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="NgayBatDau" Nullable="false" Precision="23" />
           <Property Type="DateTime" Name="NgayGiao" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="NgayHetHan" Nullable="false" Precision="23" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="200" />
           <Property Type="Boolean" Name="TrangThai" Nullable="true" />
         </ComplexType>
       </Schema>
@@ -506,15 +507,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="DanhSachCongViec" FunctionName="QLCONGVIECModel.Store.DanhSachCongViec">
+          <FunctionImportMapping FunctionImportName="CongViecDuocGiao" FunctionName="QLCONGVIECModel.Store.CongViecDuocGiao">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="QLCONGVIECModel.DanhSachCongViec_Result">
+              <ComplexTypeMapping TypeName="QLCONGVIECModel.CongViecDuocGiao_Result">
                 <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />
                 <ScalarProperty Name="TenCV" ColumnName="TenCV" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
                 <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </ComplexTypeMapping>
             </ResultMapping>

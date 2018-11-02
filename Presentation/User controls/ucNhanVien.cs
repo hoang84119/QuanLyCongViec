@@ -23,6 +23,7 @@ namespace Presentation.User_controls
                     _instance = new ucNhanVien();
                 return _instance;
             }
+            set => _instance = value;
         }
 
         private ucNhanVien()
@@ -32,7 +33,11 @@ namespace Presentation.User_controls
 
         private void ucNhanVien_Load(object sender, EventArgs e)
         {
-            gcNhanVien.DataSource = frmQuanLyCongViec.Instance.DbQuanLyCV.NHANVIEN.ToList();
+            using (var db = new QLCONGVIECEntities())
+            {
+                gcNhanVien.DataSource = db.NHANVIEN.ToList();
+            }
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Presentation.User_controls
 {
-    partial class ucDanhSachCongViec
+    partial class ucCongViecDaGiao
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,8 +35,8 @@
             this.gcNguoiGiao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNgayBatDau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNgayHetHan = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).BeginInit();
             this.SuspendLayout();
@@ -47,8 +47,8 @@
             this.gvDanhSachCongViec.Location = new System.Drawing.Point(0, 0);
             this.gvDanhSachCongViec.MainView = this.gcDanhSachCongViec;
             this.gvDanhSachCongViec.Name = "gvDanhSachCongViec";
-            this.gvDanhSachCongViec.Size = new System.Drawing.Size(887, 385);
-            this.gvDanhSachCongViec.TabIndex = 0;
+            this.gvDanhSachCongViec.Size = new System.Drawing.Size(700, 380);
+            this.gvDanhSachCongViec.TabIndex = 1;
             this.gvDanhSachCongViec.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gcDanhSachCongViec});
             // 
@@ -122,15 +122,6 @@
             this.gcNgayHetHan.VisibleIndex = 4;
             this.gcNgayHetHan.Width = 87;
             // 
-            // gcTrangThai
-            // 
-            this.gcTrangThai.Caption = "Trạng thái";
-            this.gcTrangThai.FieldName = "TrangThai";
-            this.gcTrangThai.Name = "gcTrangThai";
-            this.gcTrangThai.Visible = true;
-            this.gcTrangThai.VisibleIndex = 6;
-            this.gcTrangThai.Width = 95;
-            // 
             // gcMoTa
             // 
             this.gcMoTa.Caption = "Mô tả";
@@ -140,14 +131,22 @@
             this.gcMoTa.Visible = true;
             this.gcMoTa.VisibleIndex = 5;
             // 
-            // ucDanhSachCongViec
+            // gcTrangThai
+            // 
+            this.gcTrangThai.Caption = "Trạng thái";
+            this.gcTrangThai.FieldName = "TrangThai";
+            this.gcTrangThai.Name = "gcTrangThai";
+            this.gcTrangThai.Visible = true;
+            this.gcTrangThai.VisibleIndex = 6;
+            this.gcTrangThai.Width = 95;
+            // 
+            // ucCongViecDaGiao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gvDanhSachCongViec);
-            this.Name = "ucDanhSachCongViec";
-            this.Size = new System.Drawing.Size(887, 385);
-            this.Load += new System.EventHandler(this.ucDanhSachCongViec_Load);
+            this.Name = "ucCongViecDaGiao";
+            this.Size = new System.Drawing.Size(700, 380);
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).EndInit();
             this.ResumeLayout(false);
@@ -163,7 +162,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gcNguoiGiao;
         private DevExpress.XtraGrid.Columns.GridColumn gcNgayBatDau;
         private DevExpress.XtraGrid.Columns.GridColumn gcNgayHetHan;
-        private DevExpress.XtraGrid.Columns.GridColumn gcTrangThai;
         private DevExpress.XtraGrid.Columns.GridColumn gcMoTa;
+        private DevExpress.XtraGrid.Columns.GridColumn gcTrangThai;
     }
 }

@@ -67,7 +67,7 @@
     <Compile Include="CONGVIEC.cs">
       <DependentUpon>DataQLCV.tt</DependentUpon>
     </Compile>
-    <Compile Include="DanhSachCongViec_Result.cs">
+    <Compile Include="CongViecDuocGiao_Result.cs">
       <DependentUpon>DataQLCV.tt</DependentUpon>
     </Compile>
     <Compile Include="DataQLCV.Context.cs">
@@ -111,6 +111,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User controls\ucCongViecDaGiao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\ucCongViecDaGiao.Designer.cs">
+      <DependentUpon>ucCongViecDaGiao.cs</DependentUpon>
+    </Compile>
     <Compile Include="User controls\ucDanhSachCongViec.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="User controls\ucCongViecDaGiao.resx">
+      <DependentUpon>ucCongViecDaGiao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucDanhSachCongViec.resx">
       <DependentUpon>ucDanhSachCongViec.cs</DependentUpon>
     </EmbeddedResource>

@@ -42,7 +42,7 @@
             this.acDanhSachPhongBan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement11 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement12 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement13 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acDangXuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
@@ -154,7 +154,7 @@
             // 
             this.accordionControlElement11.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement12,
-            this.accordionControlElement13});
+            this.acDangXuat});
             this.accordionControlElement11.Expanded = true;
             this.accordionControlElement11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement11.ImageOptions.Image")));
             this.accordionControlElement11.Name = "accordionControlElement11";
@@ -166,11 +166,12 @@
             this.accordionControlElement12.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement12.Text = "Thông tin";
             // 
-            // accordionControlElement13
+            // acDangXuat
             // 
-            this.accordionControlElement13.Name = "accordionControlElement13";
-            this.accordionControlElement13.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement13.Text = "Đăng xuất";
+            this.acDangXuat.Name = "acDangXuat";
+            this.acDangXuat.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acDangXuat.Text = "Đăng xuất";
+            this.acDangXuat.Click += new System.EventHandler(this.acDangXuat_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -200,6 +201,7 @@
             this.Text = "Quản lý công việc";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQuanLyCongViec_FormClosing);
             this.Load += new System.EventHandler(this.frmQuanLyCongViec_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
@@ -222,7 +224,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acThongKe;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement11;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement12;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement13;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acDangXuat;
     }
 }
 

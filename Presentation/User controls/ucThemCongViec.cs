@@ -25,7 +25,9 @@ namespace Presentation.User_controls
                     _instance = new ucThemCongViec();
                 return _instance;
             }
+            set => _instance = value;
         }
+
         private ucThemCongViec()
         {
             InitializeComponent();
@@ -36,24 +38,27 @@ namespace Presentation.User_controls
         {
             txtNgayBatDau.Properties.MinValue = DateTime.Now;
             txtNgayHetHan.Properties.MinValue = DateTime.Now;
+            using (var db = new QLCONGVIECEntities())
+            {
+                cbbDuAn.DataSource = db.DUAN
+                    .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
+                cbbDuAn.DisplayMember = "TenDA";
+                cbbDuAn.ValueMember = "MaDuAn";
+                cbbDuAn.SelectedIndex = -1;
 
-            cbbDuAn.DataSource = frmQuanLyCongViec.Instance.DbQuanLyCV.DUAN
-                .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
-            cbbDuAn.DisplayMember = "TenDA";
-            cbbDuAn.ValueMember = "MaDuAn";
-            cbbDuAn.SelectedIndex = -1;
+                bangPhanCong = new DataTable("BangPhanCong");
+                bangPhanCong.Columns.Add("HoTen", typeof(string));
+                bangPhanCong.Columns.Add("MoTa", typeof(string));
+                gridControl1.DataSource = bangPhanCong;
 
-            bangPhanCong = new DataTable("BangPhanCong");
-            bangPhanCong.Columns.Add("HoTen", typeof(string));
-            bangPhanCong.Columns.Add("MoTa", typeof(string));
-            gridControl1.DataSource = bangPhanCong;
+                danhsach = this.BindingContext[bangPhanCong];
+                danhsach.AddNew();
 
-            danhsach = this.BindingContext[bangPhanCong];
-            danhsach.AddNew();
-
-            this.HoTenEditor.DataSource = frmQuanLyCongViec.Instance.DbQuanLyCV.NHANVIEN
-                .Where(nv=>nv.MaNhanVien!=frmQuanLyCongViec.Instance.User.MaNhanVien)
-                .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
+                NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
+                this.HoTenEditor.DataSource = db.NHANVIEN
+                    .Where(nv => nv.MaNhanVien != user.MaNhanVien)
+                    .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
+            }
         }
 
         private void HoTenEditor_EditValueChanged(object sender, EventArgs e)
@@ -70,7 +75,7 @@ namespace Presentation.User_controls
         private void btnHuy_Click(object sender, EventArgs e)
         {
             xoaDuLieu();
-            frmQuanLyCongViec.Instance.getContainer.Controls.Remove(this);
+            this.Parent.Controls.Remove(this);
         }
 
         private void xoaDuLieu()
@@ -86,17 +91,26 @@ namespace Presentation.User_controls
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
             CONGVIEC cv = new CONGVIEC();
             cv.TenCV = txtTenCongViec.Text;
-            cv.NguoiGiao = frmQuanLyCongViec.Instance.User.MaNhanVien;
+            cv.NguoiGiao = user.MaNhanVien;
+            cv.NgayGiao = DateTime.Now;
+            cv.NgayBatDau = DateTime.Parse(txtNgayBatDau.Text);
             cv.NgayHetHan = DateTime.Parse(txtNgayHetHan.Text);
+            cv.TrangThai = false;
             cv.MoTa = txtMoTa.Text;
             foreach(DataRow row in bangPhanCong.Rows)
             {
-                cv.PHANCONG.Add(new PHANCONG {NguoiNhan = Int32.Parse(row["HoTen"].ToString()) });
+                cv.PHANCONG.Add(new PHANCONG {NguoiNhan = Int32.Parse(row["HoTen"].ToString()), MoTa=row["MoTa"].ToString() });
             }
-            frmQuanLyCongViec.Instance.DbQuanLyCV.CONGVIEC.Add(cv);
-            frmQuanLyCongViec.Instance.DbQuanLyCV.SaveChanges();
+            using (var db = new QLCONGVIECEntities())
+            {
+                db.CONGVIEC.Add(cv);
+                db.SaveChanges();
+            }
+            xoaDuLieu();
+            MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
         }
 
         private void txtNgayBatDau_Properties_EditValueChanged(object sender, EventArgs e)

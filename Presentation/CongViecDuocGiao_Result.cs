@@ -11,7 +11,7 @@ namespace Presentation
 {
     using System;
     
-    public partial class DanhSachCongViec_Result
+    public partial class CongViecDuocGiao_Result
     {
         public int MaCongViec { get; set; }
         public string TenCV { get; set; }
@@ -19,6 +19,7 @@ namespace Presentation
         public System.DateTime NgayBatDau { get; set; }
         public Nullable<System.DateTime> NgayGiao { get; set; }
         public System.DateTime NgayHetHan { get; set; }
+        public string MoTa { get; set; }
         public Nullable<bool> TrangThai { get; set; }
     }
 }
