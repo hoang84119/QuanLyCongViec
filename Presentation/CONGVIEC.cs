@@ -29,6 +29,7 @@ namespace Presentation
         public Nullable<System.DateTime> NgayHoanThanh { get; set; }
         public string MoTa { get; set; }
         public Nullable<int> MaDuAn { get; set; }
+        public System.DateTime NgayBatDau { get; set; }
     
         public virtual DUAN DUAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -33,7 +33,7 @@
             this.gcMaCV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTenCV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNguoiGiao = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcNgayGiao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcNgayBatDau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNgayHetHan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
@@ -61,12 +61,13 @@
             this.gcMaCV,
             this.gcTenCV,
             this.gcNguoiGiao,
-            this.gcNgayGiao,
+            this.gcNgayBatDau,
             this.gcNgayHetHan,
             this.gcTrangThai});
             this.gcDanhSachCongViec.GridControl = this.gvDanhSachCongViec;
             this.gcDanhSachCongViec.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gcDanhSachCongViec.Name = "gcDanhSachCongViec";
+            this.gcDanhSachCongViec.RowHeight = 50;
             // 
             // gcMaCV
             // 
@@ -95,14 +96,14 @@
             this.gcNguoiGiao.VisibleIndex = 2;
             this.gcNguoiGiao.Width = 87;
             // 
-            // gcNgayGiao
+            // gcNgayBatDau
             // 
-            this.gcNgayGiao.Caption = "Ngày giao";
-            this.gcNgayGiao.FieldName = "NgayGiao";
-            this.gcNgayGiao.Name = "gcNgayGiao";
-            this.gcNgayGiao.Visible = true;
-            this.gcNgayGiao.VisibleIndex = 3;
-            this.gcNgayGiao.Width = 87;
+            this.gcNgayBatDau.Caption = "Ngày bắt đầu";
+            this.gcNgayBatDau.FieldName = "NgayBatDau";
+            this.gcNgayBatDau.Name = "gcNgayBatDau";
+            this.gcNgayBatDau.Visible = true;
+            this.gcNgayBatDau.VisibleIndex = 3;
+            this.gcNgayBatDau.Width = 87;
             // 
             // gcNgayHetHan
             // 
@@ -143,7 +144,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gcMaCV;
         private DevExpress.XtraGrid.Columns.GridColumn gcTenCV;
         private DevExpress.XtraGrid.Columns.GridColumn gcNguoiGiao;
-        private DevExpress.XtraGrid.Columns.GridColumn gcNgayGiao;
+        private DevExpress.XtraGrid.Columns.GridColumn gcNgayBatDau;
         private DevExpress.XtraGrid.Columns.GridColumn gcNgayHetHan;
         private DevExpress.XtraGrid.Columns.GridColumn gcTrangThai;
     }

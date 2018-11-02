@@ -45,7 +45,11 @@ namespace Presentation
             InitializeComponent();
         }
 
-        
+        public DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer getContainer
+        {
+            get => container;
+        }
+
 
         private void acDSCV_Click(object sender, EventArgs e)
         {
@@ -72,6 +76,16 @@ namespace Presentation
                 ucNhanVien.Instance.Dock = DockStyle.Fill;
             }
             ucNhanVien.Instance.BringToFront();
+        }
+
+        private void acThemCongViec_Click(object sender, EventArgs e)
+        {
+            if (!container.Controls.Contains(ucThemCongViec.Instance))
+            {
+                container.Controls.Add(ucThemCongViec.Instance);
+                ucThemCongViec.Instance.Dock = DockStyle.Right;
+            }
+            ucThemCongViec.Instance.BringToFront();
         }
     }
 }

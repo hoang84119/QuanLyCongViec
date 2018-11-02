@@ -19,7 +19,20 @@ namespace Presentation
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            
+            using (var db = new QLCONGVIECEntities())
+            {
+                IEnumerable<NHANVIEN> nhanVien = from nv in db.NHANVIEN
+                                                 where nv.TenDangNhap == "admin" && nv.MatKhau == "123456"
+                                                 select nv;
+
+                    foreach (NHANVIEN nv in nhanVien)
+                    {
+                        frmQuanLyCongViec.Instance.User = nv;
+                    }
+                    this.Hide();
+                    frmQuanLyCongViec.Instance.ShowDialog();
+                    this.Close();
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

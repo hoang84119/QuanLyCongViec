@@ -100,6 +100,7 @@
             this.acThemCongViec.Name = "acThemCongViec";
             this.acThemCongViec.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acThemCongViec.Text = "Thêm công việc";
+            this.acThemCongViec.Click += new System.EventHandler(this.acThemCongViec_Click);
             // 
             // acThemDuAn
             // 

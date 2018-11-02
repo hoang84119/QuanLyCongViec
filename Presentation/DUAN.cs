@@ -29,6 +29,7 @@ namespace Presentation
         public Nullable<bool> TrangThai { get; set; }
         public Nullable<System.DateTime> NgayHoanThanh { get; set; }
         public string MoTa { get; set; }
+        public System.DateTime NgayBatDau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONGVIEC> CONGVIEC { get; set; }
