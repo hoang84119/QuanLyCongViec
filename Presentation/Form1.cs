@@ -13,33 +13,7 @@ namespace Presentation
 {
     public partial class frmQuanLyCongViec : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        //private static frmQuanLyCongViec _instance;
-
-        //public static frmQuanLyCongViec Instance
-        //{
-        //    get
-        //    {
-        //        if (_instance == null)
-        //            _instance = new frmQuanLyCongViec();
-        //        return _instance;
-        //    }
-        //}
-
-        private NHANVIEN user;
-        public NHANVIEN User { get => user; set => user = value; }
-
-        //private QLCONGVIECEntities dbQuanLyCV;
-        //public QLCONGVIECEntities DbQuanLyCV
-        //{
-        //    get
-        //    {
-        //        if (dbQuanLyCV == null)
-        //        {
-        //            dbQuanLyCV = new QLCONGVIECEntities();
-        //        }
-        //        return dbQuanLyCV;
-        //    }
-        //}
+        public NHANVIEN User { get; set; }
 
         public frmQuanLyCongViec()
         {
@@ -58,9 +32,22 @@ namespace Presentation
 
         private void frmQuanLyCongViec_Load(object sender, EventArgs e)
         {
-            //container.Controls.Add(ucDanhSachCongViec.Instance);
-            //ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
-            
+            using (var db = new QLCONGVIECEntities())
+            {
+                var phong = db.PHONGBAN.Where(p => p.TruongPhong == User.MaNhanVien).Select(p => p);
+                if(phong.Count()==0)
+                {
+                    chucNangQuanLy(false);
+                }
+            }
+        }
+
+        private void chucNangQuanLy(bool v)
+        {
+            acQuanLy.Visible = v;
+            acThemCongViec.Visible = v;
+            acThemDuAn.Visible = v;
+            acCongViecDaGiao.Visible = v;
         }
 
         private void acNhanVien_Click(object sender, EventArgs e)
@@ -94,12 +81,23 @@ namespace Presentation
             ucDanhSachCongViec.Instance = null;
             ucNhanVien.Instance = null;
             ucThemCongViec.Instance = null;
+            ucCongViecDaGiao.Instance = null;
         }
 
         private void frmQuanLyCongViec_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing) Application.Exit();
             xoaUC();
+        }
+
+        private void acCongViecDaGiao_Click(object sender, EventArgs e)
+        {
+            if (!container.Controls.Contains(ucCongViecDaGiao.Instance))
+            {
+                container.Controls.Add(ucCongViecDaGiao.Instance);
+                ucCongViecDaGiao.Instance.Dock = DockStyle.Fill;
+            }
+            ucCongViecDaGiao.Instance.BringToFront();
         }
     }
 }

@@ -285,6 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtNgayBatDau);
@@ -303,7 +304,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNgayHetHan);
             this.Name = "ucThemCongViec";
-            this.Size = new System.Drawing.Size(405, 672);
+            this.Size = new System.Drawing.Size(405, 682);
             this.Load += new System.EventHandler(this.ucThemCongViec_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCongViec.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayHetHan.Properties.CalendarTimeProperties)).EndInit();

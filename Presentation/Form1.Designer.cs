@@ -54,7 +54,7 @@
             this.container.Location = new System.Drawing.Point(287, 30);
             this.container.Margin = new System.Windows.Forms.Padding(2);
             this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(675, 538);
+            this.container.Size = new System.Drawing.Size(675, 570);
             this.container.TabIndex = 0;
             // 
             // accordionControl1
@@ -78,7 +78,7 @@
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.NormalWidth = 287;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(287, 538);
+            this.accordionControl1.Size = new System.Drawing.Size(287, 570);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -113,6 +113,7 @@
             this.acCongViecDaGiao.Name = "acCongViecDaGiao";
             this.acCongViecDaGiao.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acCongViecDaGiao.Text = "Công việc đã giao";
+            this.acCongViecDaGiao.Click += new System.EventHandler(this.acCongViecDaGiao_Click);
             // 
             // acDSCV
             // 
@@ -189,13 +190,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 568);
+            this.ClientSize = new System.Drawing.Size(962, 600);
             this.ControlContainer = this.container;
             this.Controls.Add(this.container);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frmQuanLyCongViec";
             this.NavigationControl = this.accordionControl1;
             this.Text = "Quản lý công việc";
