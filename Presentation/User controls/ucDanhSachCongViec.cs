@@ -36,6 +36,7 @@ namespace Presentation.User_controls
 
         private void ucDanhSachCongViec_Load(object sender, EventArgs e)
         {
+            ((frmQuanLyCongViec)this.ParentForm).ShowLoading();
             using (var db = new QLCONGVIECEntities())
             {
                 var BangCongViec = db.CONGVIEC;
@@ -43,6 +44,11 @@ namespace Presentation.User_controls
                 ObjectResult<CongViecDuocGiao_Result> ds = db.CongViecDuocGiao(user.MaNhanVien);
                 gvDanhSachCongViec.DataSource = ds;
             }
+        }
+
+        private void gvDanhSachCongViec_Load(object sender, EventArgs e)
+        {
+            ((frmQuanLyCongViec)this.ParentForm).CloseLoading();
         }
     }
 }

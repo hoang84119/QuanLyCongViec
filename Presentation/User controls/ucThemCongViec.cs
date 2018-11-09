@@ -15,7 +15,7 @@ namespace Presentation.User_controls
     {
         private static ucThemCongViec _instance;
         DataTable bangPhanCong;
-        BindingManagerBase danhsach;
+        //BindingManagerBase danhsach;
 
         public static ucThemCongViec Instance
         {
@@ -51,8 +51,9 @@ namespace Presentation.User_controls
                 bangPhanCong.Columns.Add("MoTa", typeof(string));
                 gridControl1.DataSource = bangPhanCong;
 
-                danhsach = this.BindingContext[bangPhanCong];
-                danhsach.AddNew();
+                //danhsach = this.BindingContext[bangPhanCong];
+                //danhsach.AddNew();
+                gvDSNhanVien.AddNewRow();
 
                 NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
 
@@ -79,7 +80,8 @@ namespace Presentation.User_controls
 
         private void btnThemNV_Click(object sender, EventArgs e)
         {
-            danhsach.AddNew();
+            //danhsach.AddNew();
+            gvDSNhanVien.AddNewRow();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -95,7 +97,8 @@ namespace Presentation.User_controls
             txtNgayBatDau.Text = "";
             txtNgayHetHan.Text = "";
             bangPhanCong.Clear();
-            danhsach.AddNew();
+            //danhsach.AddNew();
+            gvDSNhanVien.AddNewRow();
             cbbDuAn.SelectedIndex = -1;
         }
 
@@ -117,7 +120,7 @@ namespace Presentation.User_controls
             using (var db = new QLCONGVIECEntities())
             {
                 db.CONGVIEC.Add(cv);
-                db.SaveChanges();
+                //db.SaveChanges();
             }
             xoaDuLieu();
             MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);

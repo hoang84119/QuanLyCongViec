@@ -130,6 +130,7 @@
             this.gcNhanVien.TabIndex = 1;
             this.gcNhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
+            this.gcNhanVien.Load += new System.EventHandler(this.gcNhanVien_Load);
             // 
             // tileView1
             // 

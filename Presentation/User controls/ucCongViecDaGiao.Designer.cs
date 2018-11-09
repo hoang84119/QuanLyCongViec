@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.gvDanhSachCongViec = new DevExpress.XtraGrid.GridControl();
             this.gcCongViecDaGiao = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcMaCV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -37,6 +38,7 @@
             this.gcNgayHetHan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.buttonPanelEditor = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).BeginInit();
             this.SuspendLayout();
@@ -47,10 +49,11 @@
             this.gvDanhSachCongViec.Location = new System.Drawing.Point(0, 0);
             this.gvDanhSachCongViec.MainView = this.gcCongViecDaGiao;
             this.gvDanhSachCongViec.Name = "gvDanhSachCongViec";
-            this.gvDanhSachCongViec.Size = new System.Drawing.Size(700, 380);
-            this.gvDanhSachCongViec.TabIndex = 1;
+            this.gvDanhSachCongViec.Size = new System.Drawing.Size(700, 465);
+            this.gvDanhSachCongViec.TabIndex = 3;
             this.gvDanhSachCongViec.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gcCongViecDaGiao});
+            this.gvDanhSachCongViec.Load += new System.EventHandler(this.gvDanhSachCongViec_Load);
             // 
             // gcCongViecDaGiao
             // 
@@ -87,7 +90,6 @@
             this.gcTenCV.Caption = "Tên công việc";
             this.gcTenCV.FieldName = "TenCV";
             this.gcTenCV.Name = "gcTenCV";
-            this.gcTenCV.OptionsColumn.AllowEdit = false;
             this.gcTenCV.Visible = true;
             this.gcTenCV.VisibleIndex = 1;
             this.gcTenCV.Width = 87;
@@ -97,7 +99,6 @@
             this.gcNguoiNhan.Caption = "Người nhận";
             this.gcNguoiNhan.FieldName = "NguoiNhan";
             this.gcNguoiNhan.Name = "gcNguoiNhan";
-            this.gcNguoiNhan.OptionsColumn.AllowEdit = false;
             this.gcNguoiNhan.Visible = true;
             this.gcNguoiNhan.VisibleIndex = 2;
             this.gcNguoiNhan.Width = 87;
@@ -107,7 +108,6 @@
             this.gcNgayBatDau.Caption = "Ngày bắt đầu";
             this.gcNgayBatDau.FieldName = "NgayBatDau";
             this.gcNgayBatDau.Name = "gcNgayBatDau";
-            this.gcNgayBatDau.OptionsColumn.AllowEdit = false;
             this.gcNgayBatDau.Visible = true;
             this.gcNgayBatDau.VisibleIndex = 3;
             this.gcNgayBatDau.Width = 87;
@@ -117,7 +117,6 @@
             this.gcNgayHetHan.Caption = "Ngày hết hạn";
             this.gcNgayHetHan.FieldName = "NgayHetHan";
             this.gcNgayHetHan.Name = "gcNgayHetHan";
-            this.gcNgayHetHan.OptionsColumn.AllowEdit = false;
             this.gcNgayHetHan.Visible = true;
             this.gcNgayHetHan.VisibleIndex = 4;
             this.gcNgayHetHan.Width = 87;
@@ -127,7 +126,6 @@
             this.gcMoTa.Caption = "Mô tả";
             this.gcMoTa.FieldName = "MoTa";
             this.gcMoTa.Name = "gcMoTa";
-            this.gcMoTa.OptionsColumn.AllowEdit = false;
             this.gcMoTa.Visible = true;
             this.gcMoTa.VisibleIndex = 5;
             // 
@@ -140,13 +138,28 @@
             this.gcTrangThai.VisibleIndex = 6;
             this.gcTrangThai.Width = 95;
             // 
+            // buttonPanelEditor
+            // 
+            this.buttonPanelEditor.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Sửa", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, false, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton()});
+            this.buttonPanelEditor.ContentAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonPanelEditor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonPanelEditor.Location = new System.Drawing.Point(0, 465);
+            this.buttonPanelEditor.Name = "buttonPanelEditor";
+            this.buttonPanelEditor.Size = new System.Drawing.Size(700, 69);
+            this.buttonPanelEditor.TabIndex = 2;
+            this.buttonPanelEditor.Text = "buttonPanelEditor";
+            this.buttonPanelEditor.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.buttonPanelEditor_ButtonClick);
+            // 
             // ucCongViecDaGiao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gvDanhSachCongViec);
+            this.Controls.Add(this.buttonPanelEditor);
             this.Name = "ucCongViecDaGiao";
-            this.Size = new System.Drawing.Size(700, 380);
+            this.Size = new System.Drawing.Size(700, 534);
             this.Load += new System.EventHandler(this.ucCongViecDaGiao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).EndInit();
@@ -165,5 +178,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gcNgayHetHan;
         private DevExpress.XtraGrid.Columns.GridColumn gcMoTa;
         private DevExpress.XtraGrid.Columns.GridColumn gcTrangThai;
+        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel buttonPanelEditor;
     }
 }

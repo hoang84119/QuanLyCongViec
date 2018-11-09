@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraSplashScreen;
 using Presentation.User_controls;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace Presentation
     public partial class frmQuanLyCongViec : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         public NHANVIEN User { get; set; }
+
+        IOverlaySplashScreenHandle handle = null;
 
         public frmQuanLyCongViec()
         {
@@ -98,6 +101,35 @@ namespace Presentation
                 ucCongViecDaGiao.Instance.Dock = DockStyle.Fill;
             }
             ucCongViecDaGiao.Instance.BringToFront();
+        }
+
+        public void ShowLoading()
+        {
+            bool useFadeIn = false;
+            bool useFadeOut = false;
+            Color backColor = Color.Black;
+            Color foreColor = Color.Black;
+            double opacity = 0.5;
+            Image waitImage = Image.FromFile("../../Images/loading.png");
+            OverlayWindowOptions options = new OverlayWindowOptions(
+                useFadeIn,
+                useFadeOut,
+                backColor,
+                foreColor,
+                opacity,
+                waitImage);
+            handle = ShowProgressPanel(options);
+        }
+
+        IOverlaySplashScreenHandle ShowProgressPanel(OverlayWindowOptions option)
+        {
+            return SplashScreenManager.ShowOverlayForm(container, option);
+        }
+
+        public void CloseLoading()
+        {
+            if (handle != null)
+                SplashScreenManager.CloseOverlayForm(handle);
         }
     }
 }

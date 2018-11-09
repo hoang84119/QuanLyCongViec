@@ -35,8 +35,8 @@
             this.gcNguoiGiao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNgayBatDau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNgayHetHan = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,7 @@
             this.gvDanhSachCongViec.TabIndex = 0;
             this.gvDanhSachCongViec.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gcDanhSachCongViec});
+            this.gvDanhSachCongViec.Load += new System.EventHandler(this.gvDanhSachCongViec_Load);
             // 
             // gcDanhSachCongViec
             // 
@@ -122,15 +123,6 @@
             this.gcNgayHetHan.VisibleIndex = 4;
             this.gcNgayHetHan.Width = 87;
             // 
-            // gcTrangThai
-            // 
-            this.gcTrangThai.Caption = "Trạng thái";
-            this.gcTrangThai.FieldName = "TrangThai";
-            this.gcTrangThai.Name = "gcTrangThai";
-            this.gcTrangThai.Visible = true;
-            this.gcTrangThai.VisibleIndex = 6;
-            this.gcTrangThai.Width = 95;
-            // 
             // gcMoTa
             // 
             this.gcMoTa.Caption = "Mô tả";
@@ -139,6 +131,15 @@
             this.gcMoTa.OptionsColumn.AllowEdit = false;
             this.gcMoTa.Visible = true;
             this.gcMoTa.VisibleIndex = 5;
+            // 
+            // gcTrangThai
+            // 
+            this.gcTrangThai.Caption = "Trạng thái";
+            this.gcTrangThai.FieldName = "TrangThai";
+            this.gcTrangThai.Name = "gcTrangThai";
+            this.gcTrangThai.Visible = true;
+            this.gcTrangThai.VisibleIndex = 6;
+            this.gcTrangThai.Width = 95;
             // 
             // ucDanhSachCongViec
             // 

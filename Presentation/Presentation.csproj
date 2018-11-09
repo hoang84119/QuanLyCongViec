@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v18.1" />
     <Reference Include="DevExpress.Data.v18.1" />
+    <Reference Include="DevExpress.Images.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v18.1.Core" />
     <Reference Include="DevExpress.Utils.v18.1" />
     <Reference Include="DevExpress.XtraBars.v18.1" />
@@ -111,6 +112,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User controls\ucCapNhatCV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\ucCapNhatCV.Designer.cs">
+      <DependentUpon>ucCapNhatCV.cs</DependentUpon>
+    </Compile>
     <Compile Include="User controls\ucCongViecDaGiao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +129,12 @@
     </Compile>
     <Compile Include="User controls\ucDanhSachCongViec.Designer.cs">
       <DependentUpon>ucDanhSachCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\ucDuAn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\ucDuAn.Designer.cs">
+      <DependentUpon>ucDuAn.cs</DependentUpon>
     </Compile>
     <Compile Include="User controls\ucNhanVien.cs">
       <SubType>UserControl</SubType>
@@ -152,11 +165,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="User controls\ucCapNhatCV.resx">
+      <DependentUpon>ucCapNhatCV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucCongViecDaGiao.resx">
       <DependentUpon>ucCongViecDaGiao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucDanhSachCongViec.resx">
       <DependentUpon>ucDanhSachCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\ucDuAn.resx">
+      <DependentUpon>ucDuAn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucNhanVien.resx">
       <DependentUpon>ucNhanVien.cs</DependentUpon>

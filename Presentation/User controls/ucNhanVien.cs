@@ -33,11 +33,30 @@ namespace Presentation.User_controls
 
         private void ucNhanVien_Load(object sender, EventArgs e)
         {
+            ((frmQuanLyCongViec)this.ParentForm).ShowLoading();
             using (var db = new QLCONGVIECEntities())
             {
-                gcNhanVien.DataSource = db.NHANVIEN.ToList();
+                NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
+
+                if (user.MaPhongBan == "GD")
+                {
+                    gcNhanVien.DataSource = db.NHANVIEN
+                        .Where(nv => nv.MaNhanVien != user.MaNhanVien)
+                        .ToList();
+                }
+                else
+                {
+                    gcNhanVien.DataSource = db.NHANVIEN
+                        .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.MaPhongBan == user.MaPhongBan)
+                        .ToList();
+                }
             }
 
+        }
+
+        private void gcNhanVien_Load(object sender, EventArgs e)
+        {
+            ((frmQuanLyCongViec)this.ParentForm).CloseLoading();
         }
     }
 }
