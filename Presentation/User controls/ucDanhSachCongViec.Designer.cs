@@ -55,10 +55,6 @@
             // 
             // gcDanhSachCongViec
             // 
-            this.gcDanhSachCongViec.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gcDanhSachCongViec.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gcDanhSachCongViec.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gcDanhSachCongViec.Appearance.Row.Options.UseFont = true;
             this.gcDanhSachCongViec.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcMaCV,
             this.gcTenCV,
@@ -71,7 +67,6 @@
             this.gcDanhSachCongViec.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gcDanhSachCongViec.Name = "gcDanhSachCongViec";
             this.gcDanhSachCongViec.OptionsView.ShowIndicator = false;
-            this.gcDanhSachCongViec.RowHeight = 50;
             // 
             // gcMaCV
             // 
@@ -79,6 +74,7 @@
             this.gcMaCV.FieldName = "MaCongViec";
             this.gcMaCV.Name = "gcMaCV";
             this.gcMaCV.OptionsColumn.AllowEdit = false;
+            this.gcMaCV.OptionsColumn.FixedWidth = true;
             this.gcMaCV.Visible = true;
             this.gcMaCV.VisibleIndex = 0;
             this.gcMaCV.Width = 45;

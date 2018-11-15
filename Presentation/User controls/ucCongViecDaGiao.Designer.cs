@@ -105,10 +105,8 @@
             // 
             // gvCongViecDaGiao
             // 
-            this.gvCongViecDaGiao.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvCongViecDaGiao.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvCongViecDaGiao.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gvCongViecDaGiao.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvCongViecDaGiao.Appearance.Row.Options.UseFont = true;
             this.gvCongViecDaGiao.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcMaCV,
             this.gcTenCV,
@@ -121,7 +119,6 @@
             this.gvCongViecDaGiao.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvCongViecDaGiao.Name = "gvCongViecDaGiao";
             this.gvCongViecDaGiao.OptionsView.ShowIndicator = false;
-            this.gvCongViecDaGiao.RowHeight = 50;
             // 
             // gcMaCV
             // 
@@ -129,6 +126,7 @@
             this.gcMaCV.FieldName = "MaCongViec";
             this.gcMaCV.Name = "gcMaCV";
             this.gcMaCV.OptionsColumn.AllowEdit = false;
+            this.gcMaCV.OptionsColumn.FixedWidth = true;
             this.gcMaCV.Visible = true;
             this.gcMaCV.VisibleIndex = 0;
             this.gcMaCV.Width = 45;
@@ -140,7 +138,7 @@
             this.gcTenCV.Name = "gcTenCV";
             this.gcTenCV.Visible = true;
             this.gcTenCV.VisibleIndex = 1;
-            this.gcTenCV.Width = 87;
+            this.gcTenCV.Width = 132;
             // 
             // gcNguoiNhan
             // 
@@ -149,25 +147,27 @@
             this.gcNguoiNhan.Name = "gcNguoiNhan";
             this.gcNguoiNhan.Visible = true;
             this.gcNguoiNhan.VisibleIndex = 2;
-            this.gcNguoiNhan.Width = 87;
+            this.gcNguoiNhan.Width = 132;
             // 
             // gcNgayBatDau
             // 
             this.gcNgayBatDau.Caption = "Ngày bắt đầu";
             this.gcNgayBatDau.FieldName = "NgayBatDau";
             this.gcNgayBatDau.Name = "gcNgayBatDau";
+            this.gcNgayBatDau.OptionsColumn.FixedWidth = true;
             this.gcNgayBatDau.Visible = true;
             this.gcNgayBatDau.VisibleIndex = 3;
-            this.gcNgayBatDau.Width = 87;
+            this.gcNgayBatDau.Width = 132;
             // 
             // gcNgayHetHan
             // 
             this.gcNgayHetHan.Caption = "Ngày hết hạn";
             this.gcNgayHetHan.FieldName = "NgayHetHan";
             this.gcNgayHetHan.Name = "gcNgayHetHan";
+            this.gcNgayHetHan.OptionsColumn.FixedWidth = true;
             this.gcNgayHetHan.Visible = true;
             this.gcNgayHetHan.VisibleIndex = 4;
-            this.gcNgayHetHan.Width = 87;
+            this.gcNgayHetHan.Width = 132;
             // 
             // gcMoTa
             // 
@@ -176,6 +176,7 @@
             this.gcMoTa.Name = "gcMoTa";
             this.gcMoTa.Visible = true;
             this.gcMoTa.VisibleIndex = 5;
+            this.gcMoTa.Width = 113;
             // 
             // gcTrangThai
             // 
@@ -184,7 +185,7 @@
             this.gcTrangThai.Name = "gcTrangThai";
             this.gcTrangThai.Visible = true;
             this.gcTrangThai.VisibleIndex = 6;
-            this.gcTrangThai.Width = 95;
+            this.gcTrangThai.Width = 149;
             // 
             // layoutEdit
             // 
