@@ -57,18 +57,18 @@ namespace Presentation.User_controls
 
                 NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
 
-                if(user.MaPhongBan == "GD")
-                {
-                    this.HoTenEditor.DataSource = db.NHANVIEN
-                                        .Where(nv => nv.MaNhanVien != user.MaNhanVien)
-                                        .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
-                }
-                else
-                {
-                    this.HoTenEditor.DataSource = db.NHANVIEN
-                                        .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.MaPhongBan == user.MaPhongBan)
-                                        .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
-                }
+                //if(user.MaPhongBan == "GD")
+                //{
+                //    this.HoTenEditor.DataSource = db.NHANVIEN
+                //                        .Where(nv => nv.MaNhanVien != user.MaNhanVien)
+                //                        .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
+                //}
+                //else
+                //{
+                //    this.HoTenEditor.DataSource = db.NHANVIEN
+                //                        .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.MaPhongBan == user.MaPhongBan)
+                //                        .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
+                //}
             }
         }
 

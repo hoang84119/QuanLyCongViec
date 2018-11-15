@@ -42,10 +42,11 @@ namespace Presentation.User_controls
 
         private void ucCapNhatCV_Load(object sender, EventArgs e)
         {
-            bangPhanCong = new DataTable("BangPhanCong");
-            bangPhanCong.Columns.Add("HoTen", typeof(string));
-            bangPhanCong.Columns.Add("MoTa", typeof(string));
-            gridControl1.DataSource = bangPhanCong;
+            //bangPhanCong = new DataTable("BangPhanCong");
+            //bangPhanCong.Columns.Add("HoTen", typeof(string));
+            //bangPhanCong.Columns.Add("MoTa", typeof(string));
+            //gridControl1.DataSource = bangPhanCong;
+          
 
             loadNhanVienBangPhanCong();
             loadCongViec();
@@ -59,6 +60,7 @@ namespace Presentation.User_controls
             {
                 if (user.MaPhongBan == "GD")
                 {
+                    //db.CONGVIEC
                     this.HoTenEditor.DataSource = db.NHANVIEN
                                         .Where(nv => nv.MaNhanVien != user.MaNhanVien)
                                         .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
@@ -81,15 +83,16 @@ namespace Presentation.User_controls
             txtNgayHetHan.Text = congViec.NgayHetHan.ToLongDateString();
             txtMoTa.Text = congViec.MoTa;
             var test = congViec.PHANCONG
-                .Select(pc => new
+                .Select(pc => new PHANCONG()
                 {
                     //pc.NHANVIEN.HoTen,
-                    pc.NHANVIEN.MaNhanVien,
-                    pc.MoTa
-                });
-                //.ToList();
-            gridControl1.DataSource = new BindingSource(test,"");
-            
+                    NguoiNhan = pc.NHANVIEN.MaNhanVien,
+                    MoTa = pc.MoTa
+                })
+                .ToList();
+            gridControl1.DataSource = test;
+            test.Add(new PHANCONG());
+            //this.HoTenEditor
         }
 
         private void btnThemNV_Click(object sender, EventArgs e)

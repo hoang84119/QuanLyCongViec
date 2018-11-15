@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucThemCongViec));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvDSNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnTenNV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.HoTenEditor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumnMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnThemNV = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
@@ -54,7 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayHetHan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDSNhanVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HoTenEditor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayBatDau.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayBatDau.Properties)).BeginInit();
             this.SuspendLayout();
@@ -154,8 +154,6 @@
             this.gridControl1.Location = new System.Drawing.Point(20, 379);
             this.gridControl1.MainView = this.gvDSNhanVien;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.HoTenEditor});
             this.gridControl1.Size = new System.Drawing.Size(364, 223);
             this.gridControl1.TabIndex = 10;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -174,24 +172,20 @@
             // gridColumnTenNV
             // 
             this.gridColumnTenNV.Caption = "Họ Tên";
-            this.gridColumnTenNV.ColumnEdit = this.HoTenEditor;
+            repositoryItemLookUpEdit1.AutoHeight = false;
+            repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HoTen", "Họ tên", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            repositoryItemLookUpEdit1.DisplayMember = "HoTen";
+            repositoryItemLookUpEdit1.Name = "HoTenEditor";
+            repositoryItemLookUpEdit1.NullText = "Chọn nhân viên";
+            repositoryItemLookUpEdit1.ValueMember = "MaNhanVien";
+            this.gridColumnTenNV.ColumnEdit = repositoryItemLookUpEdit1;
             this.gridColumnTenNV.FieldName = "HoTen";
             this.gridColumnTenNV.Name = "gridColumnTenNV";
             this.gridColumnTenNV.Visible = true;
             this.gridColumnTenNV.VisibleIndex = 0;
-            // 
-            // HoTenEditor
-            // 
-            this.HoTenEditor.AutoHeight = false;
-            this.HoTenEditor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.HoTenEditor.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HoTen", "Họ tên", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.HoTenEditor.DisplayMember = "HoTen";
-            this.HoTenEditor.Name = "HoTenEditor";
-            this.HoTenEditor.NullText = "Chọn nhân viên";
-            this.HoTenEditor.ValueMember = "MaNhanVien";
-            this.HoTenEditor.EditValueChanged += new System.EventHandler(this.HoTenEditor_EditValueChanged);
             // 
             // gridColumnMoTa
             // 
@@ -311,7 +305,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayHetHan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDSNhanVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HoTenEditor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayBatDau.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayBatDau.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -332,7 +326,6 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDSNhanVien;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTenNV;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit HoTenEditor;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMoTa;
         private DevExpress.XtraEditors.SimpleButton btnThemNV;
         private DevExpress.XtraEditors.SimpleButton btnLuu;
