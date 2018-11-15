@@ -39,6 +39,7 @@
             this.gcMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutEdit = new DevExpress.XtraLayout.LayoutControl();
+            this.btnThemNV = new DevExpress.XtraEditors.SimpleButton();
             this.gcDSNhanVien = new DevExpress.XtraGrid.GridControl();
             this.gvDSNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnTenNV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,15 +58,14 @@
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThemNV = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutEdit)).BeginInit();
@@ -86,9 +86,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gcCongViecDaGiao
@@ -204,6 +204,17 @@
             this.layoutEdit.TabIndex = 0;
             this.layoutEdit.Text = "layoutControl1";
             this.layoutEdit.Visible = false;
+            // 
+            // btnThemNV
+            // 
+            this.btnThemNV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNV.ImageOptions.Image")));
+            this.btnThemNV.Location = new System.Drawing.Point(421, 170);
+            this.btnThemNV.Name = "btnThemNV";
+            this.btnThemNV.Size = new System.Drawing.Size(118, 36);
+            this.btnThemNV.StyleController = this.layoutEdit;
+            this.btnThemNV.TabIndex = 40;
+            this.btnThemNV.Text = "Thêm nhân viên";
+            this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
             // gcDSNhanVien
             // 
@@ -402,6 +413,26 @@
             this.layoutControlItem5.Text = "Ngày hết hạn";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(66, 13);
             // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(531, 158);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(286, 40);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.btnThemNV;
+            this.layoutControlItem7.Location = new System.Drawing.Point(409, 158);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(122, 40);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(122, 40);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(122, 40);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSua);
@@ -433,6 +464,7 @@
             this.btnXoa.Size = new System.Drawing.Size(72, 34);
             this.btnXoa.TabIndex = 19;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -466,37 +498,6 @@
             this.btnLuu.Visible = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // btnThemNV
-            // 
-            this.btnThemNV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnThemNV.Location = new System.Drawing.Point(421, 170);
-            this.btnThemNV.Name = "btnThemNV";
-            this.btnThemNV.Size = new System.Drawing.Size(118, 36);
-            this.btnThemNV.StyleController = this.layoutEdit;
-            this.btnThemNV.TabIndex = 40;
-            this.btnThemNV.Text = "Thêm nhân viên";
-            this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.btnThemNV;
-            this.layoutControlItem7.Location = new System.Drawing.Point(409, 158);
-            this.layoutControlItem7.MaxSize = new System.Drawing.Size(122, 40);
-            this.layoutControlItem7.MinSize = new System.Drawing.Size(122, 40);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(122, 40);
-            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(531, 158);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(286, 40);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // ucCongViecDaGiao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,9 +528,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

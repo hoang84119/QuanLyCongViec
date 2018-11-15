@@ -187,23 +187,33 @@ namespace Presentation.User_controls
             congviec.NgayHetHan = DateTime.Parse(txtNgayHetHan.Text);
             congviec.TrangThai = false;
             congviec.MoTa = txtMoTa.Text;
-            //int rowHandle = 0;
-            congviec.PHANCONG.Clear();
-            foreach(PHANCONG pc in dsPhanCong)
+
+            //congviec.PHANCONG.Clear();
+            if(congviec.PHANCONG.Count == 0)
             {
-                congviec.PHANCONG.Add(pc);
+                foreach (PHANCONG pc in dsPhanCong)
+                {
+                    congviec.PHANCONG.Add(pc);
+                }
             }
-            //while (gvCongViecDaGiao.IsValidRowHandle(rowHandle))
-            //{
-            //    var data = gvCongViecDaGiao.GetRow(rowHandle);
-            //    data.
-            //    bool isSelected = gvCongViecDaGiao.IsRowSelected(rowHandle);
-            //    rowHandle++;
-            //}
-            //foreach (DataRow row in gvCongViecDaGiao.)
-            //{
-            //    cv.PHANCONG.Add(new PHANCONG { NguoiNhan = Int32.Parse(row["HoTen"].ToString()), MoTa = row["MoTa"].ToString() });
-            //}
+            else
+            {
+                int i = 0;
+                foreach (PHANCONG pc in congviec.PHANCONG)
+                {
+                    pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
+                    pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
+                    i++;
+                }
+                if(i<dsPhanCong.Count)
+                {
+                    for(;i<dsPhanCong.Count;i++)
+                    {
+                        congviec.PHANCONG.Add(dsPhanCong.ElementAt(i));
+                    }
+                }
+            }
+
             if (congviec.MaCongViec == 0)
                 db.CONGVIEC.Add(congviec);
             else
@@ -237,6 +247,29 @@ namespace Presentation.User_controls
             //gvDSNhanVien.AddNewRow();
             dsPhanCong.Add(new PHANCONG());
             gcDSNhanVien.RefreshDataSource();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Bạn có muốn xóa không?","Thông báo",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            {
+                if(congviec == null)
+                {
+                    int index = gvCongViecDaGiao.GetSelectedRows()[0];
+                    int maCV = int.Parse(gvCongViecDaGiao.GetRowCellValue(index, "MaCongViec").ToString());
+                    congviec = db.CONGVIEC
+                        .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
+                }
+                var entry = db.Entry(congviec);
+                if (entry.State == System.Data.Entity.EntityState.Detached)
+                    db.CONGVIEC.Attach(congviec);
+                db.CONGVIEC.Remove(congviec);
+                db.SaveChanges();
+                loadDuLieuGirdView();
+                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                capNhatTrangThai(false);
+                clearControls();
+            }
         }
     }
 }
