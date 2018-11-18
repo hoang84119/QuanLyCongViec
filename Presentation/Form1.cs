@@ -65,12 +65,7 @@ namespace Presentation
 
         private void acThemCongViec_Click(object sender, EventArgs e)
         {
-            if (!container.Controls.Contains(ucThemCongViec.Instance))
-            {
-                container.Controls.Add(ucThemCongViec.Instance);
-                ucThemCongViec.Instance.Dock = DockStyle.Right;
-            }
-            ucThemCongViec.Instance.BringToFront();
+            
         }
 
         private void acDangXuat_Click(object sender, EventArgs e)
@@ -83,7 +78,7 @@ namespace Presentation
         {
             ucDanhSachCongViec.Instance = null;
             ucNhanVien.Instance = null;
-            ucThemCongViec.Instance = null;
+            
             ucCongViecDaGiao.Instance = null;
         }
 
