@@ -36,7 +36,7 @@ namespace Presentation.User_controls
 
         private void ucDanhSachCongViec_Load(object sender, EventArgs e)
         {
-            ((frmQuanLyCongViec)this.ParentForm).ShowLoading();
+            //((frmQuanLyCongViec)this.ParentForm).ShowLoading();
             using (var db = new QLCONGVIECEntities())
             {
                 var BangCongViec = db.CONGVIEC;

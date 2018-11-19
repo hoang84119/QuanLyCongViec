@@ -16,21 +16,15 @@ namespace Presentation
     {
         public NHANVIEN User { get; set; }
 
+        private bool loadNV = false;
+        private bool loadCVDaGiao = false;
+        private bool loadCVDuocGiao = false;
+
         IOverlaySplashScreenHandle handle = null;
 
         public frmQuanLyCongViec()
         {
             InitializeComponent();
-        }
-
-        private void acDSCV_Click(object sender, EventArgs e)
-        {
-            if (!container.Controls.Contains(ucDanhSachCongViec.Instance))
-            {
-                container.Controls.Add(ucDanhSachCongViec.Instance);
-                ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
-            }
-            ucDanhSachCongViec.Instance.BringToFront();
         }
 
         private void frmQuanLyCongViec_Load(object sender, EventArgs e)
@@ -54,14 +48,50 @@ namespace Presentation
             acCongViecDaGiao.Visible = v;
         }
 
+        private void acDSCV_Click(object sender, EventArgs e)
+        {
+            if (!loadCVDuocGiao)
+            {
+                ShowLoading();
+                loadCVDuocGiao = true;
+            }
+            if (!container.Controls.Contains(ucDanhSachCongViec.Instance))
+            {
+                container.Controls.Add(ucDanhSachCongViec.Instance);
+                ucDanhSachCongViec.Instance.Dock = DockStyle.Fill;
+            }
+            ucDanhSachCongViec.Instance.BringToFront();
+        }
+
         private void acNhanVien_Click(object sender, EventArgs e)
         {
-            if(!container.Controls.Contains(ucNhanVien.Instance))
+            if (!loadNV)
+            {
+                ShowLoading();
+                loadNV = true;
+            }
+            if (!container.Controls.Contains(ucNhanVien.Instance))
             {
                 container.Controls.Add(ucNhanVien.Instance);
                 ucNhanVien.Instance.Dock = DockStyle.Fill;
             }
             ucNhanVien.Instance.BringToFront();
+            CloseLoading();
+        }
+
+        private void acCongViecDaGiao_Click(object sender, EventArgs e)
+        {
+            if (!loadCVDaGiao)
+            {
+                ShowLoading();
+                loadCVDaGiao = true;
+            }
+            if (!container.Controls.Contains(ucCongViecDaGiao.Instance))
+            {
+                container.Controls.Add(ucCongViecDaGiao.Instance);
+                ucCongViecDaGiao.Instance.Dock = DockStyle.Fill;
+            }
+            ucCongViecDaGiao.Instance.BringToFront();
         }
 
         private void acThemCongViec_Click(object sender, EventArgs e)
@@ -87,16 +117,6 @@ namespace Presentation
         {
             if (e.CloseReason == CloseReason.UserClosing) Application.Exit();
             xoaUC();
-        }
-
-        private void acCongViecDaGiao_Click(object sender, EventArgs e)
-        {
-            if (!container.Controls.Contains(ucCongViecDaGiao.Instance))
-            {
-                container.Controls.Add(ucCongViecDaGiao.Instance);
-                ucCongViecDaGiao.Instance.Dock = DockStyle.Fill;
-            }
-            ucCongViecDaGiao.Instance.BringToFront();
         }
 
         public void ShowLoading()

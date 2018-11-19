@@ -38,8 +38,7 @@ namespace Presentation.User_controls
 
         private void ucNhanVien_Load(object sender, EventArgs e)
         {
-            ((frmQuanLyCongViec)this.ParentForm).ShowLoading();
-
+            //((frmQuanLyCongViec)this.ParentForm).ShowLoading();
             loadDuLieuCbb();
             loadDuLieuGirdView();
         }
@@ -84,17 +83,6 @@ namespace Presentation.User_controls
             pictureHinhDaiDien.Image = null;
         }
 
-        private void capNhatTrangThai(bool isEdit)
-        {
-            layoutEdit.Visible = btnLuu.Visible = btnHuy.Visible = isEdit;
-            btnThem.Visible = btnSua.Visible = !isEdit;
-            if (isEdit)
-            {
-                if (nhanvien.MaNhanVien == 0) btnXoa.Visible = false;
-            }
-            else btnXoa.Visible = true;
-        }
-
         private void loadNhanVien()
         {
             txtHoTen.Text = nhanvien.HoTen;
@@ -116,7 +104,7 @@ namespace Presentation.User_controls
                             .Where(nv => nv.MaNhanVien == maNV).FirstOrDefault();
 
             loadNhanVien();
-            capNhatTrangThai(true);
+            flyoutPanelEdit.ShowPopup();
         }
 
         private void tvNhanVien_DoubleClick(object sender, EventArgs e)
@@ -129,19 +117,23 @@ namespace Presentation.User_controls
             suaNhanVien();
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            capNhatTrangThai(false);
-            clearControls();
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             nhanvien = new NHANVIEN();
-            capNhatTrangThai(true);
+            flyoutPanelEdit.ShowPopup();
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void flyoutPanelEdit_ButtonClick(object sender, DevExpress.Utils.FlyoutPanelButtonClickEventArgs e)
+        {
+            string tag = e.Button.Tag.ToString();
+            switch (tag)
+            {
+                case "Save": luuNhanVien(); break;
+                case "Cancel": flyoutPanelEdit.HidePopup(); clearControls(); break;
+            }
+        }
+
+        private void luuNhanVien()
         {
             if (txtHoTen.Text == "")
             {
@@ -180,33 +172,22 @@ namespace Presentation.User_controls
             }
             else
             {
-                luuNhanVien();
-
-                clearControls();
-                //loadDuLieuGirdView();
-                MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
-                capNhatTrangThai(false);
-            }
-        }
-
-        private void luuNhanVien()
-        {
-            nhanvien.HoTen = txtHoTen.Text;
-            nhanvien.NgaySinh = DateTime.Parse(txtNgaySinh.Text);
-            nhanvien.TenDangNhap = txtTenDangNhap.Text;
-            nhanvien.MatKhau = txtMatKhau.Text;
-            nhanvien.DiaChi = txtDiaChi.Text;
-            nhanvien.ChucVu = txtChucVu.Text;
-            if(isPictureModified)
-            {
-                if(pictureHinhDaiDien.Image != null)
+                nhanvien.HoTen = txtHoTen.Text;
+                nhanvien.NgaySinh = DateTime.Parse(txtNgaySinh.Text);
+                nhanvien.TenDangNhap = txtTenDangNhap.Text;
+                nhanvien.MatKhau = txtMatKhau.Text;
+                nhanvien.DiaChi = txtDiaChi.Text;
+                nhanvien.ChucVu = txtChucVu.Text;
+                if (isPictureModified)
                 {
-                    pictureHinhDaiDien.Image.Save(path + nhanvien.MaNhanVien.ToString() + ".png");
+                    if (pictureHinhDaiDien.Image != null)
+                    {
+                        pictureHinhDaiDien.Image.Save(path + nhanvien.MaNhanVien.ToString() + ".png");
+                    }
                 }
-            }
-            nhanvien.MaPhongBan = cbbPhongBan.SelectedValue.ToString();
+                nhanvien.MaPhongBan = cbbPhongBan.SelectedValue.ToString();
 
-            //congviec.PHANCONG.Clear();
+                //congviec.PHANCONG.Clear();
                 //if (congviec.PHANCONG.Count == 0)
                 //{
                 //    foreach (PHANCONG pc in dsPhanCong)
@@ -241,6 +222,11 @@ namespace Presentation.User_controls
                 //    db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
                 //db.SaveChanges();
 
+                clearControls();
+                //loadDuLieuGirdView();
+                MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
+                flyoutPanelEdit.HidePopup();
+            }
         }
 
         private void pictureHinhDaiDien_Modified(object sender, EventArgs e)

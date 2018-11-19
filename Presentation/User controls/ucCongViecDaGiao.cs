@@ -38,7 +38,7 @@ namespace Presentation.User_controls
             txtNgayBatDau.Properties.MinValue = DateTime.Now;
             txtNgayHetHan.Properties.MinValue = DateTime.Now;
 
-            ((frmQuanLyCongViec)this.ParentForm).ShowLoading();
+            //((frmQuanLyCongViec)this.ParentForm).ShowLoading();
 
             loadDuLieuGirdView();
 
