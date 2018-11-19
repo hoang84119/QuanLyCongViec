@@ -32,8 +32,6 @@
             this.container = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.acCongViec = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acThemCongViec = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acThemDuAn = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acCongViecDaGiao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acDSCV = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acThongKe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -85,8 +83,6 @@
             // acCongViec
             // 
             this.acCongViec.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.acThemCongViec,
-            this.acThemDuAn,
             this.acCongViecDaGiao,
             this.acDSCV,
             this.acThongKe});
@@ -94,19 +90,6 @@
             this.acCongViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acCongViec.ImageOptions.Image")));
             this.acCongViec.Name = "acCongViec";
             this.acCongViec.Text = "Công việc";
-            // 
-            // acThemCongViec
-            // 
-            this.acThemCongViec.Name = "acThemCongViec";
-            this.acThemCongViec.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acThemCongViec.Text = "Thêm công việc";
-            this.acThemCongViec.Click += new System.EventHandler(this.acThemCongViec_Click);
-            // 
-            // acThemDuAn
-            // 
-            this.acThemDuAn.Name = "acThemDuAn";
-            this.acThemDuAn.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acThemDuAn.Text = "Thêm dự án";
             // 
             // acCongViecDaGiao
             // 
@@ -217,8 +200,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acCongViec;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acQuanLy;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acThemCongViec;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acThemDuAn;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acCongViecDaGiao;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDSCV;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acNhanVien;

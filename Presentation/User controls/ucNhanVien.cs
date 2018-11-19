@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Presentation.User_controls
 {
@@ -91,20 +92,20 @@ namespace Presentation.User_controls
             txtMatKhau.Text = nhanvien.MatKhau;
             txtDiaChi.Text = nhanvien.DiaChi;
             txtChucVu.Text = nhanvien.ChucVu;
-            cbbPhongBan.SelectedValue = nhanvien.MaPhongBan;
+            cbbPhongBan.SelectedIndex = cbbPhongBan.Items.IndexOf(nhanvien.PHONGBAN);
             pictureHinhDaiDien.Image = nhanvien.Hinh;
         }
 
         private void suaNhanVien()
         {
-            int index = tvNhanVien.GetSelectedRows()[0];
-            int maNV = int.Parse(tvNhanVien.GetRowCellValue(index, "MaNhanVien").ToString());
+            //int index = tvNhanVien.GetSelectedRows()[0];
+            //int maNV = int.Parse(tvNhanVien.GetRowCellValue(index, "MaNhanVien").ToString());
 
-            nhanvien = db.NHANVIEN
-                            .Where(nv => nv.MaNhanVien == maNV).FirstOrDefault();
-
-            loadNhanVien();
+            nhanvien = (NHANVIEN)tvNhanVien.GetFocusedRow();
+            //nhanvien = db.NHANVIEN
+            //                .Where(nv => nv.MaNhanVien == maNV).FirstOrDefault();
             flyoutPanelEdit.ShowPopup();
+            loadNhanVien();
         }
 
         private void tvNhanVien_DoubleClick(object sender, EventArgs e)
@@ -182,56 +183,59 @@ namespace Presentation.User_controls
                 {
                     if (pictureHinhDaiDien.Image != null)
                     {
-                        pictureHinhDaiDien.Image.Save(path + nhanvien.MaNhanVien.ToString() + ".png");
+                        string tenHinh = Path.GetFileName(pictureHinhDaiDien.GetLoadedImageLocation());
+                        if(tenHinh == "")
+                        {
+                            tenHinh = convertToUnSign3(nhanvien.HoTen)+".png";
+                        }
+                        if(!File.Exists(path + tenHinh)) pictureHinhDaiDien.Image.Save(path + tenHinh);
+                        nhanvien.HinhDaiDien = tenHinh;
                     }
                 }
                 nhanvien.MaPhongBan = cbbPhongBan.SelectedValue.ToString();
 
-                //congviec.PHANCONG.Clear();
-                //if (congviec.PHANCONG.Count == 0)
-                //{
-                //    foreach (PHANCONG pc in dsPhanCong)
-                //    {
-                //        congviec.PHANCONG.Add(pc);
-                //    }
-                //}
-                //else
-                //{
-                //    int i = 0;
-                //    foreach (PHANCONG pc in congviec.PHANCONG)
-                //    {
-                //        pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
-                //        pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
-                //        pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
-                //        i++;
-                //    }
-                //    if (i < dsPhanCong.Count)
-                //    {
-                //        for (; i < dsPhanCong.Count; i++)
-                //        {
-                //            PHANCONG p = dsPhanCong.ElementAt(i);
-                //            p.MaCongViec = congviec.MaCongViec;
-                //            db.PHANCONG.Add(p);
-                //            //congviec.PHANCONG.Add(p);
-                //        }
-                //    }
-                //}
-                //if (congviec.MaCongViec == 0)
-                //    db.CONGVIEC.Add(congviec);
-                //else
-                //    db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
-                //db.SaveChanges();
+                if (nhanvien.MaNhanVien == 0)
+                    db.NHANVIEN.Add(nhanvien);
+                else
+                    db.Entry(nhanvien).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
 
-                clearControls();
-                //loadDuLieuGirdView();
-                MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
                 flyoutPanelEdit.HidePopup();
+                clearControls();
+                loadDuLieuGirdView();
+                //MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 
         private void pictureHinhDaiDien_Modified(object sender, EventArgs e)
         {
             isPictureModified = true;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (nhanvien == null)
+                {
+                    nhanvien = (NHANVIEN)tvNhanVien.GetFocusedRow();
+                }
+                var entry = db.Entry(nhanvien);
+                if (entry.State == System.Data.Entity.EntityState.Detached)
+                    db.NHANVIEN.Attach(nhanvien);
+                db.NHANVIEN.Remove(nhanvien);
+                db.SaveChanges();
+                loadDuLieuGirdView();
+                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                clearControls();
+            }
+        }
+
+        private string convertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
     }
 }
