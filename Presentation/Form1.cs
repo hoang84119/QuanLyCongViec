@@ -37,6 +37,7 @@ namespace Presentation
         {
             using (var db = new QLCONGVIECEntities())
             {
+                User = db.NHANVIEN.Where(nv => nv.TenDangNhap == "admin").FirstOrDefault();
                 var phong = db.PHONGBAN.Where(p => p.TruongPhong == User.MaNhanVien).Select(p => p);
                 if(phong.Count()==0)
                 {

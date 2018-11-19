@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition6 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition7 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan1 = new DevExpress.XtraEditors.TableLayout.TableSpan();
-            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan2 = new DevExpress.XtraEditors.TableLayout.TableSpan();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition8 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition9 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition10 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition11 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition12 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition13 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition14 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan3 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan4 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement9 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement10 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement11 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement12 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement13 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement14 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement15 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement16 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucNhanVien));
-            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn4 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn6 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.colHoTen = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.colNgaySinh = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.colDiaChi = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.colChucVu = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.colHinh = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.colMaNV = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.gcNhanVien = new DevExpress.XtraGrid.GridControl();
             this.tvNhanVien = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.layoutEdit = new DevExpress.XtraLayout.LayoutControl();
@@ -80,6 +80,7 @@
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
+            this.colTenPhong = new DevExpress.XtraGrid.Columns.TileViewColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tvNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutEdit)).BeginInit();
@@ -99,53 +100,53 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tileViewColumn2
+            // colHoTen
             // 
-            this.tileViewColumn2.Caption = "HoTen";
-            this.tileViewColumn2.FieldName = "HoTen";
-            this.tileViewColumn2.Name = "tileViewColumn2";
-            this.tileViewColumn2.Visible = true;
-            this.tileViewColumn2.VisibleIndex = 1;
+            this.colHoTen.Caption = "HoTen";
+            this.colHoTen.FieldName = "HoTen";
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.Visible = true;
+            this.colHoTen.VisibleIndex = 1;
             // 
-            // tileViewColumn5
+            // colNgaySinh
             // 
-            this.tileViewColumn5.Caption = "NgaySinh";
-            this.tileViewColumn5.FieldName = "NgaySinh";
-            this.tileViewColumn5.Name = "tileViewColumn5";
-            this.tileViewColumn5.Visible = true;
-            this.tileViewColumn5.VisibleIndex = 2;
+            this.colNgaySinh.Caption = "NgaySinh";
+            this.colNgaySinh.FieldName = "NgaySinh";
+            this.colNgaySinh.Name = "colNgaySinh";
+            this.colNgaySinh.Visible = true;
+            this.colNgaySinh.VisibleIndex = 2;
             // 
-            // tileViewColumn3
+            // colDiaChi
             // 
-            this.tileViewColumn3.Caption = "DiaChi";
-            this.tileViewColumn3.FieldName = "DiaChi";
-            this.tileViewColumn3.Name = "tileViewColumn3";
-            this.tileViewColumn3.Visible = true;
-            this.tileViewColumn3.VisibleIndex = 3;
+            this.colDiaChi.Caption = "DiaChi";
+            this.colDiaChi.FieldName = "DiaChi";
+            this.colDiaChi.Name = "colDiaChi";
+            this.colDiaChi.Visible = true;
+            this.colDiaChi.VisibleIndex = 3;
             // 
-            // tileViewColumn4
+            // colChucVu
             // 
-            this.tileViewColumn4.Caption = "ChucVu";
-            this.tileViewColumn4.FieldName = "ChucVu";
-            this.tileViewColumn4.Name = "tileViewColumn4";
-            this.tileViewColumn4.Visible = true;
-            this.tileViewColumn4.VisibleIndex = 4;
+            this.colChucVu.Caption = "ChucVu";
+            this.colChucVu.FieldName = "ChucVu";
+            this.colChucVu.Name = "colChucVu";
+            this.colChucVu.Visible = true;
+            this.colChucVu.VisibleIndex = 4;
             // 
-            // tileViewColumn6
+            // colHinh
             // 
-            this.tileViewColumn6.Caption = "Hinh";
-            this.tileViewColumn6.FieldName = "Hinh";
-            this.tileViewColumn6.Name = "tileViewColumn6";
-            this.tileViewColumn6.Visible = true;
-            this.tileViewColumn6.VisibleIndex = 5;
+            this.colHinh.Caption = "Hinh";
+            this.colHinh.FieldName = "Hinh";
+            this.colHinh.Name = "colHinh";
+            this.colHinh.Visible = true;
+            this.colHinh.VisibleIndex = 5;
             // 
-            // tileViewColumn1
+            // colMaNV
             // 
-            this.tileViewColumn1.Caption = "MaNhanVien";
-            this.tileViewColumn1.FieldName = "MaNhanVien";
-            this.tileViewColumn1.Name = "tileViewColumn1";
-            this.tileViewColumn1.Visible = true;
-            this.tileViewColumn1.VisibleIndex = 0;
+            this.colMaNV.Caption = "MaNhanVien";
+            this.colMaNV.FieldName = "MaNhanVien";
+            this.colMaNV.Name = "colMaNV";
+            this.colMaNV.Visible = true;
+            this.colMaNV.VisibleIndex = 0;
             // 
             // gcNhanVien
             // 
@@ -162,111 +163,112 @@
             // tvNhanVien
             // 
             this.tvNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.tileViewColumn1,
-            this.tileViewColumn2,
-            this.tileViewColumn5,
-            this.tileViewColumn3,
-            this.tileViewColumn4,
-            this.tileViewColumn6});
+            this.colMaNV,
+            this.colHoTen,
+            this.colNgaySinh,
+            this.colDiaChi,
+            this.colChucVu,
+            this.colHinh,
+            this.colTenPhong});
+            this.tvNhanVien.ColumnSet.GroupColumn = this.colTenPhong;
             this.tvNhanVien.GridControl = this.gcNhanVien;
             this.tvNhanVien.Name = "tvNhanVien";
-            this.tvNhanVien.OptionsTiles.IndentBetweenGroups = 39;
-            this.tvNhanVien.OptionsTiles.IndentBetweenItems = 15;
-            this.tvNhanVien.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(0);
-            this.tvNhanVien.OptionsTiles.ItemSize = new System.Drawing.Size(338, 190);
+            this.tvNhanVien.OptionsTiles.ItemSize = new System.Drawing.Size(340, 208);
             this.tvNhanVien.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tvNhanVien.OptionsTiles.Padding = new System.Windows.Forms.Padding(7);
-            tableColumnDefinition1.Length.Value = 188D;
-            tableColumnDefinition1.PaddingLeft = 10;
-            tableColumnDefinition2.Length.Value = 150D;
-            tableColumnDefinition2.PaddingLeft = 10;
-            this.tvNhanVien.TileColumns.Add(tableColumnDefinition1);
-            this.tvNhanVien.TileColumns.Add(tableColumnDefinition2);
-            tableRowDefinition1.Length.Value = 29D;
-            tableRowDefinition2.Length.Value = 21D;
-            tableRowDefinition3.Length.Value = 29D;
-            tableRowDefinition4.Length.Value = 21D;
-            tableRowDefinition5.Length.Value = 38D;
-            tableRowDefinition6.Length.Value = 23D;
-            tableRowDefinition7.Length.Value = 29D;
-            this.tvNhanVien.TileRows.Add(tableRowDefinition1);
-            this.tvNhanVien.TileRows.Add(tableRowDefinition2);
-            this.tvNhanVien.TileRows.Add(tableRowDefinition3);
-            this.tvNhanVien.TileRows.Add(tableRowDefinition4);
-            this.tvNhanVien.TileRows.Add(tableRowDefinition5);
-            this.tvNhanVien.TileRows.Add(tableRowDefinition6);
-            this.tvNhanVien.TileRows.Add(tableRowDefinition7);
-            tableSpan1.ColumnSpan = 3;
-            tableSpan2.RowIndex = 1;
-            tableSpan2.RowSpan = 6;
-            this.tvNhanVien.TileSpans.Add(tableSpan1);
-            this.tvNhanVien.TileSpans.Add(tableSpan2);
-            tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement1.ColumnIndex = 1;
-            tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement1.RowIndex = 1;
-            tileViewItemElement1.Text = "Ngày sinh";
-            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            tileViewItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            tileViewItemElement2.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement2.ColumnIndex = 1;
-            tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement2.RowIndex = 3;
-            tileViewItemElement2.Text = "Địa chỉ";
-            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            tileViewItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            tileViewItemElement3.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement3.ColumnIndex = 1;
-            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement3.RowIndex = 5;
-            tileViewItemElement3.Text = "Chức vụ";
-            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            tileViewItemElement4.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            tileViewItemElement4.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement4.Column = this.tileViewColumn2;
-            tileViewItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement4.Text = "tileViewColumn2";
-            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            tileViewItemElement5.Column = this.tileViewColumn5;
-            tileViewItemElement5.ColumnIndex = 1;
-            tileViewItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement5.RowIndex = 2;
-            tileViewItemElement5.Text = "tileViewColumn5";
-            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
-            tileViewItemElement6.Column = this.tileViewColumn3;
-            tileViewItemElement6.ColumnIndex = 1;
-            tileViewItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement6.RowIndex = 4;
-            tileViewItemElement6.Text = "tileViewColumn3";
-            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
-            tileViewItemElement7.Column = this.tileViewColumn4;
-            tileViewItemElement7.ColumnIndex = 1;
-            tileViewItemElement7.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement7.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement7.RowIndex = 6;
-            tileViewItemElement7.Text = "tileViewColumn4";
-            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
-            tileViewItemElement8.Column = this.tileViewColumn6;
-            tileViewItemElement8.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement8.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement8.RowIndex = 1;
-            tileViewItemElement8.Text = "tileViewColumn6";
-            tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement1);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement2);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement3);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement4);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement5);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement6);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement7);
-            this.tvNhanVien.TileTemplate.Add(tileViewItemElement8);
+            this.tvNhanVien.OptionsTiles.RowCount = 0;
+            this.tvNhanVien.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTenPhong, DevExpress.Data.ColumnSortOrder.Ascending)});
+            tableColumnDefinition3.Length.Value = 169D;
+            tableColumnDefinition3.PaddingLeft = 10;
+            tableColumnDefinition4.Length.Value = 147D;
+            tableColumnDefinition4.PaddingLeft = 10;
+            this.tvNhanVien.TileColumns.Add(tableColumnDefinition3);
+            this.tvNhanVien.TileColumns.Add(tableColumnDefinition4);
+            tableRowDefinition8.Length.Value = 24D;
+            tableRowDefinition9.Length.Value = 25D;
+            tableRowDefinition10.Length.Value = 23D;
+            tableRowDefinition11.Length.Value = 20D;
+            tableRowDefinition12.Length.Value = 27D;
+            tableRowDefinition13.Length.Value = 20D;
+            tableRowDefinition14.Length.Value = 17D;
+            this.tvNhanVien.TileRows.Add(tableRowDefinition8);
+            this.tvNhanVien.TileRows.Add(tableRowDefinition9);
+            this.tvNhanVien.TileRows.Add(tableRowDefinition10);
+            this.tvNhanVien.TileRows.Add(tableRowDefinition11);
+            this.tvNhanVien.TileRows.Add(tableRowDefinition12);
+            this.tvNhanVien.TileRows.Add(tableRowDefinition13);
+            this.tvNhanVien.TileRows.Add(tableRowDefinition14);
+            tableSpan3.ColumnSpan = 3;
+            tableSpan4.RowIndex = 1;
+            tableSpan4.RowSpan = 6;
+            this.tvNhanVien.TileSpans.Add(tableSpan3);
+            this.tvNhanVien.TileSpans.Add(tableSpan4);
+            tileViewItemElement9.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement9.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement9.ColumnIndex = 1;
+            tileViewItemElement9.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement9.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement9.RowIndex = 1;
+            tileViewItemElement9.Text = "Ngày sinh";
+            tileViewItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement10.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement10.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement10.ColumnIndex = 1;
+            tileViewItemElement10.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement10.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement10.RowIndex = 3;
+            tileViewItemElement10.Text = "Địa chỉ";
+            tileViewItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement11.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement11.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement11.ColumnIndex = 1;
+            tileViewItemElement11.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement11.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement11.RowIndex = 5;
+            tileViewItemElement11.Text = "Chức vụ";
+            tileViewItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement12.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement12.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement12.Column = this.colHoTen;
+            tileViewItemElement12.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement12.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement12.Text = "colHoTen";
+            tileViewItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement13.Column = this.colNgaySinh;
+            tileViewItemElement13.ColumnIndex = 1;
+            tileViewItemElement13.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement13.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement13.RowIndex = 2;
+            tileViewItemElement13.Text = "colNgaySinh";
+            tileViewItemElement13.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
+            tileViewItemElement14.Column = this.colDiaChi;
+            tileViewItemElement14.ColumnIndex = 1;
+            tileViewItemElement14.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement14.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement14.RowIndex = 4;
+            tileViewItemElement14.Text = "colDiaChi";
+            tileViewItemElement14.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
+            tileViewItemElement15.Column = this.colChucVu;
+            tileViewItemElement15.ColumnIndex = 1;
+            tileViewItemElement15.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement15.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement15.RowIndex = 6;
+            tileViewItemElement15.Text = "colChucVu";
+            tileViewItemElement15.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
+            tileViewItemElement16.Column = this.colHinh;
+            tileViewItemElement16.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement16.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement16.RowIndex = 1;
+            tileViewItemElement16.Text = "colHinh";
+            tileViewItemElement16.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement9);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement10);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement11);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement12);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement13);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement14);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement15);
+            this.tvNhanVien.TileTemplate.Add(tileViewItemElement16);
             this.tvNhanVien.DoubleClick += new System.EventHandler(this.tvNhanVien_DoubleClick);
             // 
             // layoutEdit
@@ -319,6 +321,7 @@
             this.pictureHinhDaiDien.Size = new System.Drawing.Size(163, 162);
             this.pictureHinhDaiDien.StyleController = this.layoutEdit;
             this.pictureHinhDaiDien.TabIndex = 5;
+            this.pictureHinhDaiDien.Modified += new System.EventHandler(this.pictureHinhDaiDien_Modified);
             // 
             // txtHoTen
             // 
@@ -516,6 +519,15 @@
             this.btnLuu.TabIndex = 15;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Visible = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // colTenPhong
+            // 
+            this.colTenPhong.Caption = "Phòng";
+            this.colTenPhong.FieldName = "PHONGBAN.TenPhong";
+            this.colTenPhong.Name = "colTenPhong";
+            this.colTenPhong.Visible = true;
+            this.colTenPhong.VisibleIndex = 6;
             // 
             // ucNhanVien
             // 
@@ -551,12 +563,12 @@
         #endregion
         private DevExpress.XtraGrid.GridControl gcNhanVien;
         private DevExpress.XtraGrid.Views.Tile.TileView tvNhanVien;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn1;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn2;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn5;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn3;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn4;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn6;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colMaNV;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colHoTen;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colNgaySinh;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colDiaChi;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colChucVu;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colHinh;
         private DevExpress.XtraLayout.LayoutControl layoutEdit;
         private System.Windows.Forms.TextBox txtHoTen;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
@@ -581,5 +593,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraGrid.Columns.TileViewColumn colTenPhong;
     }
 }

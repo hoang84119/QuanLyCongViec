@@ -16,6 +16,8 @@ namespace Presentation.User_controls
     {
         private static ucNhanVien _instance;
         private QLCONGVIECEntities db = new QLCONGVIECEntities();
+        private bool isPictureModified = false;
+        private string path = "../../Images/";
         NHANVIEN nhanvien;
 
         public static ucNhanVien Instance
@@ -137,6 +139,113 @@ namespace Presentation.User_controls
         {
             nhanvien = new NHANVIEN();
             capNhatTrangThai(true);
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (txtHoTen.Text == "")
+            {
+                MessageBox.Show("Họ tên không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHoTen.Focus();
+            }
+            else if (txtNgaySinh.Text == "")
+            {
+                MessageBox.Show("Ngày sinh không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNgaySinh.ShowPopup();
+            }
+            else if (txtChucVu.Text == "")
+            {
+                MessageBox.Show("Chức vụ không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtChucVu.Focus();
+            }
+            else if (cbbPhongBan.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn phòng ban", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbbPhongBan.Focus();
+            }
+            else if (txtDiaChi.Text == "")
+            {
+                MessageBox.Show("Địa chỉ không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDiaChi.Focus();
+            }
+            else if (txtTenDangNhap.Text == "")
+            {
+                MessageBox.Show("Tên đăng nhập không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTenDangNhap.Focus();
+            }
+            else if (txtMatKhau.Text == "")
+            {
+                MessageBox.Show("Mật khẩu không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMatKhau.Focus();
+            }
+            else
+            {
+                luuNhanVien();
+
+                clearControls();
+                //loadDuLieuGirdView();
+                MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
+                capNhatTrangThai(false);
+            }
+        }
+
+        private void luuNhanVien()
+        {
+            nhanvien.HoTen = txtHoTen.Text;
+            nhanvien.NgaySinh = DateTime.Parse(txtNgaySinh.Text);
+            nhanvien.TenDangNhap = txtTenDangNhap.Text;
+            nhanvien.MatKhau = txtMatKhau.Text;
+            nhanvien.DiaChi = txtDiaChi.Text;
+            nhanvien.ChucVu = txtChucVu.Text;
+            if(isPictureModified)
+            {
+                if(pictureHinhDaiDien.Image != null)
+                {
+                    pictureHinhDaiDien.Image.Save(path + nhanvien.MaNhanVien.ToString() + ".png");
+                }
+            }
+            nhanvien.MaPhongBan = cbbPhongBan.SelectedValue.ToString();
+
+            //congviec.PHANCONG.Clear();
+                //if (congviec.PHANCONG.Count == 0)
+                //{
+                //    foreach (PHANCONG pc in dsPhanCong)
+                //    {
+                //        congviec.PHANCONG.Add(pc);
+                //    }
+                //}
+                //else
+                //{
+                //    int i = 0;
+                //    foreach (PHANCONG pc in congviec.PHANCONG)
+                //    {
+                //        pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
+                //        pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
+                //        pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
+                //        i++;
+                //    }
+                //    if (i < dsPhanCong.Count)
+                //    {
+                //        for (; i < dsPhanCong.Count; i++)
+                //        {
+                //            PHANCONG p = dsPhanCong.ElementAt(i);
+                //            p.MaCongViec = congviec.MaCongViec;
+                //            db.PHANCONG.Add(p);
+                //            //congviec.PHANCONG.Add(p);
+                //        }
+                //    }
+                //}
+                //if (congviec.MaCongViec == 0)
+                //    db.CONGVIEC.Add(congviec);
+                //else
+                //    db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
+                //db.SaveChanges();
+
+        }
+
+        private void pictureHinhDaiDien_Modified(object sender, EventArgs e)
+        {
+            isPictureModified = true;
         }
     }
 }
