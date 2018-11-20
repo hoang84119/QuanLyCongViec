@@ -43,8 +43,6 @@ namespace Presentation
         private void chucNangQuanLy(bool v)
         {
             acQuanLy.Visible = v;
-            acThemCongViec.Visible = v;
-            acThemDuAn.Visible = v;
             acCongViecDaGiao.Visible = v;
         }
 
@@ -109,7 +107,7 @@ namespace Presentation
         {
             ucDanhSachCongViec.Instance = null;
             ucNhanVien.Instance = null;
-            
+            ucPhong.Instance = null;
             ucCongViecDaGiao.Instance = null;
         }
 
@@ -146,6 +144,16 @@ namespace Presentation
         {
             if (handle != null)
                 SplashScreenManager.CloseOverlayForm(handle);
+        }
+
+        private void acDanhSachPhongBan_Click(object sender, EventArgs e)
+        {
+            if (!container.Controls.Contains(ucPhong.Instance))
+            {
+                container.Controls.Add(ucPhong.Instance);
+                ucPhong.Instance.Dock = DockStyle.Fill;
+            }
+            ucPhong.Instance.BringToFront();
         }
     }
 }
