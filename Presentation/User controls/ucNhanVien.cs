@@ -98,12 +98,7 @@ namespace Presentation.User_controls
 
         private void suaNhanVien()
         {
-            //int index = tvNhanVien.GetSelectedRows()[0];
-            //int maNV = int.Parse(tvNhanVien.GetRowCellValue(index, "MaNhanVien").ToString());
-
             nhanvien = (NHANVIEN)tvNhanVien.GetFocusedRow();
-            //nhanvien = db.NHANVIEN
-            //                .Where(nv => nv.MaNhanVien == maNV).FirstOrDefault();
             flyoutPanelEdit.ShowPopup();
             loadNhanVien();
         }
@@ -200,8 +195,9 @@ namespace Presentation.User_controls
                     db.Entry(nhanvien).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
-                flyoutPanelEdit.HidePopup();
+
                 clearControls();
+                flyoutPanelEdit.HidePopup();
                 loadDuLieuGirdView();
                 //MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
             }
@@ -227,7 +223,6 @@ namespace Presentation.User_controls
                 db.SaveChanges();
                 loadDuLieuGirdView();
                 MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-                clearControls();
             }
         }
 

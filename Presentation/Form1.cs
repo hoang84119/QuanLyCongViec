@@ -19,6 +19,7 @@ namespace Presentation
         private bool loadNV = false;
         private bool loadCVDaGiao = false;
         private bool loadCVDuocGiao = false;
+        private bool loadPhong = false;
 
         IOverlaySplashScreenHandle handle = null;
 
@@ -92,9 +93,19 @@ namespace Presentation
             ucCongViecDaGiao.Instance.BringToFront();
         }
 
-        private void acThemCongViec_Click(object sender, EventArgs e)
+        private void acDanhSachPhongBan_Click(object sender, EventArgs e)
         {
-            
+            if (!loadPhong)
+            {
+                ShowLoading();
+                loadPhong = true;
+            }
+            if (!container.Controls.Contains(ucPhong.Instance))
+            {
+                container.Controls.Add(ucPhong.Instance);
+                ucPhong.Instance.Dock = DockStyle.Fill;
+            }
+            ucPhong.Instance.BringToFront();
         }
 
         private void acDangXuat_Click(object sender, EventArgs e)
@@ -146,14 +157,5 @@ namespace Presentation
                 SplashScreenManager.CloseOverlayForm(handle);
         }
 
-        private void acDanhSachPhongBan_Click(object sender, EventArgs e)
-        {
-            if (!container.Controls.Contains(ucPhong.Instance))
-            {
-                container.Controls.Add(ucPhong.Instance);
-                ucPhong.Instance.Dock = DockStyle.Fill;
-            }
-            ucPhong.Instance.BringToFront();
-        }
     }
 }
