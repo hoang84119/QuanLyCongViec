@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Presentation.User_controls
 {
@@ -46,7 +47,26 @@ namespace Presentation.User_controls
         private void loadDuLieuGirdView()
         {
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
-            gcDanhSachCongViec.DataSource = db.CongViecDuocGiao(user.MaNhanVien);
+            gcDanhSachCongViec.DataSource = db.CongViecDuocGiao(user.MaNhanVien).Select(cv => new
+            {
+                cv.MaCongViec,
+                cv.TenCV,
+                cv.HoTen,
+                cv.NgayBatDau,
+                cv.NgayHetHan,
+                cv.MoTa,
+                TrangThai = cv.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
+            });
+            //gvDanhSachCongViec.BeginSort();
+            //try
+            //{
+            //    gvDanhSachCongViec.ClearSorting();
+            //    gvDanhSachCongViec.Columns["TrangThai"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+            //}
+            //finally
+            //{
+            //    gvDanhSachCongViec.EndSort();
+            //}
         }
 
         private bool kiemTraPhanCong(ICollection<PHANCONG> dsPhanCong, NHANVIEN user)
@@ -129,6 +149,24 @@ namespace Presentation.User_controls
             //gcDSNhanVien.DataSource
             gcDSNhanVien.DataSource = congViec.PHANCONG.ToList();
             if (congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
+        }
+
+        private void gvDanhSachCongViec_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string trangThai = view.GetRowCellDisplayText(e.RowHandle, view.Columns["TrangThai"]);
+                DateTime ngayHetHan = (DateTime)view.GetRowCellValue(e.RowHandle, view.Columns["NgayHetHan"]);
+                if (trangThai == "Chưa hoàn thành")
+                {
+                    if (DateTime.Compare(ngayHetHan, DateTime.Now) < 0)
+                    {
+                        e.Appearance.BackColor = Color.FromArgb(150, Color.LightCoral);
+                        e.Appearance.BackColor2 = Color.White;
+                    }
+                }
+            }
         }
     }
 }

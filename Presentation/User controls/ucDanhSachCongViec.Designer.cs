@@ -115,6 +115,10 @@
             this.gvDanhSachCongViec.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvDanhSachCongViec.Name = "gvDanhSachCongViec";
             this.gvDanhSachCongViec.OptionsView.ShowIndicator = false;
+            this.gvDanhSachCongViec.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcTrangThai, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcNgayHetHan, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvDanhSachCongViec.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvDanhSachCongViec_RowStyle);
             // 
             // gcMaCV
             // 
