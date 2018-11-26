@@ -71,10 +71,10 @@ namespace Presentation.User_controls
                    cv.NgayBatDau,
                    cv.NgayHetHan,
                    cv.MoTa,
-                   TrangThai = cv.TrangThai == true ? "hòa thành":"chưa hoàn thành",
+                   TrangThai = cv.TrangThai == true ? "hòa thành" : "chưa hoàn thành",
                    NguoiNhan = String.Join(", ", (cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen).ToArray()))
-                   //PhanCong = cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen)
-               }).ToList();
+                    //PhanCong = cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen)
+                }).ToList();
 
                 gcCongViecDaGiao.DataSource = BangCongViec;
             }
@@ -119,11 +119,12 @@ namespace Presentation.User_controls
         {
             congviec = new CONGVIEC();
             gvDSNhanVien.AddNewRow();
-            capNhatTrangThai(true);
+            flyoutPanelEdit.ShowPopup();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            flyoutPanelEdit.ShowPopup();
             int index = gvCongViecDaGiao.GetSelectedRows()[0];
             int maCV = int.Parse(gvCongViecDaGiao.GetRowCellValue(index, "MaCongViec").ToString());
             using (QLCONGVIECEntities db = new QLCONGVIECEntities())
@@ -132,7 +133,6 @@ namespace Presentation.User_controls
                                 .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
                 loadCongViec(congviec);
             }
-            capNhatTrangThai(true);
         }
 
         private void loadCongViec(CONGVIEC congViec)
@@ -143,24 +143,12 @@ namespace Presentation.User_controls
             txtNgayHetHan.Text = congViec.NgayHetHan.ToLongDateString();
             txtMoTa.Text = congViec.MoTa;
             //gcDSNhanVien.DataSource
-            dsPhanCong = congViec.PHANCONG
-                .Select(pc => new PHANCONG()
-                {
-                    //pc.NHANVIEN.HoTen,
-                    NguoiNhan = pc.NHANVIEN.MaNhanVien,
-                    MoTa = pc.MoTa
-                })
-                .ToList();
+            dsPhanCong = congViec.PHANCONG.ToList();
+            if(congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
             gcDSNhanVien.DataSource = dsPhanCong;
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            capNhatTrangThai(false);
-            clearControls();
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void luuCongViec()
         {
             if (txtTenCongViec.Text == "")
             {
@@ -232,9 +220,9 @@ namespace Presentation.User_controls
                 }
 
                 clearControls();
+                flyoutPanelEdit.HidePopup();
                 loadDuLieuGirdView();
                 MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
-                capNhatTrangThai(false);
             }
         }
 
@@ -246,17 +234,6 @@ namespace Presentation.User_controls
             txtTenCongViec.Text = txtMoTa.Text = txtNgayBatDau.Text = txtNgayHetHan.Text = "";
             dsPhanCong.Clear();
             gvDSNhanVien.RefreshData();
-        }
-
-        private void capNhatTrangThai(bool isEdit)
-        {
-            layoutEdit.Visible = btnLuu.Visible = btnHuy.Visible = isEdit;
-            btnThem.Visible = btnSua.Visible = !isEdit;
-            if (isEdit)
-            {
-                if (congviec.MaCongViec == 0) btnXoa.Visible = false;
-            }
-            else btnXoa.Visible = true;
         }
 
         private void btnThemNV_Click(object sender, EventArgs e)
@@ -287,8 +264,16 @@ namespace Presentation.User_controls
                 }
                 loadDuLieuGirdView();
                 MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-                capNhatTrangThai(false);
-                clearControls();
+            }
+        }
+
+        private void flyoutPanelEdit_ButtonClick(object sender, DevExpress.Utils.FlyoutPanelButtonClickEventArgs e)
+        {
+            string tag = e.Button.Tag.ToString();
+            switch (tag)
+            {
+                case "Save": luuCongViec(); break;
+                case "Cancel": flyoutPanelEdit.HidePopup(); clearControls(); break;
             }
         }
     }
