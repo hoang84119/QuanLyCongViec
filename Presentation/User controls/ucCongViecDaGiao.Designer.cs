@@ -247,7 +247,7 @@
             // 
             this.gridColumnTenNV.Caption = "Họ Tên";
             this.gridColumnTenNV.ColumnEdit = this.HoTenEditor;
-            this.gridColumnTenNV.FieldName = "NHANVIEN.MaNhanVien";
+            this.gridColumnTenNV.FieldName = "NguoiNhan";
             this.gridColumnTenNV.Name = "gridColumnTenNV";
             this.gridColumnTenNV.Visible = true;
             this.gridColumnTenNV.VisibleIndex = 0;

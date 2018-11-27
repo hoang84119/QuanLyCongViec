@@ -165,6 +165,15 @@ namespace Presentation.User_controls
                         e.Appearance.BackColor = Color.FromArgb(150, Color.LightCoral);
                         e.Appearance.BackColor2 = Color.White;
                     }
+                    else
+                    {
+                        TimeSpan interval = ngayHetHan.Subtract(DateTime.Now);
+                        if(interval.Days <= 2)
+                        {
+                            e.Appearance.BackColor = Color.FromArgb(255, 165, 0);
+                            e.Appearance.BackColor2 = Color.White;
+                        }
+                    }
                 }
             }
         }

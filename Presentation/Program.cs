@@ -19,7 +19,7 @@ namespace Presentation
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
-            Application.Run(new frmQuanLyCongViec());
+            Application.Run(new frmDangNhap());
         }
     }
 }
