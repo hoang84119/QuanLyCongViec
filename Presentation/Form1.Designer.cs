@@ -110,6 +110,7 @@
             this.acThongKe.Name = "acThongKe";
             this.acThongKe.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acThongKe.Text = "Thống kê";
+            this.acThongKe.Click += new System.EventHandler(this.acThongKe_Click);
             // 
             // acQuanLy
             // 

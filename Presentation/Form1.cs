@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraSplashScreen;
 using Presentation.User_controls;
+using Presentation.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
 
 namespace Presentation
 {
@@ -20,6 +22,7 @@ namespace Presentation
         private bool loadCVDaGiao = false;
         private bool loadCVDuocGiao = false;
         private bool loadPhong = false;
+        private bool loadBaoCao = false;
 
         IOverlaySplashScreenHandle handle = null;
 
@@ -116,10 +119,11 @@ namespace Presentation
 
         private void xoaUC()
         {
-            ucDanhSachCongViec.Instance = null;
-            ucNhanVien.Instance = null;
-            ucPhong.Instance = null;
-            ucCongViecDaGiao.Instance = null;
+            if(loadCVDuocGiao) ucDanhSachCongViec.Instance = null;
+            if (loadNV) ucNhanVien.Instance = null;
+            if (loadPhong) ucPhong.Instance = null;
+            if (loadCVDaGiao) ucCongViecDaGiao.Instance = null;
+            if (loadBaoCao) ucBaoCao.Instance = null;
         }
 
         private void frmQuanLyCongViec_FormClosing(object sender, FormClosingEventArgs e)
@@ -157,5 +161,21 @@ namespace Presentation
                 SplashScreenManager.CloseOverlayForm(handle);
         }
 
+        private void acThongKe_Click(object sender, EventArgs e)
+        {
+            if (!loadBaoCao)
+            {
+                //ShowLoading();
+                loadBaoCao = true;
+            }
+            if (!container.Controls.Contains(ucBaoCao.Instance))
+            {
+                container.Controls.Add(ucBaoCao.Instance);
+                ucBaoCao.Instance.Dock = DockStyle.Fill;
+            }
+            ucBaoCao.Instance.showReport(User);
+            ucBaoCao.Instance.BringToFront();
+            //CloseLoading();
+        }
     }
 }
