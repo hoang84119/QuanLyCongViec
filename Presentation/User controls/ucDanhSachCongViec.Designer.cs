@@ -64,6 +64,7 @@
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.gridColumnTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -104,7 +105,6 @@
             this.gcDanhSachCongViec.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSachCongViec});
             this.gcDanhSachCongViec.Load += new System.EventHandler(this.gcDanhSachCongViec_Load);
-            this.gcDanhSachCongViec.Click += new System.EventHandler(this.gcDanhSachCongViec_Click);
             // 
             // gvDanhSachCongViec
             // 
@@ -118,13 +118,17 @@
             this.gcTrangThai,
             this.gcTienDo});
             this.gvDanhSachCongViec.GridControl = this.gcDanhSachCongViec;
+            this.gvDanhSachCongViec.GroupCount = 1;
             this.gvDanhSachCongViec.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvDanhSachCongViec.Name = "gvDanhSachCongViec";
+            this.gvDanhSachCongViec.OptionsFind.AlwaysVisible = true;
+            this.gvDanhSachCongViec.OptionsFind.FindNullPrompt = "Nhập văn bản để tìm kiếm...";
             this.gvDanhSachCongViec.OptionsView.ShowIndicator = false;
             this.gvDanhSachCongViec.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcTrangThai, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcNgayHetHan, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gvDanhSachCongViec.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvDanhSachCongViec_RowStyle);
+            this.gvDanhSachCongViec.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvDanhSachCongViec_FocusedRowChanged);
             // 
             // gcMaCV
             // 
@@ -202,7 +206,7 @@
             this.gcTienDo.FieldName = "TienDo";
             this.gcTienDo.Name = "gcTienDo";
             this.gcTienDo.Visible = true;
-            this.gcTienDo.VisibleIndex = 7;
+            this.gcTienDo.VisibleIndex = 6;
             // 
             // repositoryItemProgressBar1
             // 
@@ -275,7 +279,8 @@
             // 
             this.gvDSNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumnTenNV,
-            this.gridColumnMoTa});
+            this.gridColumnMoTa,
+            this.gridColumnTrangThai});
             this.gvDSNhanVien.GridControl = this.gcDSNhanVien;
             this.gvDSNhanVien.Name = "gvDSNhanVien";
             this.gvDSNhanVien.OptionsView.ShowGroupPanel = false;
@@ -458,6 +463,15 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(350, 65);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // gridColumnTrangThai
+            // 
+            this.gridColumnTrangThai.Caption = "Hoàn thành";
+            this.gridColumnTrangThai.FieldName = "TrangThai";
+            this.gridColumnTrangThai.Name = "gridColumnTrangThai";
+            this.gridColumnTrangThai.OptionsColumn.AllowEdit = false;
+            this.gridColumnTrangThai.Visible = true;
+            this.gridColumnTrangThai.VisibleIndex = 2;
+            // 
             // ucDanhSachCongViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,5 +544,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gcTienDo;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnTrangThai;
     }
 }

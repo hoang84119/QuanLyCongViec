@@ -16,6 +16,7 @@ namespace Presentation.User_controls
         private static ucCongViecDaGiao _instance;
         private CONGVIEC congviec;
         private List<PHANCONG> dsPhanCong = new List<PHANCONG>();
+        private QLCONGVIECEntities db = new QLCONGVIECEntities();
 
         public static ucCongViecDaGiao Instance
         {
@@ -42,11 +43,10 @@ namespace Presentation.User_controls
 
             loadDuLieuGirdView();
 
-            using (QLCONGVIECEntities db = new QLCONGVIECEntities())
-            {
-                cbbDuAn.DataSource = db.DUAN
-                                .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
-            }
+
+            cbbDuAn.DataSource = db.DUAN
+                            .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
+
             cbbDuAn.DisplayMember = "TenDA";
             cbbDuAn.ValueMember = "MaDuAn";
             cbbDuAn.SelectedIndex = -1;
@@ -59,25 +59,25 @@ namespace Presentation.User_controls
         private void loadDuLieuGirdView()
         {
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
-            using (QLCONGVIECEntities db = new QLCONGVIECEntities())
-            {
-                var BangCongViec = db.CONGVIEC
-               .Where(cv => cv.NguoiGiao == user.MaNhanVien)
-               .AsEnumerable()
-               .Select(cv => new
-               {
-                   cv.MaCongViec,
-                   cv.TenCV,
-                   cv.NgayBatDau,
-                   cv.NgayHetHan,
-                   cv.MoTa,
-                   TrangThai = cv.TrangThai == true ? "hòa thành" : "chưa hoàn thành",
-                   NguoiNhan = String.Join(", ", (cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen).ToArray()))
-                    //PhanCong = cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen)
-                }).ToList();
 
-                gcCongViecDaGiao.DataSource = BangCongViec;
-            }
+            var BangCongViec = db.CONGVIEC
+           .Where(cv => cv.NguoiGiao == user.MaNhanVien)
+           .AsEnumerable()
+           .Select(cv => new
+           {
+               cv.MaCongViec,
+               cv.TenCV,
+               cv.NgayBatDau,
+               cv.NgayHetHan,
+               cv.MoTa,
+               //TrangThai = cv.TrangThai == true ? "hòa thành" : "chưa hoàn thành",
+               cv.TienDo,
+               NguoiNhan = String.Join(", ", (cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen).ToArray()))
+                   //PhanCong = cv.PHANCONG.Select(pc => pc.NHANVIEN.HoTen)
+               }).ToList();
+
+            gcCongViecDaGiao.DataSource = BangCongViec;
+
         }
 
         private void gvDanhSachCongViec_Load(object sender, EventArgs e)
@@ -97,22 +97,20 @@ namespace Presentation.User_controls
         {
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
 
-            using (QLCONGVIECEntities db = new QLCONGVIECEntities())
+            if (user.MaPhongBan == "GD")
             {
-                if (user.MaPhongBan == "GD")
-                {
-                    //db.CONGVIEC
-                    this.HoTenEditor.DataSource = db.NHANVIEN
-                                        .Where(nv => nv.MaNhanVien != user.MaNhanVien)
-                                        .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
-                }
-                else
-                {
-                    this.HoTenEditor.DataSource = db.NHANVIEN
-                                        .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.MaPhongBan == user.MaPhongBan)
-                                        .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
-                }
+                //db.CONGVIEC
+                this.HoTenEditor.DataSource = db.NHANVIEN
+                                    .Where(nv => nv.MaNhanVien != user.MaNhanVien)
+                                    .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
             }
+            else
+            {
+                this.HoTenEditor.DataSource = db.NHANVIEN
+                                    .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.MaPhongBan == user.MaPhongBan)
+                                    .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
+            }
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -127,12 +125,11 @@ namespace Presentation.User_controls
             flyoutPanelEdit.ShowPopup();
             int index = gvCongViecDaGiao.GetSelectedRows()[0];
             int maCV = int.Parse(gvCongViecDaGiao.GetRowCellValue(index, "MaCongViec").ToString());
-            using (QLCONGVIECEntities db = new QLCONGVIECEntities())
-            {
-                congviec = db.CONGVIEC
-                                .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
-                loadCongViec(congviec);
-            }
+
+            congviec = db.CONGVIEC
+                            .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
+            loadCongViec(congviec);
+
         }
 
         private void loadCongViec(CONGVIEC congViec)
@@ -144,7 +141,7 @@ namespace Presentation.User_controls
             txtMoTa.Text = congViec.MoTa;
             //gcDSNhanVien.DataSource
             dsPhanCong = congViec.PHANCONG.ToList();
-            if(congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
+            if (congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
             gcDSNhanVien.DataSource = dsPhanCong;
         }
 
@@ -183,55 +180,54 @@ namespace Presentation.User_controls
                 //congviec.PHANCONG = dsPhanCong;
 
                 //congviec.PHANCONG.Clear();
-                using (QLCONGVIECEntities db = new QLCONGVIECEntities())
+
+                if (congviec.PHANCONG.Count == 0)
                 {
-                    if (congviec.PHANCONG.Count == 0)
+                    foreach (PHANCONG pc in dsPhanCong)
                     {
-                        foreach (PHANCONG pc in dsPhanCong)
-                        {
-                            congviec.PHANCONG.Add(pc);
-                        }
+                        congviec.PHANCONG.Add(pc);
                     }
-                    else
-                    {
-                        int i = 0;
-                        foreach (PHANCONG pc in congviec.PHANCONG)
-                        {
-                            try
-                            {
-                                pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
-                                pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
-                                pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
-                                i++;
-                            }
-                            catch(ArgumentOutOfRangeException)
-                            {
-                                congviec.PHANCONG.Remove(pc);
-                            }
-                            
-                        }
-                        if (i < dsPhanCong.Count)
-                        {
-                            for (; i < dsPhanCong.Count; i++)
-                            {
-                                PHANCONG p = dsPhanCong.ElementAt(i);
-                                p.MaCongViec = congviec.MaCongViec;
-                                db.PHANCONG.Add(p);
-                                //congviec.PHANCONG.Add(p);
-                            }
-                        }
-                    }
-                    if (congviec.MaCongViec == 0)
-                        db.CONGVIEC.Add(congviec);
-                    else
-                        db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
                 }
+                else
+                {
+                    int i = 0;
+                    foreach (PHANCONG pc in congviec.PHANCONG.ToList())
+                    {
+                        try
+                        {
+                            pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
+                            pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
+                            pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
+                            i++;
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            congviec.PHANCONG.Remove(pc);
+                        }
+
+                    }
+                    if (i < dsPhanCong.Count)
+                    {
+                        for (; i < dsPhanCong.Count; i++)
+                        {
+                            PHANCONG p = dsPhanCong.ElementAt(i);
+                            p.MaCongViec = congviec.MaCongViec;
+                            db.PHANCONG.Add(p);
+                            //congviec.PHANCONG.Add(p);
+                        }
+                    }
+                }
+                if (congviec.MaCongViec == 0)
+                    db.CONGVIEC.Add(congviec);
+                else
+                    db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
 
                 clearControls();
-                flyoutPanelEdit.HidePopup();
+
                 loadDuLieuGirdView();
                 MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
+                flyoutPanelEdit.HidePopup();
             }
         }
 
@@ -241,14 +237,14 @@ namespace Presentation.User_controls
             cbbDuAn.SelectedIndex = -1;
             txtNgayBatDau.Properties.MinValue = txtNgayHetHan.Properties.MinValue = DateTime.Now;
             txtTenCongViec.Text = txtMoTa.Text = txtNgayBatDau.Text = txtNgayHetHan.Text = "";
-            dsPhanCong.Clear();
+            dsPhanCong = new List<PHANCONG>();
             gvDSNhanVien.RefreshData();
         }
 
         private void btnThemNV_Click(object sender, EventArgs e)
         {
             //gvDSNhanVien.AddNewRow();
-            dsPhanCong.Add(new PHANCONG() {TrangThai = false});
+            dsPhanCong.Add(new PHANCONG() { TrangThai = false });
             gcDSNhanVien.RefreshDataSource();
         }
 
@@ -256,21 +252,20 @@ namespace Presentation.User_controls
         {
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                using (QLCONGVIECEntities db = new QLCONGVIECEntities())
+
+                if (congviec == null)
                 {
-                    if (congviec == null)
-                    {
-                        int index = gvCongViecDaGiao.GetSelectedRows()[0];
-                        int maCV = int.Parse(gvCongViecDaGiao.GetRowCellValue(index, "MaCongViec").ToString());
-                        congviec = db.CONGVIEC
-                            .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
-                    }
-                    var entry = db.Entry(congviec);
-                    if (entry.State == System.Data.Entity.EntityState.Detached)
-                        db.CONGVIEC.Attach(congviec);
-                    db.CONGVIEC.Remove(congviec);
-                    db.SaveChanges();
+                    int index = gvCongViecDaGiao.GetSelectedRows()[0];
+                    int maCV = int.Parse(gvCongViecDaGiao.GetRowCellValue(index, "MaCongViec").ToString());
+                    congviec = db.CONGVIEC
+                        .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
                 }
+                var entry = db.Entry(congviec);
+                if (entry.State == System.Data.Entity.EntityState.Detached)
+                    db.CONGVIEC.Attach(congviec);
+                db.CONGVIEC.Remove(congviec);
+                db.SaveChanges();
+
                 loadDuLieuGirdView();
                 MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
             }
@@ -288,7 +283,7 @@ namespace Presentation.User_controls
 
         private void gvDSNhanVien_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if(e.Column.FieldName == "TrangThai")
+            if (e.Column.FieldName == "TrangThai")
             {
                 if ((bool)e.Value) e.DisplayText = "Đã hoàn thành";
                 else e.DisplayText = "Chưa hoàn thành";
@@ -303,7 +298,7 @@ namespace Presentation.User_controls
                 MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
                 gcDSNhanVien.RefreshDataSource();
             }
-            
+
         }
     }
 }

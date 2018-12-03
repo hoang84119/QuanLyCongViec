@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCongViecDaGiao));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCongViecDaGiao));
             this.gcCongViecDaGiao = new DevExpress.XtraGrid.GridControl();
             this.gvCongViecDaGiao = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcMaCV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -39,8 +39,9 @@
             this.gcNgayBatDau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcNgayHetHan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcTienDo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutEdit = new DevExpress.XtraLayout.LayoutControl();
+            this.btnXoaNhanVien = new DevExpress.XtraEditors.SimpleButton();
             this.btnThemNV = new DevExpress.XtraEditors.SimpleButton();
             this.gcDSNhanVien = new DevExpress.XtraGrid.GridControl();
             this.gvDSNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -63,14 +64,14 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.flyoutPanelEdit = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
-            this.btnXoaNhanVien = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutEdit)).BeginInit();
@@ -93,12 +94,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelEdit)).BeginInit();
             this.flyoutPanelEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
             this.flyoutPanelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // gcCongViecDaGiao
@@ -107,6 +109,8 @@
             this.gcCongViecDaGiao.Location = new System.Drawing.Point(0, 53);
             this.gcCongViecDaGiao.MainView = this.gvCongViecDaGiao;
             this.gcCongViecDaGiao.Name = "gcCongViecDaGiao";
+            this.gcCongViecDaGiao.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemProgressBar1});
             this.gcCongViecDaGiao.Size = new System.Drawing.Size(837, 527);
             this.gcCongViecDaGiao.TabIndex = 3;
             this.gcCongViecDaGiao.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -124,11 +128,13 @@
             this.gcNgayBatDau,
             this.gcNgayHetHan,
             this.gcMoTa,
-            this.gcTrangThai});
+            this.gcTienDo});
             this.gvCongViecDaGiao.GridControl = this.gcCongViecDaGiao;
             this.gvCongViecDaGiao.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvCongViecDaGiao.Name = "gvCongViecDaGiao";
             this.gvCongViecDaGiao.OptionsBehavior.CacheValuesOnRowUpdating = DevExpress.Data.CacheRowValuesMode.Disabled;
+            this.gvCongViecDaGiao.OptionsFind.AlwaysVisible = true;
+            this.gvCongViecDaGiao.OptionsFind.FindNullPrompt = "Nhập văn bản để tìm kiếm...";
             this.gvCongViecDaGiao.OptionsView.ShowIndicator = false;
             // 
             // gcMaCV
@@ -189,14 +195,15 @@
             this.gcMoTa.VisibleIndex = 5;
             this.gcMoTa.Width = 113;
             // 
-            // gcTrangThai
+            // gcTienDo
             // 
-            this.gcTrangThai.Caption = "Trạng thái";
-            this.gcTrangThai.FieldName = "TrangThai";
-            this.gcTrangThai.Name = "gcTrangThai";
-            this.gcTrangThai.Visible = true;
-            this.gcTrangThai.VisibleIndex = 6;
-            this.gcTrangThai.Width = 149;
+            this.gcTienDo.Caption = "Tiến độ";
+            this.gcTienDo.ColumnEdit = this.repositoryItemProgressBar1;
+            this.gcTienDo.FieldName = "TienDo";
+            this.gcTienDo.Name = "gcTienDo";
+            this.gcTienDo.Visible = true;
+            this.gcTienDo.VisibleIndex = 6;
+            this.gcTienDo.Width = 149;
             // 
             // layoutEdit
             // 
@@ -216,6 +223,17 @@
             this.layoutEdit.Size = new System.Drawing.Size(835, 218);
             this.layoutEdit.TabIndex = 0;
             this.layoutEdit.Text = "layoutControl1";
+            // 
+            // btnXoaNhanVien
+            // 
+            this.btnXoaNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoaNhanVien.ImageOptions.Image")));
+            this.btnXoaNhanVien.Location = new System.Drawing.Point(542, 170);
+            this.btnXoaNhanVien.Name = "btnXoaNhanVien";
+            this.btnXoaNhanVien.Size = new System.Drawing.Size(118, 36);
+            this.btnXoaNhanVien.StyleController = this.layoutEdit;
+            this.btnXoaNhanVien.TabIndex = 41;
+            this.btnXoaNhanVien.Text = "Xóa nhân viên";
+            this.btnXoaNhanVien.Click += new System.EventHandler(this.btnXoaNhanVien_Click);
             // 
             // btnThemNV
             // 
@@ -281,7 +299,7 @@
             // 
             // colTrangThai
             // 
-            this.colTrangThai.Caption = "Trạng thái";
+            this.colTrangThai.Caption = "Hoàn thành";
             this.colTrangThai.FieldName = "TrangThai";
             this.colTrangThai.Name = "colTrangThai";
             this.colTrangThai.OptionsColumn.AllowEdit = false;
@@ -457,6 +475,15 @@
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnXoaNhanVien;
+            this.layoutControlItem8.Location = new System.Drawing.Point(530, 158);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(122, 40);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSua);
@@ -527,25 +554,10 @@
             this.flyoutPanelControl1.Size = new System.Drawing.Size(839, 222);
             this.flyoutPanelControl1.TabIndex = 0;
             // 
-            // btnXoaNhanVien
+            // repositoryItemProgressBar1
             // 
-            this.btnXoaNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnXoaNhanVien.Location = new System.Drawing.Point(542, 170);
-            this.btnXoaNhanVien.Name = "btnXoaNhanVien";
-            this.btnXoaNhanVien.Size = new System.Drawing.Size(118, 36);
-            this.btnXoaNhanVien.StyleController = this.layoutEdit;
-            this.btnXoaNhanVien.TabIndex = 41;
-            this.btnXoaNhanVien.Text = "Xóa nhân viên";
-            this.btnXoaNhanVien.Click += new System.EventHandler(this.btnXoaNhanVien_Click);
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.btnXoaNhanVien;
-            this.layoutControlItem8.Location = new System.Drawing.Point(530, 158);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(122, 40);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextVisible = false;
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            this.repositoryItemProgressBar1.ShowTitle = true;
             // 
             // ucCongViecDaGiao
             // 
@@ -579,12 +591,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelEdit)).EndInit();
             this.flyoutPanelEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
             this.flyoutPanelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -599,7 +612,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gcNgayBatDau;
         private DevExpress.XtraGrid.Columns.GridColumn gcNgayHetHan;
         private DevExpress.XtraGrid.Columns.GridColumn gcMoTa;
-        private DevExpress.XtraGrid.Columns.GridColumn gcTrangThai;
+        private DevExpress.XtraGrid.Columns.GridColumn gcTienDo;
         private DevExpress.XtraLayout.LayoutControl layoutEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraEditors.DateEdit txtNgayBatDau;
@@ -614,7 +627,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraGrid.GridControl gcDSNhanVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDSNhanVien;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnTenNV;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit HoTenEditor;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMoTa;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
@@ -631,5 +643,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTrangThai;
         private DevExpress.XtraEditors.SimpleButton btnXoaNhanVien;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnTenNV;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
     }
 }

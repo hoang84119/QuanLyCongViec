@@ -17,8 +17,9 @@ namespace Presentation.User_controls
     public partial class ucDanhSachCongViec : DevExpress.XtraEditors.XtraUserControl
     {
         private static ucDanhSachCongViec _instance;
-        QLCONGVIECEntities db = new QLCONGVIECEntities();
-        CONGVIEC congviec;
+        QLCONGVIECEntities db;
+        //CONGVIEC congviec;
+        PHANCONG phancong;
         int MaNV;
 
         public static ucDanhSachCongViec Instance
@@ -47,6 +48,7 @@ namespace Presentation.User_controls
 
         private void loadDuLieuGirdView()
         {
+            db = new QLCONGVIECEntities();
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
             MaNV = user.MaNhanVien;
             //gcDanhSachCongViec.DataSource = db.CongViecDuocGiao(user.MaNhanVien).Select(cv => new
@@ -72,6 +74,7 @@ namespace Presentation.User_controls
                                 pc.CONGVIEC.TienDo,
                                 TrangThai = pc.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
                             });
+            gvDanhSachCongViec.ExpandAllGroups();
         }
 
         private bool kiemTraPhanCong(ICollection<PHANCONG> dsPhanCong, NHANVIEN user)
@@ -86,19 +89,6 @@ namespace Presentation.User_controls
         private void gcDanhSachCongViec_Load(object sender, EventArgs e)
         {
             ((frmQuanLyCongViec)this.ParentForm).CloseLoading();
-        }
-
-        private void gcDanhSachCongViec_Click(object sender, EventArgs e)
-        {
-            clearControls();
-            int index = gvDanhSachCongViec.GetSelectedRows()[0];
-            int maCV = int.Parse(gvDanhSachCongViec.GetRowCellValue(index, "MaCongViec").ToString());
-            congviec = db.CONGVIEC
-                            .Where(cv => cv.MaCongViec == maCV).FirstOrDefault();
-            if (congviec.TrangThai == true) thayDoiTrangThaiButton(true);
-            else thayDoiTrangThaiButton(false);
-            loadCongViec(congviec);
-            flyoutPanelEdit.ShowPopup();
         }
 
         private void thayDoiTrangThaiButton(bool v)
@@ -127,7 +117,7 @@ namespace Presentation.User_controls
 
         private void trangThaiCongViec()
         {
-            PHANCONG phancong = congviec.PHANCONG.Where(pc => pc.NguoiNhan == MaNV).First();
+            //PHANCONG phancong = congviec.PHANCONG.Where(pc => pc.NguoiNhan == MaNV).First();
             //congviec.PHANCONG.Where(pc =>pc.NguoiNhan == MaNV).First().TrangThai = !congviec.TrangThai;
             //if (congviec.TrangThai == true)
             //{
@@ -147,7 +137,8 @@ namespace Presentation.User_controls
 
         private void clearControls()
         {
-            congviec = null;
+            //congviec = null;
+            phancong = null;
             cbbDuAn.SelectedIndex = -1;
             txtNgayBatDau.Properties.MinValue = txtNgayHetHan.Properties.MinValue = DateTime.Now;
             txtTenCongViec.Text = txtMoTa.Text = txtNgayBatDau.Text = txtNgayHetHan.Text = "";
@@ -163,7 +154,7 @@ namespace Presentation.User_controls
             txtMoTa.Text = congViec.MoTa;
             //gcDSNhanVien.DataSource
             gcDSNhanVien.DataSource = congViec.PHANCONG.ToList();
-            if (congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
+            if (congViec.MaDuAn != null) cbbDuAn.SelectedValue = congViec.MaDuAn;
         }
 
         private void gvDanhSachCongViec_RowStyle(object sender, RowStyleEventArgs e)
@@ -190,6 +181,21 @@ namespace Presentation.User_controls
                         }
                     }
                 }
+            }
+        }
+
+        private void gvDanhSachCongViec_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if(e.FocusedRowHandle >= 0)
+            {
+                clearControls();
+                int maCV = int.Parse(gvDanhSachCongViec.GetRowCellValue(e.FocusedRowHandle, "MaCongViec").ToString());
+                phancong = db.PHANCONG
+                                .Where(pc => pc.MaCongViec == maCV && pc.NguoiNhan == MaNV).FirstOrDefault();
+                if (phancong.TrangThai == true) thayDoiTrangThaiButton(true);
+                else thayDoiTrangThaiButton(false);
+                loadCongViec(phancong.CONGVIEC);
+                flyoutPanelEdit.ShowPopup();
             }
         }
     }
