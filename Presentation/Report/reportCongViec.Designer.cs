@@ -218,7 +218,7 @@
             // 
             this.xrLabel8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NHANVIEN].[PHONGBAN].[TenPhong]")});
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(15.20842F, 197.0833F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(15.20842F, 200.2083F);
             this.xrLabel8.Multiline = true;
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -232,7 +232,7 @@
             // 
             this.xrLabel7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NHANVIEN].[ChucVu]")});
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(15.20842F, 161.0417F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(15.20842F, 163.6666F);
             this.xrLabel7.Multiline = true;
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

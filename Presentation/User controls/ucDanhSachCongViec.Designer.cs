@@ -50,6 +50,7 @@
             this.gvDSNhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnTenNV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtNgayBatDau = new DevExpress.XtraEditors.DateEdit();
             this.cbbDuAn = new System.Windows.Forms.ComboBox();
             this.txtMoTa = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.gridColumnTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -304,6 +304,15 @@
             this.gridColumnMoTa.Visible = true;
             this.gridColumnMoTa.VisibleIndex = 1;
             // 
+            // gridColumnTrangThai
+            // 
+            this.gridColumnTrangThai.Caption = "Hoàn thành";
+            this.gridColumnTrangThai.FieldName = "TrangThai";
+            this.gridColumnTrangThai.Name = "gridColumnTrangThai";
+            this.gridColumnTrangThai.OptionsColumn.AllowEdit = false;
+            this.gridColumnTrangThai.Visible = true;
+            this.gridColumnTrangThai.VisibleIndex = 2;
+            // 
             // txtNgayBatDau
             // 
             this.txtNgayBatDau.EditValue = null;
@@ -462,15 +471,6 @@
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(350, 65);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // gridColumnTrangThai
-            // 
-            this.gridColumnTrangThai.Caption = "Hoàn thành";
-            this.gridColumnTrangThai.FieldName = "TrangThai";
-            this.gridColumnTrangThai.Name = "gridColumnTrangThai";
-            this.gridColumnTrangThai.OptionsColumn.AllowEdit = false;
-            this.gridColumnTrangThai.Visible = true;
-            this.gridColumnTrangThai.VisibleIndex = 2;
             // 
             // ucDanhSachCongViec
             // 

@@ -39,7 +39,7 @@
             this.acNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acDanhSachPhongBan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement11 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement12 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acThongTin = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acDangXuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -139,18 +139,19 @@
             // accordionControlElement11
             // 
             this.accordionControlElement11.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement12,
+            this.acThongTin,
             this.acDangXuat});
             this.accordionControlElement11.Expanded = true;
             this.accordionControlElement11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement11.ImageOptions.Image")));
             this.accordionControlElement11.Name = "accordionControlElement11";
             this.accordionControlElement11.Text = "Tài khoản";
             // 
-            // accordionControlElement12
+            // acThongTin
             // 
-            this.accordionControlElement12.Name = "accordionControlElement12";
-            this.accordionControlElement12.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement12.Text = "Thông tin";
+            this.acThongTin.Name = "acThongTin";
+            this.acThongTin.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acThongTin.Text = "Thông tin";
+            this.acThongTin.Click += new System.EventHandler(this.acThongTin_Click);
             // 
             // acDangXuat
             // 
@@ -208,7 +209,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDanhSachPhongBan;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acThongKe;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement11;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement12;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acThongTin;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDangXuat;
     }
 }

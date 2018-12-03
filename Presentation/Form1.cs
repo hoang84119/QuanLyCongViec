@@ -23,6 +23,7 @@ namespace Presentation
         private bool loadCVDuocGiao = false;
         private bool loadPhong = false;
         private bool loadBaoCao = false;
+        private bool loadThongTin = false;
 
         IOverlaySplashScreenHandle handle = null;
 
@@ -124,6 +125,7 @@ namespace Presentation
             if (loadPhong) ucPhong.Instance = null;
             if (loadCVDaGiao) ucCongViecDaGiao.Instance = null;
             if (loadBaoCao) ucBaoCao.Instance = null;
+            if (loadThongTin) ucThongTin.Instance = null;
         }
 
         private void frmQuanLyCongViec_FormClosing(object sender, FormClosingEventArgs e)
@@ -180,6 +182,21 @@ namespace Presentation
             }
             ucBaoCao.Instance.BringToFront();
             //CloseLoading();
+        }
+
+        private void acThongTin_Click(object sender, EventArgs e)
+        {
+
+            if (!loadThongTin)
+            {
+                loadThongTin = true;
+            }
+            if (!container.Controls.Contains(ucThongTin.Instance))
+            {
+                container.Controls.Add(ucThongTin.Instance);
+                ucThongTin.Instance.Dock = DockStyle.Fill;
+            }
+            ucThongTin.Instance.BringToFront();
         }
     }
 }
