@@ -118,7 +118,7 @@ namespace Presentation.User_controls
         private void btnThem_Click(object sender, EventArgs e)
         {
             congviec = new CONGVIEC();
-            gvDSNhanVien.AddNewRow();
+            //gvDSNhanVien.AddNewRow();
             flyoutPanelEdit.ShowPopup();
         }
 
@@ -180,6 +180,7 @@ namespace Presentation.User_controls
                 congviec.NgayHetHan = DateTime.Parse(txtNgayHetHan.Text);
                 congviec.TrangThai = false;
                 congviec.MoTa = txtMoTa.Text;
+                //congviec.PHANCONG = dsPhanCong;
 
                 //congviec.PHANCONG.Clear();
                 using (QLCONGVIECEntities db = new QLCONGVIECEntities())
@@ -196,10 +197,18 @@ namespace Presentation.User_controls
                         int i = 0;
                         foreach (PHANCONG pc in congviec.PHANCONG)
                         {
-                            pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
-                            pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
-                            pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
-                            i++;
+                            try
+                            {
+                                pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
+                                pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
+                                pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
+                                i++;
+                            }
+                            catch(ArgumentOutOfRangeException)
+                            {
+                                congviec.PHANCONG.Remove(pc);
+                            }
+                            
                         }
                         if (i < dsPhanCong.Count)
                         {
@@ -239,7 +248,7 @@ namespace Presentation.User_controls
         private void btnThemNV_Click(object sender, EventArgs e)
         {
             //gvDSNhanVien.AddNewRow();
-            dsPhanCong.Add(new PHANCONG());
+            dsPhanCong.Add(new PHANCONG() {TrangThai = false});
             gcDSNhanVien.RefreshDataSource();
         }
 
@@ -275,6 +284,26 @@ namespace Presentation.User_controls
                 case "Save": luuCongViec(); break;
                 case "Cancel": flyoutPanelEdit.HidePopup(); clearControls(); break;
             }
+        }
+
+        private void gvDSNhanVien_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if(e.Column.FieldName == "TrangThai")
+            {
+                if ((bool)e.Value) e.DisplayText = "Đã hoàn thành";
+                else e.DisplayText = "Chưa hoàn thành";
+            }
+        }
+
+        private void btnXoaNhanVien_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                dsPhanCong.RemoveAt(gvDSNhanVien.GetSelectedRows()[0]);
+                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                gcDSNhanVien.RefreshDataSource();
+            }
+            
         }
     }
 }

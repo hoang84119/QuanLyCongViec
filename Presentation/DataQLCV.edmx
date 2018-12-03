@@ -19,6 +19,7 @@
           <Property Name="NgayHoanThanh" Type="datetime" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
           <Property Name="MaDuAn" Type="int" />
+          <Property Name="TienDo" Type="float" />
         </EntityType>
         <EntityType Name="DUAN">
           <Key>
@@ -58,6 +59,7 @@
           <Property Name="MaCongViec" Type="int" Nullable="false" />
           <Property Name="NguoiNhan" Type="int" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+          <Property Name="TrangThai" Type="bit" />
         </EntityType>
         <EntityType Name="PHONGBAN">
           <Key>
@@ -226,6 +228,7 @@
           <NavigationProperty Name="PHANCONG" Relationship="Self.FRK_CV_PC" FromRole="CONGVIEC" ToRole="PHANCONG" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_NGCV_NV" FromRole="CONGVIEC" ToRole="NHANVIEN" />
           <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TienDo" Type="Int32" />
         </EntityType>
         <EntityType Name="DUAN">
           <Key>
@@ -276,6 +279,7 @@
           <NavigationProperty Name="CONGVIEC" Relationship="Self.FRK_CV_PC" FromRole="PHANCONG" ToRole="CONGVIEC" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_NNCV_NV" FromRole="PHANCONG" ToRole="NHANVIEN" />
           <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" />
         </EntityType>
         <EntityType Name="PHONGBAN">
           <Key>
@@ -422,7 +426,7 @@
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
           <FunctionImport Name="CongViecDuocGiao" ReturnType="Collection(QLCONGVIECModel.CongViecDuocGiao_Result)">
-            <Parameter Name="MaNV" Mode="In" Type="Int32" />
+          <Parameter Name="MaNV" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="CongViecDuocGiao_Result">
@@ -444,6 +448,7 @@
           <EntitySetMapping Name="CONGVIEC">
             <EntityTypeMapping TypeName="QLCONGVIECModel.CONGVIEC">
               <MappingFragment StoreEntitySet="CONGVIEC">
+                <ScalarProperty Name="TienDo" ColumnName="TienDo" />
                 <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />
                 <ScalarProperty Name="TenCV" ColumnName="TenCV" />
@@ -491,6 +496,7 @@
           <EntitySetMapping Name="PHANCONG">
             <EntityTypeMapping TypeName="QLCONGVIECModel.PHANCONG">
               <MappingFragment StoreEntitySet="PHANCONG">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaPhanCong" ColumnName="MaPhanCong" />
                 <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />

@@ -78,7 +78,7 @@ namespace Presentation
                 ucNhanVien.Instance.Dock = DockStyle.Fill;
             }
             ucNhanVien.Instance.BringToFront();
-            CloseLoading();
+            //CloseLoading();
         }
 
         private void acCongViecDaGiao_Click(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace Presentation
         {
             if (!loadBaoCao)
             {
-                //ShowLoading();
+                ShowLoading();
                 loadBaoCao = true;
             }
             if (!container.Controls.Contains(ucBaoCao.Instance))
@@ -173,7 +173,11 @@ namespace Presentation
                 container.Controls.Add(ucBaoCao.Instance);
                 ucBaoCao.Instance.Dock = DockStyle.Fill;
             }
-            ucBaoCao.Instance.showReport(User);
+            using (var db = new QLCONGVIECEntities())
+            {
+                User = db.NHANVIEN.Where(nv => nv.TenDangNhap == User.TenDangNhap).First();
+                ucBaoCao.Instance.showReport(User);
+            }
             ucBaoCao.Instance.BringToFront();
             //CloseLoading();
         }

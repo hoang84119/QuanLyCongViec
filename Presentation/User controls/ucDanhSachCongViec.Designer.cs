@@ -41,6 +41,8 @@
             this.gcNgayHetHan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcTienDo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.flyoutPanelEdit = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
             this.layoutEdit = new DevExpress.XtraLayout.LayoutControl();
@@ -64,6 +66,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelEdit)).BeginInit();
             this.flyoutPanelEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
@@ -94,6 +97,8 @@
             this.gcDanhSachCongViec.Location = new System.Drawing.Point(0, 0);
             this.gcDanhSachCongViec.MainView = this.gvDanhSachCongViec;
             this.gcDanhSachCongViec.Name = "gcDanhSachCongViec";
+            this.gcDanhSachCongViec.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemProgressBar1});
             this.gcDanhSachCongViec.Size = new System.Drawing.Size(887, 542);
             this.gcDanhSachCongViec.TabIndex = 0;
             this.gcDanhSachCongViec.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -110,7 +115,8 @@
             this.gcNgayBatDau,
             this.gcNgayHetHan,
             this.gcMoTa,
-            this.gcTrangThai});
+            this.gcTrangThai,
+            this.gcTienDo});
             this.gvDanhSachCongViec.GridControl = this.gcDanhSachCongViec;
             this.gvDanhSachCongViec.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvDanhSachCongViec.Name = "gvDanhSachCongViec";
@@ -188,6 +194,22 @@
             this.gcTrangThai.Visible = true;
             this.gcTrangThai.VisibleIndex = 6;
             this.gcTrangThai.Width = 95;
+            // 
+            // gcTienDo
+            // 
+            this.gcTienDo.Caption = "Tiến độ";
+            this.gcTienDo.ColumnEdit = this.repositoryItemProgressBar1;
+            this.gcTienDo.FieldName = "TienDo";
+            this.gcTienDo.Name = "gcTienDo";
+            this.gcTienDo.Visible = true;
+            this.gcTienDo.VisibleIndex = 7;
+            // 
+            // repositoryItemProgressBar1
+            // 
+            this.repositoryItemProgressBar1.EndColor = System.Drawing.Color.Plum;
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            this.repositoryItemProgressBar1.ShowTitle = true;
+            this.repositoryItemProgressBar1.StartColor = System.Drawing.Color.Purple;
             // 
             // flyoutPanelEdit
             // 
@@ -447,6 +469,7 @@
             this.Load += new System.EventHandler(this.ucDanhSachCongViec_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelEdit)).EndInit();
             this.flyoutPanelEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
@@ -505,5 +528,7 @@
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gcTienDo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
     }
 }

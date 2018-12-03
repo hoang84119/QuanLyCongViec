@@ -40,5 +40,10 @@ namespace Presentation.User_controls
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
+
+        private void documentViewer1_Load(object sender, EventArgs e)
+        {
+            ((frmQuanLyCongViec)this.ParentForm).CloseLoading();
+        }
     }
 }

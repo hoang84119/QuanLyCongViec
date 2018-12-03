@@ -19,6 +19,7 @@ namespace Presentation.User_controls
         private static ucDanhSachCongViec _instance;
         QLCONGVIECEntities db = new QLCONGVIECEntities();
         CONGVIEC congviec;
+        int MaNV;
 
         public static ucDanhSachCongViec Instance
         {
@@ -47,26 +48,30 @@ namespace Presentation.User_controls
         private void loadDuLieuGirdView()
         {
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
-            gcDanhSachCongViec.DataSource = db.CongViecDuocGiao(user.MaNhanVien).Select(cv => new
-            {
-                cv.MaCongViec,
-                cv.TenCV,
-                cv.HoTen,
-                cv.NgayBatDau,
-                cv.NgayHetHan,
-                cv.MoTa,
-                TrangThai = cv.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
-            });
-            //gvDanhSachCongViec.BeginSort();
-            //try
+            MaNV = user.MaNhanVien;
+            //gcDanhSachCongViec.DataSource = db.CongViecDuocGiao(user.MaNhanVien).Select(cv => new
             //{
-            //    gvDanhSachCongViec.ClearSorting();
-            //    gvDanhSachCongViec.Columns["TrangThai"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
-            //}
-            //finally
-            //{
-            //    gvDanhSachCongViec.EndSort();
-            //}
+            //    cv.MaCongViec,
+            //    cv.TenCV,
+            //    cv.HoTen,
+            //    cv.NgayBatDau,
+            //    cv.NgayHetHan,
+            //    cv.MoTa,
+            //    TrangThai = cv.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
+            //});
+            gcDanhSachCongViec.DataSource = db.NHANVIEN.Where(nv => nv.MaNhanVien == user.MaNhanVien).First()
+                            .PHANCONG
+                            .Select(pc => new
+                            {
+                                pc.MaCongViec,
+                                pc.CONGVIEC.TenCV,
+                                pc.CONGVIEC.NHANVIEN.HoTen,
+                                pc.CONGVIEC.NgayBatDau,
+                                pc.CONGVIEC.NgayHetHan,
+                                pc.CONGVIEC.MoTa,
+                                pc.CONGVIEC.TienDo,
+                                TrangThai = pc.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
+                            });
         }
 
         private bool kiemTraPhanCong(ICollection<PHANCONG> dsPhanCong, NHANVIEN user)
@@ -98,7 +103,7 @@ namespace Presentation.User_controls
 
         private void thayDoiTrangThaiButton(bool v)
         {
-            foreach(DevExpress.Utils.PeekFormButton button in flyoutPanelEdit.OptionsButtonPanel.Buttons)
+            foreach (DevExpress.Utils.PeekFormButton button in flyoutPanelEdit.OptionsButtonPanel.Buttons)
             {
                 string tag = button.Tag.ToString();
                 switch (tag)
@@ -122,8 +127,18 @@ namespace Presentation.User_controls
 
         private void trangThaiCongViec()
         {
-            congviec.TrangThai = !congviec.TrangThai;
-            db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
+            PHANCONG phancong = congviec.PHANCONG.Where(pc => pc.NguoiNhan == MaNV).First();
+            //congviec.PHANCONG.Where(pc =>pc.NguoiNhan == MaNV).First().TrangThai = !congviec.TrangThai;
+            //if (congviec.TrangThai == true)
+            //{
+            //    congviec.NgayHoanThanh = DateTime.Now;
+            //}
+            //else
+            //{
+            //    congviec.NgayHoanThanh = null;
+            //}
+            phancong.TrangThai = !phancong.TrangThai;
+            db.Entry(phancong).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             //thayDoiTrangThai(congviec.TrangThai.Value);
             flyoutPanelEdit.HidePopup();
@@ -168,7 +183,7 @@ namespace Presentation.User_controls
                     else
                     {
                         TimeSpan interval = ngayHetHan.Subtract(DateTime.Now);
-                        if(interval.Days <= 2)
+                        if (interval.Days <= 2)
                         {
                             e.Appearance.BackColor = Color.FromArgb(255, 165, 0);
                             e.Appearance.BackColor2 = Color.White;

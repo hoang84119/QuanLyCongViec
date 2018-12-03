@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCongViecDaGiao));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCongViecDaGiao));
             this.gcCongViecDaGiao = new DevExpress.XtraGrid.GridControl();
             this.gvCongViecDaGiao = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcMaCV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,6 +47,7 @@
             this.gridColumnTenNV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTenEditor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumnMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtNgayBatDau = new DevExpress.XtraEditors.DateEdit();
             this.cbbDuAn = new System.Windows.Forms.ComboBox();
             this.txtMoTa = new System.Windows.Forms.TextBox();
@@ -68,6 +69,8 @@
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.flyoutPanelEdit = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
+            this.btnXoaNhanVien = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutEdit)).BeginInit();
@@ -95,6 +98,7 @@
             this.flyoutPanelEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
             this.flyoutPanelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // gcCongViecDaGiao
@@ -196,6 +200,7 @@
             // 
             // layoutEdit
             // 
+            this.layoutEdit.Controls.Add(this.btnXoaNhanVien);
             this.layoutEdit.Controls.Add(this.btnThemNV);
             this.layoutEdit.Controls.Add(this.gcDSNhanVien);
             this.layoutEdit.Controls.Add(this.txtNgayBatDau);
@@ -237,11 +242,13 @@
             // 
             this.gvDSNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumnTenNV,
-            this.gridColumnMoTa});
+            this.gridColumnMoTa,
+            this.colTrangThai});
             this.gvDSNhanVien.GridControl = this.gcDSNhanVien;
             this.gvDSNhanVien.Name = "gvDSNhanVien";
             this.gvDSNhanVien.OptionsView.ShowGroupPanel = false;
             this.gvDSNhanVien.OptionsView.ShowIndicator = false;
+            this.gvDSNhanVien.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvDSNhanVien_CustomColumnDisplayText);
             // 
             // gridColumnTenNV
             // 
@@ -271,6 +278,15 @@
             this.gridColumnMoTa.Name = "gridColumnMoTa";
             this.gridColumnMoTa.Visible = true;
             this.gridColumnMoTa.VisibleIndex = 1;
+            // 
+            // colTrangThai
+            // 
+            this.colTrangThai.Caption = "Trạng thái";
+            this.colTrangThai.FieldName = "TrangThai";
+            this.colTrangThai.Name = "colTrangThai";
+            this.colTrangThai.OptionsColumn.AllowEdit = false;
+            this.colTrangThai.Visible = true;
+            this.colTrangThai.VisibleIndex = 2;
             // 
             // txtNgayBatDau
             // 
@@ -352,7 +368,8 @@
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.emptySpaceItem1,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(835, 218);
             this.layoutControlGroup1.TextVisible = false;
@@ -423,9 +440,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(530, 158);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(652, 158);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(285, 40);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(163, 40);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
@@ -510,6 +527,26 @@
             this.flyoutPanelControl1.Size = new System.Drawing.Size(839, 222);
             this.flyoutPanelControl1.TabIndex = 0;
             // 
+            // btnXoaNhanVien
+            // 
+            this.btnXoaNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnXoaNhanVien.Location = new System.Drawing.Point(542, 170);
+            this.btnXoaNhanVien.Name = "btnXoaNhanVien";
+            this.btnXoaNhanVien.Size = new System.Drawing.Size(118, 36);
+            this.btnXoaNhanVien.StyleController = this.layoutEdit;
+            this.btnXoaNhanVien.TabIndex = 41;
+            this.btnXoaNhanVien.Text = "Xóa nhân viên";
+            this.btnXoaNhanVien.Click += new System.EventHandler(this.btnXoaNhanVien_Click);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnXoaNhanVien;
+            this.layoutControlItem8.Location = new System.Drawing.Point(530, 158);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(122, 40);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
             // ucCongViecDaGiao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,6 +584,7 @@
             this.flyoutPanelEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
             this.flyoutPanelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -590,5 +628,8 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.Utils.FlyoutPanel flyoutPanelEdit;
         private DevExpress.Utils.FlyoutPanelControl flyoutPanelControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn colTrangThai;
+        private DevExpress.XtraEditors.SimpleButton btnXoaNhanVien;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }
