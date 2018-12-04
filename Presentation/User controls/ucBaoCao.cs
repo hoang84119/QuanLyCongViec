@@ -16,6 +16,7 @@ namespace Presentation.User_controls
     public partial class ucBaoCao : DevExpress.XtraEditors.XtraUserControl
     {
         private static ucBaoCao _instance;
+        private NHANVIEN user;
 
         public static ucBaoCao Instance
         {
@@ -28,22 +29,62 @@ namespace Presentation.User_controls
             set => _instance = value;
         }
 
+        public NHANVIEN User { get => user; set => user = value; }
+
         public ucBaoCao()
         {
             InitializeComponent();
         }
 
-        public void showReport(NHANVIEN nv)
+        public void showReport()
         {
-            reportCongViec report = new reportCongViec();
-            report.createReport(nv.PHANCONG.ToList());
-            documentViewer1.DocumentSource = report;
-            report.CreateDocument();
+            barToggleSwitchItemChiTiet.Enabled = false;
+            using (var db = new QLCONGVIECEntities())
+            {
+                reportCongViec report = new reportCongViec();
+                user = db.NHANVIEN.Where(nv => nv.TenDangNhap == user.TenDangNhap).First();
+                report.createReport(user.PHANCONG.ToList());
+                documentViewer1.DocumentSource = report;
+                report.CreateDocument();
+            }
         }
 
         private void documentViewer1_Load(object sender, EventArgs e)
         {
             ((frmQuanLyCongViec)this.ParentForm).CloseLoading();
+        }
+
+        internal void showReportCVDaGiao()
+        {
+            barToggleSwitchItemChiTiet.Enabled = true;
+            if(barToggleSwitchItemChiTiet.Checked)
+            {
+                using (var db = new QLCONGVIECEntities())
+                {
+                    reportCongViecDaGiao report = new reportCongViecDaGiao();
+                    user = db.NHANVIEN.Where(nv => nv.TenDangNhap == user.TenDangNhap).First();
+                    report.createReport(user);
+                    documentViewer1.DocumentSource = report;
+                    report.CreateDocument();
+                }
+            }
+            else
+            {
+                using (var db = new QLCONGVIECEntities())
+                {
+                    reportTongQuatCVDaGiao report = new reportTongQuatCVDaGiao();
+                    user = db.NHANVIEN.Where(nv => nv.TenDangNhap == user.TenDangNhap).First();
+                    report.createReport(user);
+                    documentViewer1.DocumentSource = report;
+                    report.CreateDocument();
+                }
+            }
+            
+        }
+
+        private void barToggleSwitchItemChiTiet_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            showReportCVDaGiao();
         }
     }
 }

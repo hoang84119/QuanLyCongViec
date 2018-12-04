@@ -101,6 +101,7 @@
             this.printPreviewBarCheckItem17 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             this.printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             this.printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
+            this.barToggleSwitchItemChiTiet = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -113,7 +114,7 @@
             this.documentViewer1.IsMetric = true;
             this.documentViewer1.Location = new System.Drawing.Point(0, 28);
             this.documentViewer1.Name = "documentViewer1";
-            this.documentViewer1.Size = new System.Drawing.Size(569, 374);
+            this.documentViewer1.Size = new System.Drawing.Size(967, 515);
             this.documentViewer1.TabIndex = 5;
             this.documentViewer1.Load += new System.EventHandler(this.documentViewer1_Load);
             // 
@@ -189,8 +190,9 @@
             this.printPreviewBarCheckItem16,
             this.printPreviewBarCheckItem17,
             this.printPreviewBarCheckItem18,
-            this.printPreviewBarCheckItem19});
-            this.documentViewerBarManager1.MaxItemId = 60;
+            this.printPreviewBarCheckItem19,
+            this.barToggleSwitchItemChiTiet});
+            this.documentViewerBarManager1.MaxItemId = 61;
             this.documentViewerBarManager1.PreviewBar = this.previewBar1;
             this.documentViewerBarManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
@@ -206,6 +208,7 @@
             this.previewBar1.DockRow = 0;
             this.previewBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.previewBar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barToggleSwitchItemChiTiet),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDocumentMap),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiParameters),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiThumbnails),
@@ -608,15 +611,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.documentViewerBarManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(569, 28);
+            this.barDockControlTop.Size = new System.Drawing.Size(967, 28);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 402);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 543);
             this.barDockControlBottom.Manager = this.documentViewerBarManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(569, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(967, 24);
             // 
             // barDockControlLeft
             // 
@@ -624,15 +627,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 28);
             this.barDockControlLeft.Manager = this.documentViewerBarManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 374);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 515);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(569, 28);
+            this.barDockControlRight.Location = new System.Drawing.Point(967, 28);
             this.barDockControlRight.Manager = this.documentViewerBarManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 374);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
             // 
             // miFile
             // 
@@ -898,6 +901,14 @@
             this.printPreviewBarCheckItem19.Id = 59;
             this.printPreviewBarCheckItem19.Name = "printPreviewBarCheckItem19";
             // 
+            // barToggleSwitchItemChiTiet
+            // 
+            this.barToggleSwitchItemChiTiet.Caption = "Chi tiết";
+            this.barToggleSwitchItemChiTiet.Hint = "Chuyển đổi báo cáo sang dạng chi tiết";
+            this.barToggleSwitchItemChiTiet.Id = 60;
+            this.barToggleSwitchItemChiTiet.Name = "barToggleSwitchItemChiTiet";
+            this.barToggleSwitchItemChiTiet.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItemChiTiet_CheckedChanged);
+            // 
             // ucBaoCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -908,7 +919,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucBaoCao";
-            this.Size = new System.Drawing.Size(569, 426);
+            this.Size = new System.Drawing.Size(967, 567);
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
@@ -991,5 +1002,6 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem17;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem18;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem19;
+        private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItemChiTiet;
     }
 }

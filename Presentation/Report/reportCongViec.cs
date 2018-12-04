@@ -22,21 +22,22 @@ namespace Presentation.Report
         private void calculatedField1_GetValue(object sender, GetValueEventArgs e)
         {
             CONGVIEC cv = (CONGVIEC) e.GetColumnValue("CONGVIEC");
+            bool tt = (bool) e.GetColumnValue("TrangThai");
             string trangthai = "";
-            if(cv.TrangThai == false)
+            if(!tt)
             {
-                trangthai = "Chưa hoàn thành";
-            }
-            else
-            {
-                if(DateTime.Compare(cv.NgayHetHan, (DateTime) cv.NgayHoanThanh) < 0)
+                if (DateTime.Compare(cv.NgayHetHan, DateTime.Now) < 0)
                 {
-                    trangthai = "Hoàn thành Chậm tiến độ";
+                    trangthai = "Chậm tiến độ";
                 }
                 else
                 {
-                    trangthai = "Hoàn thành đúng tiến độ";
+                    trangthai = "Đang tiến hành";
                 }
+            }
+            else
+            {
+                trangthai = "Đã hoàn thành";
             }
             e.Value = trangthai;
             //e.Value = (int)((DateTime)columnValue).DayOfWeek;

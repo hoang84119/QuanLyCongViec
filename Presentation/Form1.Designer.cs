@@ -34,7 +34,9 @@
             this.acCongViec = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acCongViecDaGiao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acDSCV = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acThongKe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acBaoCao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acBaoCaoCVDaG = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acBaoCaoCVDuocG = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acQuanLy = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acNhanVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acDanhSachPhongBan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -69,6 +71,7 @@
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.acCongViec,
+            this.acBaoCao,
             this.acQuanLy,
             this.accordionControlElement11});
             this.accordionControl1.Location = new System.Drawing.Point(0, 30);
@@ -84,8 +87,7 @@
             // 
             this.acCongViec.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.acCongViecDaGiao,
-            this.acDSCV,
-            this.acThongKe});
+            this.acDSCV});
             this.acCongViec.Expanded = true;
             this.acCongViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acCongViec.ImageOptions.Image")));
             this.acCongViec.Name = "acCongViec";
@@ -105,12 +107,29 @@
             this.acDSCV.Text = "Công việc được giao";
             this.acDSCV.Click += new System.EventHandler(this.acDSCV_Click);
             // 
-            // acThongKe
+            // acBaoCao
             // 
-            this.acThongKe.Name = "acThongKe";
-            this.acThongKe.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acThongKe.Text = "Thống kê";
-            this.acThongKe.Click += new System.EventHandler(this.acThongKe_Click);
+            this.acBaoCao.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.acBaoCaoCVDaG,
+            this.acBaoCaoCVDuocG});
+            this.acBaoCao.Expanded = true;
+            this.acBaoCao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acBaoCao.ImageOptions.Image")));
+            this.acBaoCao.Name = "acBaoCao";
+            this.acBaoCao.Text = "Báo cáo";
+            // 
+            // acBaoCaoCVDaG
+            // 
+            this.acBaoCaoCVDaG.Name = "acBaoCaoCVDaG";
+            this.acBaoCaoCVDaG.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acBaoCaoCVDaG.Text = "Công việc đã giao";
+            this.acBaoCaoCVDaG.Click += new System.EventHandler(this.acBaoCaoCVDaG_Click);
+            // 
+            // acBaoCaoCVDuocG
+            // 
+            this.acBaoCaoCVDuocG.Name = "acBaoCaoCVDuocG";
+            this.acBaoCaoCVDuocG.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acBaoCaoCVDuocG.Text = "Công việc được giao";
+            this.acBaoCaoCVDuocG.Click += new System.EventHandler(this.acBaoCaoCVDuocG_Click);
             // 
             // acQuanLy
             // 
@@ -207,10 +226,12 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDSCV;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acNhanVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDanhSachPhongBan;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acThongKe;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement11;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acThongTin;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acDangXuat;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acBaoCao;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acBaoCaoCVDaG;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acBaoCaoCVDuocG;
     }
 }
 

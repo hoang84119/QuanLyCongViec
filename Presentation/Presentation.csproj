@@ -136,6 +136,18 @@
     <Compile Include="Report\reportCongViec.Designer.cs">
       <DependentUpon>reportCongViec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\reportCongViecDaGiao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\reportCongViecDaGiao.Designer.cs">
+      <DependentUpon>reportCongViecDaGiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\reportTongQuatCVDaGiao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\reportTongQuatCVDaGiao.Designer.cs">
+      <DependentUpon>reportTongQuatCVDaGiao.cs</DependentUpon>
+    </Compile>
     <Compile Include="User controls\ucBaoCao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +209,12 @@
     </Compile>
     <EmbeddedResource Include="Report\reportCongViec.resx">
       <DependentUpon>reportCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportCongViecDaGiao.resx">
+      <DependentUpon>reportCongViecDaGiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportTongQuatCVDaGiao.resx">
+      <DependentUpon>reportTongQuatCVDaGiao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucBaoCao.resx">
       <DependentUpon>ucBaoCao.cs</DependentUpon>

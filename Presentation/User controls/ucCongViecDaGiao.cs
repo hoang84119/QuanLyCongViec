@@ -16,7 +16,7 @@ namespace Presentation.User_controls
         private static ucCongViecDaGiao _instance;
         private CONGVIEC congviec;
         private List<PHANCONG> dsPhanCong = new List<PHANCONG>();
-        private QLCONGVIECEntities db = new QLCONGVIECEntities();
+        private QLCONGVIECEntities db;
 
         public static ucCongViecDaGiao Instance
         {
@@ -58,6 +58,7 @@ namespace Presentation.User_controls
 
         private void loadDuLieuGirdView()
         {
+            db = new QLCONGVIECEntities();
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
 
             var BangCongViec = db.CONGVIEC
@@ -222,12 +223,10 @@ namespace Presentation.User_controls
                 else
                     db.Entry(congviec).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-
-                clearControls();
-
-                loadDuLieuGirdView();
-                MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
                 flyoutPanelEdit.HidePopup();
+                clearControls();
+                loadDuLieuGirdView();
+                //MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK); 
             }
         }
 
@@ -238,7 +237,7 @@ namespace Presentation.User_controls
             txtNgayBatDau.Properties.MinValue = txtNgayHetHan.Properties.MinValue = DateTime.Now;
             txtTenCongViec.Text = txtMoTa.Text = txtNgayBatDau.Text = txtNgayHetHan.Text = "";
             dsPhanCong = new List<PHANCONG>();
-            gvDSNhanVien.RefreshData();
+            gcDSNhanVien.DataSource = dsPhanCong;
         }
 
         private void btnThemNV_Click(object sender, EventArgs e)

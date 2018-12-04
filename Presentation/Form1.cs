@@ -49,6 +49,7 @@ namespace Presentation
         {
             acQuanLy.Visible = v;
             acCongViecDaGiao.Visible = v;
+            acBaoCaoCVDaG.Visible = v;
         }
 
         private void acDSCV_Click(object sender, EventArgs e)
@@ -163,27 +164,6 @@ namespace Presentation
                 SplashScreenManager.CloseOverlayForm(handle);
         }
 
-        private void acThongKe_Click(object sender, EventArgs e)
-        {
-            if (!loadBaoCao)
-            {
-                ShowLoading();
-                loadBaoCao = true;
-            }
-            if (!container.Controls.Contains(ucBaoCao.Instance))
-            {
-                container.Controls.Add(ucBaoCao.Instance);
-                ucBaoCao.Instance.Dock = DockStyle.Fill;
-            }
-            using (var db = new QLCONGVIECEntities())
-            {
-                User = db.NHANVIEN.Where(nv => nv.TenDangNhap == User.TenDangNhap).First();
-                ucBaoCao.Instance.showReport(User);
-            }
-            ucBaoCao.Instance.BringToFront();
-            //CloseLoading();
-        }
-
         private void acThongTin_Click(object sender, EventArgs e)
         {
 
@@ -197,6 +177,49 @@ namespace Presentation
                 ucThongTin.Instance.Dock = DockStyle.Fill;
             }
             ucThongTin.Instance.BringToFront();
+        }
+
+        private void acBaoCaoCVDaG_Click(object sender, EventArgs e)
+        {
+            if (!loadBaoCao)
+            {
+                ShowLoading();
+                loadBaoCao = true;
+            }
+            if (!container.Controls.Contains(ucBaoCao.Instance))
+            {
+                container.Controls.Add(ucBaoCao.Instance);
+                ucBaoCao.Instance.Dock = DockStyle.Fill;
+            }
+            //using (var db = new QLCONGVIECEntities())
+            //{
+                //User = db.NHANVIEN.Where(nv => nv.TenDangNhap == User.TenDangNhap).First();
+                ucBaoCao.Instance.User = User;
+                ucBaoCao.Instance.showReportCVDaGiao();
+            //}
+            ucBaoCao.Instance.BringToFront();
+        }
+
+        private void acBaoCaoCVDuocG_Click(object sender, EventArgs e)
+        {
+            if (!loadBaoCao)
+            {
+                ShowLoading();
+                loadBaoCao = true;
+            }
+            if (!container.Controls.Contains(ucBaoCao.Instance))
+            {
+                container.Controls.Add(ucBaoCao.Instance);
+                ucBaoCao.Instance.Dock = DockStyle.Fill;
+            }
+            //using (var db = new QLCONGVIECEntities())
+            //{
+            //    User = db.NHANVIEN.Where(nv => nv.TenDangNhap == User.TenDangNhap).First();
+            ucBaoCao.Instance.User = User;
+            ucBaoCao.Instance.showReport();
+            //}
+            ucBaoCao.Instance.BringToFront();
+            //CloseLoading();
         }
     }
 }
