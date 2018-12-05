@@ -81,7 +81,7 @@ namespace Presentation.User_controls
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (phong == null)
                 {
@@ -93,7 +93,7 @@ namespace Presentation.User_controls
                 db.PHONGBAN.Remove(phong);
                 db.SaveChanges();
                 loadDuLieuGirdView();
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 
@@ -117,12 +117,12 @@ namespace Presentation.User_controls
         {
             if (txtMaPhong.Text == "")
             {
-                MessageBox.Show("Mã phòng không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Mã phòng không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMaPhong.Focus();
             }
             else if (txtTenPhong.Text == "")
             {
-                MessageBox.Show("Tên phòng không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Tên phòng không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTenPhong.Focus();
             }
             else
@@ -142,7 +142,7 @@ namespace Presentation.User_controls
                 db.SaveChanges();
                 loadDuLieuGirdView();
                 flyoutPanelEdit.HidePopup();
-                //MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 

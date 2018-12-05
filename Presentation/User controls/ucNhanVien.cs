@@ -180,11 +180,11 @@ namespace Presentation.User_controls
                     if (pictureHinhDaiDien.Image != null)
                     {
                         string tenHinh = Path.GetFileName(pictureHinhDaiDien.GetLoadedImageLocation());
-                        if(tenHinh == "")
+                        if (tenHinh == "")
                         {
-                            tenHinh = convertToUnSign3(nhanvien.HoTen)+".png";
+                            tenHinh = convertToUnSign3(nhanvien.HoTen) + ".png";
                         }
-                        if(!File.Exists(path + tenHinh)) pictureHinhDaiDien.Image.Save(path + tenHinh);
+                        if (!File.Exists(path + tenHinh)) pictureHinhDaiDien.Image.Save(path + tenHinh);
                         nhanvien.HinhDaiDien = tenHinh;
                     }
                 }
@@ -211,20 +211,49 @@ namespace Presentation.User_controls
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (nhanvien == null)
             {
-                if (nhanvien == null)
-                {
-                    nhanvien = (NHANVIEN)tvNhanVien.GetFocusedRow();
-                }
-                var entry = db.Entry(nhanvien);
-                if (entry.State == System.Data.Entity.EntityState.Detached)
-                    db.NHANVIEN.Attach(nhanvien);
-                db.NHANVIEN.Remove(nhanvien);
-                db.SaveChanges();
-                loadDuLieuGirdView();
-                XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                nhanvien = (NHANVIEN)tvNhanVien.GetFocusedRow();
             }
+            if (nhanvien.PHANCONG.Where(pc => pc.TrangThai == false).Count() != 0)
+            {
+                XtraMessageBox.Show("Không thể xóa nhân viên đang có công việc chưa hoàn thành", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (nhanvien.PHONGBAN1.Count != 0)
+            {
+                XtraMessageBox.Show("Không thể xóa trưởng phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (nhanvien.CONGVIEC.Count != 0)
+            {
+                //if (XtraMessageBox.Show("Công việc được giao bởi nhân viên này sẽ được xóa", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                //{
+                //    foreach(CONGVIEC cv in nhanvien.CONGVIEC.ToList())
+                //    {
+                //        db.CONGVIEC.Remove(cv);
+                //    }
+                //    xoaNhanVien();
+                //}
+                XtraMessageBox.Show("Không thể xóa nhân viên đã giao công việc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (XtraMessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                xoaNhanVien();
+            }
+        }
+
+        private void xoaNhanVien()
+        {
+            foreach (PHANCONG pc in nhanvien.PHANCONG.ToList())
+            {
+                db.PHANCONG.Remove(pc);
+            }
+            var entry = db.Entry(nhanvien);
+            if (entry.State == System.Data.Entity.EntityState.Detached)
+                db.NHANVIEN.Attach(nhanvien);
+            db.NHANVIEN.Remove(nhanvien);
+            db.SaveChanges();
+            loadDuLieuGirdView();
+            XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
         }
 
         private string convertToUnSign3(string s)
