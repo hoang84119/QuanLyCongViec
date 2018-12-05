@@ -16,7 +16,7 @@ namespace Presentation.User_controls
     public partial class ucNhanVien : DevExpress.XtraEditors.XtraUserControl
     {
         private static ucNhanVien _instance;
-        private QLCONGVIECEntities db = new QLCONGVIECEntities();
+        private QLCONGVIECEntities db;
         private bool isPictureModified = false;
         private string path = "../../Images/";
         NHANVIEN nhanvien;
@@ -40,8 +40,8 @@ namespace Presentation.User_controls
         private void ucNhanVien_Load(object sender, EventArgs e)
         {
             //((frmQuanLyCongViec)this.ParentForm).ShowLoading();
-            loadDuLieuCbb();
             loadDuLieuGirdView();
+            loadDuLieuCbb();
         }
 
         private void loadDuLieuCbb()
@@ -55,6 +55,7 @@ namespace Presentation.User_controls
 
         private void loadDuLieuGirdView()
         {
+            db = new QLCONGVIECEntities();
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
             if (user.MaPhongBan == "GD")
             {
@@ -133,37 +134,37 @@ namespace Presentation.User_controls
         {
             if (txtHoTen.Text == "")
             {
-                MessageBox.Show("Họ tên không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Họ tên không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtHoTen.Focus();
             }
             else if (txtNgaySinh.Text == "")
             {
-                MessageBox.Show("Ngày sinh không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Ngày sinh không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNgaySinh.ShowPopup();
             }
             else if (txtChucVu.Text == "")
             {
-                MessageBox.Show("Chức vụ không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Chức vụ không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtChucVu.Focus();
             }
             else if (cbbPhongBan.SelectedIndex == -1)
             {
-                MessageBox.Show("Vui lòng chọn phòng ban", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Vui lòng chọn phòng ban", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbbPhongBan.Focus();
             }
             else if (txtDiaChi.Text == "")
             {
-                MessageBox.Show("Địa chỉ không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Địa chỉ không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtDiaChi.Focus();
             }
             else if (txtTenDangNhap.Text == "")
             {
-                MessageBox.Show("Tên đăng nhập không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Tên đăng nhập không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTenDangNhap.Focus();
             }
             else if (txtMatKhau.Text == "")
             {
-                MessageBox.Show("Mật khẩu không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Mật khẩu không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMatKhau.Focus();
             }
             else
@@ -199,7 +200,7 @@ namespace Presentation.User_controls
                 clearControls();
                 flyoutPanelEdit.HidePopup();
                 loadDuLieuGirdView();
-                //MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 
@@ -210,7 +211,7 @@ namespace Presentation.User_controls
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (nhanvien == null)
                 {
@@ -222,7 +223,7 @@ namespace Presentation.User_controls
                 db.NHANVIEN.Remove(nhanvien);
                 db.SaveChanges();
                 loadDuLieuGirdView();
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 

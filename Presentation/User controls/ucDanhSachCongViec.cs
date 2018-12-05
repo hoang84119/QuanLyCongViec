@@ -139,7 +139,7 @@ namespace Presentation.User_controls
         {
             //congviec = null;
             phancong = null;
-            cbbDuAn.SelectedIndex = -1;
+            //cbbDuAn.SelectedIndex = -1;
             txtNgayBatDau.Properties.MinValue = txtNgayHetHan.Properties.MinValue = DateTime.Now;
             txtTenCongViec.Text = txtMoTa.Text = txtNgayBatDau.Text = txtNgayHetHan.Text = "";
             gvDSNhanVien.RefreshData();
@@ -154,7 +154,7 @@ namespace Presentation.User_controls
             txtMoTa.Text = congViec.MoTa;
             //gcDSNhanVien.DataSource
             gcDSNhanVien.DataSource = congViec.PHANCONG.ToList();
-            if (congViec.MaDuAn != null) cbbDuAn.SelectedValue = congViec.MaDuAn;
+            //if (congViec.MaDuAn != null) cbbDuAn.SelectedValue = congViec.MaDuAn;
         }
 
         private void gvDanhSachCongViec_RowStyle(object sender, RowStyleEventArgs e)

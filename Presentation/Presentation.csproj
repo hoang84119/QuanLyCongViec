@@ -166,12 +166,6 @@
     <Compile Include="User controls\ucDanhSachCongViec.Designer.cs">
       <DependentUpon>ucDanhSachCongViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="User controls\ucDuAn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User controls\ucDuAn.Designer.cs">
-      <DependentUpon>ucDuAn.cs</DependentUpon>
-    </Compile>
     <Compile Include="User controls\ucNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -224,9 +218,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucDanhSachCongViec.resx">
       <DependentUpon>ucDanhSachCongViec.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User controls\ucDuAn.resx">
-      <DependentUpon>ucDuAn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User controls\ucNhanVien.resx">
       <DependentUpon>ucNhanVien.cs</DependentUpon>

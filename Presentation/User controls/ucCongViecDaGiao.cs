@@ -44,12 +44,12 @@ namespace Presentation.User_controls
             loadDuLieuGirdView();
 
 
-            cbbDuAn.DataSource = db.DUAN
-                            .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
+            //cbbDuAn.DataSource = db.DUAN
+            //                .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
 
-            cbbDuAn.DisplayMember = "TenDA";
-            cbbDuAn.ValueMember = "MaDuAn";
-            cbbDuAn.SelectedIndex = -1;
+            //cbbDuAn.DisplayMember = "TenDA";
+            //cbbDuAn.ValueMember = "MaDuAn";
+            //cbbDuAn.SelectedIndex = -1;
 
             gcDSNhanVien.DataSource = dsPhanCong;
 
@@ -142,7 +142,7 @@ namespace Presentation.User_controls
             txtMoTa.Text = congViec.MoTa;
             //gcDSNhanVien.DataSource
             dsPhanCong = congViec.PHANCONG.ToList();
-            if (congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
+            //if (congviec.MaDuAn != null) cbbDuAn.SelectedValue = congviec.MaDuAn;
             gcDSNhanVien.DataSource = dsPhanCong;
         }
 
@@ -150,22 +150,22 @@ namespace Presentation.User_controls
         {
             if (txtTenCongViec.Text == "")
             {
-                MessageBox.Show("Tên không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Tên không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTenCongViec.Focus();
             }
             else if (txtNgayBatDau.Text == "")
             {
-                MessageBox.Show("Ngày bắt đầu không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Ngày bắt đầu không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNgayBatDau.Focus();
             }
             else if (txtNgayHetHan.Text == "")
             {
-                MessageBox.Show("Ngày hết hạn không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Ngày hết hạn không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNgayHetHan.Focus();
             }
             else if (dsPhanCong.Count == 0)
             {
-                MessageBox.Show("Bảng phân công không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Bảng phân công không được rỗng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -173,7 +173,7 @@ namespace Presentation.User_controls
                 congviec.TenCV = txtTenCongViec.Text;
                 congviec.NguoiGiao = user.MaNhanVien;
                 congviec.NgayGiao = DateTime.Now;
-                if (cbbDuAn.SelectedIndex != -1) congviec.MaDuAn = int.Parse(cbbDuAn.SelectedValue.ToString());
+                //if (cbbDuAn.SelectedIndex != -1) congviec.MaDuAn = int.Parse(cbbDuAn.SelectedValue.ToString());
                 congviec.NgayBatDau = DateTime.Parse(txtNgayBatDau.Text);
                 congviec.NgayHetHan = DateTime.Parse(txtNgayHetHan.Text);
                 congviec.TrangThai = false;
@@ -198,6 +198,8 @@ namespace Presentation.User_controls
                         {
                             pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
                             pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
+                            pc.TrangThai = dsPhanCong.ElementAt(i).TrangThai;
+                            //pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
                             pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
                             i++;
                         }
@@ -226,14 +228,14 @@ namespace Presentation.User_controls
                 flyoutPanelEdit.HidePopup();
                 clearControls();
                 loadDuLieuGirdView();
-                //MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK); 
+                XtraMessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 
         private void clearControls()
         {
             congviec = null;
-            cbbDuAn.SelectedIndex = -1;
+            //cbbDuAn.SelectedIndex = -1;
             txtNgayBatDau.Properties.MinValue = txtNgayHetHan.Properties.MinValue = DateTime.Now;
             txtTenCongViec.Text = txtMoTa.Text = txtNgayBatDau.Text = txtNgayHetHan.Text = "";
             dsPhanCong = new List<PHANCONG>();
@@ -249,9 +251,8 @@ namespace Presentation.User_controls
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-
                 if (congviec == null)
                 {
                     int index = gvCongViecDaGiao.GetSelectedRows()[0];
@@ -266,7 +267,8 @@ namespace Presentation.User_controls
                 db.SaveChanges();
 
                 loadDuLieuGirdView();
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                //MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
             }
         }
 
@@ -291,10 +293,10 @@ namespace Presentation.User_controls
 
         private void btnXoaNhanVien_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 dsPhanCong.RemoveAt(gvDSNhanVien.GetSelectedRows()[0]);
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
                 gcDSNhanVien.RefreshDataSource();
             }
 
