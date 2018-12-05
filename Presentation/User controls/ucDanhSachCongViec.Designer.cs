@@ -63,6 +63,7 @@
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.gridColumnNgayHoanThanh = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachCongViec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -276,7 +277,8 @@
             this.gvDSNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumnTenNV,
             this.gridColumnMoTa,
-            this.gridColumnTrangThai});
+            this.gridColumnTrangThai,
+            this.gridColumnNgayHoanThanh});
             this.gvDSNhanVien.GridControl = this.gcDSNhanVien;
             this.gvDSNhanVien.Name = "gvDSNhanVien";
             this.gvDSNhanVien.OptionsView.ShowGroupPanel = false;
@@ -454,6 +456,16 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(350, 61);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // gridColumnNgayHoanThanh
+            // 
+            this.gridColumnNgayHoanThanh.Caption = "Ngày hoàn thành";
+            this.gridColumnNgayHoanThanh.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumnNgayHoanThanh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumnNgayHoanThanh.FieldName = "NgayHoanThanh";
+            this.gridColumnNgayHoanThanh.Name = "gridColumnNgayHoanThanh";
+            this.gridColumnNgayHoanThanh.Visible = true;
+            this.gridColumnNgayHoanThanh.VisibleIndex = 3;
+            // 
             // ucDanhSachCongViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,5 +536,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gcTienDo;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTrangThai;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnNgayHoanThanh;
     }
 }

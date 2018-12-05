@@ -176,7 +176,6 @@ namespace Presentation.User_controls
                 //if (cbbDuAn.SelectedIndex != -1) congviec.MaDuAn = int.Parse(cbbDuAn.SelectedValue.ToString());
                 congviec.NgayBatDau = DateTime.Parse(txtNgayBatDau.Text);
                 congviec.NgayHetHan = DateTime.Parse(txtNgayHetHan.Text);
-                congviec.TrangThai = false;
                 congviec.MoTa = txtMoTa.Text;
                 //congviec.PHANCONG = dsPhanCong;
 
@@ -199,7 +198,7 @@ namespace Presentation.User_controls
                             pc.NguoiNhan = dsPhanCong.ElementAt(i).NguoiNhan;
                             pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
                             pc.TrangThai = dsPhanCong.ElementAt(i).TrangThai;
-                            //pc.MoTa = dsPhanCong.ElementAt(i).MoTa;
+                            pc.NgayHoanThanh = dsPhanCong.ElementAt(i).NgayHoanThanh;
                             pc.NHANVIEN = db.NHANVIEN.Where(nv => nv.MaNhanVien == pc.NguoiNhan).FirstOrDefault();
                             i++;
                         }

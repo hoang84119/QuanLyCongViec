@@ -70,6 +70,7 @@
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.flyoutPanelEdit = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
+            this.colNgayHoanThanh = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -262,7 +263,8 @@
             this.gvDSNhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumnTenNV,
             this.gridColumnMoTa,
-            this.colTrangThai});
+            this.colTrangThai,
+            this.colNgayHoanThanh});
             this.gvDSNhanVien.GridControl = this.gcDSNhanVien;
             this.gvDSNhanVien.Name = "gvDSNhanVien";
             this.gvDSNhanVien.OptionsView.ShowGroupPanel = false;
@@ -540,6 +542,17 @@
             this.flyoutPanelControl1.Size = new System.Drawing.Size(839, 222);
             this.flyoutPanelControl1.TabIndex = 0;
             // 
+            // colNgayHoanThanh
+            // 
+            this.colNgayHoanThanh.Caption = "Ngày hoàn thành";
+            this.colNgayHoanThanh.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNgayHoanThanh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colNgayHoanThanh.FieldName = "NgayHoanThanh";
+            this.colNgayHoanThanh.Name = "colNgayHoanThanh";
+            this.colNgayHoanThanh.OptionsColumn.AllowEdit = false;
+            this.colNgayHoanThanh.Visible = true;
+            this.colNgayHoanThanh.VisibleIndex = 3;
+            // 
             // ucCongViecDaGiao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,5 +636,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTenNV;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
+        private DevExpress.XtraGrid.Columns.GridColumn colNgayHoanThanh;
     }
 }

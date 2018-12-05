@@ -128,6 +128,7 @@ namespace Presentation.User_controls
             //    congviec.NgayHoanThanh = null;
             //}
             phancong.TrangThai = !phancong.TrangThai;
+            phancong.NgayHoanThanh = DateTime.Now;
             db.Entry(phancong).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             //thayDoiTrangThai(congviec.TrangThai.Value);
