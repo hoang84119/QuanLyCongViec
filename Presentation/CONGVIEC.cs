@@ -24,15 +24,12 @@ namespace Presentation
         public string TenCV { get; set; }
         public int NguoiGiao { get; set; }
         public Nullable<System.DateTime> NgayGiao { get; set; }
+        public System.DateTime NgayBatDau { get; set; }
         public System.DateTime NgayHetHan { get; set; }
-        public Nullable<bool> TrangThai { get; set; }
         public Nullable<System.DateTime> NgayHoanThanh { get; set; }
         public string MoTa { get; set; }
-        public Nullable<int> MaDuAn { get; set; }
-        public System.DateTime NgayBatDau { get; set; }
         public Nullable<int> TienDo { get; set; }
     
-        public virtual DUAN DUAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHANCONG> PHANCONG { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }

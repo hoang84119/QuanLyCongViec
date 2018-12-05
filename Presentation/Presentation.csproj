@@ -86,9 +86,6 @@
     <Compile Include="CONGVIEC.cs">
       <DependentUpon>DataQLCV.tt</DependentUpon>
     </Compile>
-    <Compile Include="CongViecDuocGiao_Result.cs">
-      <DependentUpon>DataQLCV.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataQLCV.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,9 +100,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataQLCV.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DUAN.cs">
-      <DependentUpon>DataQLCV.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -248,6 +242,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataQLCV.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataQLCV.edmx</DependentUpon>
@@ -258,12 +258,6 @@
       <DependentUpon>DataQLCV.edmx</DependentUpon>
       <LastGenOutput>DataQLCV.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLCONGVIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLCONGVIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CONGVIEC">
           <Key>
             <PropertyRef Name="MaCongViec" />
@@ -139,7 +139,8 @@
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLCONGVIECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,34 +152,13 @@
           <Property Name="TenCV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NguoiGiao" Type="Int32" Nullable="false" />
           <Property Name="NgayGiao" Type="DateTime" Precision="3" />
+          <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NgayHetHan" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TrangThai" Type="Boolean" />
           <Property Name="NgayHoanThanh" Type="DateTime" Precision="3" />
           <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MaDuAn" Type="Int32" />
-          <NavigationProperty Name="DUAN" Relationship="Self.FRK_CV_DA" FromRole="CONGVIEC" ToRole="DUAN" />
+          <Property Name="TienDo" Type="Int32" />
           <NavigationProperty Name="PHANCONG" Relationship="Self.FRK_CV_PC" FromRole="CONGVIEC" ToRole="PHANCONG" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_NGCV_NV" FromRole="CONGVIEC" ToRole="NHANVIEN" />
-          <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TienDo" Type="Int32" />
-        </EntityType>
-        <EntityType Name="DUAN">
-          <Key>
-            <PropertyRef Name="MaDuAn" />
-          </Key>
-          <Property Name="MaDuAn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenDA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NguoiGiao" Type="Int32" Nullable="false" />
-          <Property Name="NguoiNhan" Type="Int32" Nullable="false" />
-          <Property Name="NgayGiao" Type="DateTime" Precision="3" />
-          <Property Name="NgayHetHan" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TrangThai" Type="Boolean" />
-          <Property Name="NgayHoanThanh" Type="DateTime" Precision="3" />
-          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CONGVIEC" Relationship="Self.FRK_CV_DA" FromRole="DUAN" ToRole="CONGVIEC" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_NNDA_NV" FromRole="DUAN" ToRole="NHANVIEN" />
-          <NavigationProperty Name="NHANVIEN1" Relationship="Self.FRK_NGDA_NV" FromRole="DUAN" ToRole="NHANVIEN" />
-          <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -192,13 +172,11 @@
           <Property Name="MaPhongBan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HinhDaiDien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CONGVIEC" Relationship="Self.FRK_NGCV_NV" FromRole="NHANVIEN" ToRole="CONGVIEC" />
-          <NavigationProperty Name="DUAN" Relationship="Self.FRK_NNDA_NV" FromRole="NHANVIEN" ToRole="DUAN" />
-          <NavigationProperty Name="DUAN1" Relationship="Self.FRK_NGDA_NV" FromRole="NHANVIEN" ToRole="DUAN" />
           <NavigationProperty Name="PHONGBAN" Relationship="Self.FRK_ND_PB" FromRole="NHANVIEN" ToRole="PHONGBAN" />
           <NavigationProperty Name="PHANCONG" Relationship="Self.FRK_NNCV_NV" FromRole="NHANVIEN" ToRole="PHANCONG" />
           <NavigationProperty Name="PHONGBAN1" Relationship="Self.FRK_TP_NV" FromRole="NHANVIEN" ToRole="PHONGBAN" />
-          <Property Name="HinhDaiDien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PHANCONG">
           <Key>
@@ -208,11 +186,11 @@
           <Property Name="MaPhanCong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaCongViec" Type="Int32" Nullable="false" />
           <Property Name="NguoiNhan" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CONGVIEC" Relationship="Self.FRK_CV_PC" FromRole="PHANCONG" ToRole="CONGVIEC" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_NNCV_NV" FromRole="PHANCONG" ToRole="NHANVIEN" />
-          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="Boolean" />
           <Property Name="NgayHoanThanh" Type="DateTime" Precision="3" />
+          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CONGVIEC" Relationship="Self.FRK_CV_PC" FromRole="PHANCONG" ToRole="CONGVIEC" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_NNCV_NV" FromRole="PHANCONG" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="PHONGBAN">
           <Key>
@@ -224,18 +202,6 @@
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_ND_PB" FromRole="PHONGBAN" ToRole="NHANVIEN" />
           <NavigationProperty Name="NHANVIEN1" Relationship="Self.FRK_TP_NV" FromRole="PHONGBAN" ToRole="NHANVIEN" />
         </EntityType>
-        <Association Name="FRK_CV_DA">
-          <End Role="DUAN" Type="Self.DUAN" Multiplicity="0..1" />
-          <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DUAN">
-              <PropertyRef Name="MaDuAn" />
-            </Principal>
-            <Dependent Role="CONGVIEC">
-              <PropertyRef Name="MaDuAn" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FRK_CV_PC">
           <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="1" />
           <End Role="PHANCONG" Type="Self.PHANCONG" Multiplicity="*" />
@@ -256,30 +222,6 @@
               <PropertyRef Name="MaNhanVien" />
             </Principal>
             <Dependent Role="CONGVIEC">
-              <PropertyRef Name="NguoiGiao" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FRK_NNDA_NV">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="DUAN" Type="Self.DUAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="DUAN">
-              <PropertyRef Name="NguoiNhan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FRK_NGDA_NV">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="DUAN" Type="Self.DUAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="DUAN">
               <PropertyRef Name="NguoiGiao" />
             </Dependent>
           </ReferentialConstraint>
@@ -322,14 +264,9 @@
         </Association>
         <EntityContainer Name="QLCONGVIECEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CONGVIEC" EntityType="Self.CONGVIEC" />
-          <EntitySet Name="DUAN" EntityType="Self.DUAN" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" />
           <EntitySet Name="PHANCONG" EntityType="Self.PHANCONG" />
           <EntitySet Name="PHONGBAN" EntityType="Self.PHONGBAN" />
-          <AssociationSet Name="FRK_CV_DA" Association="Self.FRK_CV_DA">
-            <End Role="DUAN" EntitySet="DUAN" />
-            <End Role="CONGVIEC" EntitySet="CONGVIEC" />
-          </AssociationSet>
           <AssociationSet Name="FRK_CV_PC" Association="Self.FRK_CV_PC">
             <End Role="CONGVIEC" EntitySet="CONGVIEC" />
             <End Role="PHANCONG" EntitySet="PHANCONG" />
@@ -337,14 +274,6 @@
           <AssociationSet Name="FRK_NGCV_NV" Association="Self.FRK_NGCV_NV">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="CONGVIEC" EntitySet="CONGVIEC" />
-          </AssociationSet>
-          <AssociationSet Name="FRK_NNDA_NV" Association="Self.FRK_NNDA_NV">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="DUAN" EntitySet="DUAN" />
-          </AssociationSet>
-          <AssociationSet Name="FRK_NGDA_NV" Association="Self.FRK_NGDA_NV">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="DUAN" EntitySet="DUAN" />
           </AssociationSet>
           <AssociationSet Name="FRK_ND_PB" Association="Self.FRK_ND_PB">
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
@@ -358,20 +287,7 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
-          <FunctionImport Name="CongViecDuocGiao" ReturnType="Collection(QLCONGVIECModel.CongViecDuocGiao_Result)">
-          <Parameter Name="MaNV" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="CongViecDuocGiao_Result">
-          <Property Type="Int32" Name="MaCongViec" Nullable="false" />
-          <Property Type="String" Name="TenCV" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="HoTen" Nullable="false" MaxLength="100" />
-          <Property Type="DateTime" Name="NgayBatDau" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="NgayGiao" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="NgayHetHan" Nullable="false" Precision="23" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="200" />
-          <Property Type="Boolean" Name="TrangThai" Nullable="true" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -381,22 +297,21 @@
           <EntitySetMapping Name="CONGVIEC">
             <EntityTypeMapping TypeName="QLCONGVIECModel.CONGVIEC">
               <MappingFragment StoreEntitySet="CONGVIEC">
-                <ScalarProperty Name="TienDo" ColumnName="TienDo" />
-                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />
                 <ScalarProperty Name="TenCV" ColumnName="TenCV" />
                 <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
                 <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
                 <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TienDo" ColumnName="TienDo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NHANVIEN">
             <EntityTypeMapping TypeName="QLCONGVIECModel.NHANVIEN">
               <MappingFragment StoreEntitySet="NHANVIEN">
-                <ScalarProperty Name="HinhDaiDien" ColumnName="HinhDaiDien" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -405,18 +320,19 @@
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="HinhDaiDien" ColumnName="HinhDaiDien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PHANCONG">
             <EntityTypeMapping TypeName="QLCONGVIECModel.PHANCONG">
               <MappingFragment StoreEntitySet="PHANCONG">
-                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaPhanCong" ColumnName="MaPhanCong" />
                 <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />
                 <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

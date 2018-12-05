@@ -12,8 +12,6 @@ namespace Presentation
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class QLCONGVIECEntities : DbContext
     {
@@ -28,18 +26,8 @@ namespace Presentation
         }
     
         public virtual DbSet<CONGVIEC> CONGVIEC { get; set; }
-        public virtual DbSet<DUAN> DUAN { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIEN { get; set; }
         public virtual DbSet<PHANCONG> PHANCONG { get; set; }
         public virtual DbSet<PHONGBAN> PHONGBAN { get; set; }
-    
-        public virtual ObjectResult<CongViecDuocGiao_Result> CongViecDuocGiao(Nullable<int> maNV)
-        {
-            var maNVParameter = maNV.HasValue ?
-                new ObjectParameter("MaNV", maNV) :
-                new ObjectParameter("MaNV", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CongViecDuocGiao_Result>("CongViecDuocGiao", maNVParameter);
-        }
     }
 }

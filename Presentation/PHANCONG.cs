@@ -17,8 +17,9 @@ namespace Presentation
         public int MaPhanCong { get; set; }
         public int MaCongViec { get; set; }
         public int NguoiNhan { get; set; }
-        public string MoTa { get; set; }
         public Nullable<bool> TrangThai { get; set; }
+        public Nullable<System.DateTime> NgayHoanThanh { get; set; }
+        public string MoTa { get; set; }
     
         public virtual CONGVIEC CONGVIEC { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }

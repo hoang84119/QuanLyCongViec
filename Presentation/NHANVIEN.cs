@@ -21,8 +21,6 @@ namespace Presentation
         public NHANVIEN()
         {
             this.CONGVIEC = new HashSet<CONGVIEC>();
-            this.DUAN = new HashSet<DUAN>();
-            this.DUAN1 = new HashSet<DUAN>();
             this.PHANCONG = new HashSet<PHANCONG>();
             this.PHONGBAN1 = new HashSet<PHONGBAN>();
         }
@@ -52,10 +50,6 @@ namespace Presentation
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONGVIEC> CONGVIEC { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DUAN> DUAN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DUAN> DUAN1 { get; set; }
         public virtual PHONGBAN PHONGBAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHANCONG> PHANCONG { get; set; }
