@@ -172,7 +172,6 @@ namespace Presentation.User_controls
                 NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
                 congviec.TenCV = txtTenCongViec.Text;
                 congviec.NguoiGiao = user.MaNhanVien;
-                congviec.NgayGiao = DateTime.Now;
                 //if (cbbDuAn.SelectedIndex != -1) congviec.MaDuAn = int.Parse(cbbDuAn.SelectedValue.ToString());
                 congviec.NgayBatDau = DateTime.Parse(txtNgayBatDau.Text);
                 congviec.NgayHetHan = DateTime.Parse(txtNgayHetHan.Text);

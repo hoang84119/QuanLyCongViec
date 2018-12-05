@@ -23,7 +23,6 @@ namespace Presentation
         public int MaCongViec { get; set; }
         public string TenCV { get; set; }
         public int NguoiGiao { get; set; }
-        public Nullable<System.DateTime> NgayGiao { get; set; }
         public System.DateTime NgayBatDau { get; set; }
         public System.DateTime NgayHetHan { get; set; }
         public Nullable<System.DateTime> NgayHoanThanh { get; set; }

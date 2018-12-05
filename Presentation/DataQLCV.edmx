@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLCONGVIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLCONGVIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CONGVIEC">
           <Key>
             <PropertyRef Name="MaCongViec" />
@@ -12,7 +12,6 @@
           <Property Name="MaCongViec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenCV" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NguoiGiao" Type="int" Nullable="false" />
-          <Property Name="NgayGiao" Type="datetime" />
           <Property Name="NgayBatDau" Type="datetime" Nullable="false" />
           <Property Name="NgayHetHan" Type="datetime" Nullable="false" />
           <Property Name="NgayHoanThanh" Type="datetime" />
@@ -139,8 +138,7 @@
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLCONGVIECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,7 +149,6 @@
           <Property Name="MaCongViec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenCV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NguoiGiao" Type="Int32" Nullable="false" />
-          <Property Name="NgayGiao" Type="DateTime" Precision="3" />
           <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NgayHetHan" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NgayHoanThanh" Type="DateTime" Precision="3" />
@@ -300,7 +297,6 @@
                 <ScalarProperty Name="MaCongViec" ColumnName="MaCongViec" />
                 <ScalarProperty Name="TenCV" ColumnName="TenCV" />
                 <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
-                <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
                 <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
                 <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
