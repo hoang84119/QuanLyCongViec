@@ -51,16 +51,6 @@ namespace Presentation.User_controls
             db = new QLCONGVIECEntities();
             NHANVIEN user = ((frmQuanLyCongViec)this.ParentForm).User;
             MaNV = user.MaNhanVien;
-            //gcDanhSachCongViec.DataSource = db.CongViecDuocGiao(user.MaNhanVien).Select(cv => new
-            //{
-            //    cv.MaCongViec,
-            //    cv.TenCV,
-            //    cv.HoTen,
-            //    cv.NgayBatDau,
-            //    cv.NgayHetHan,
-            //    cv.MoTa,
-            //    TrangThai = cv.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
-            //});
             gcDanhSachCongViec.DataSource = db.NHANVIEN.Where(nv => nv.MaNhanVien == user.MaNhanVien).First()
                             .PHANCONG
                             .Select(pc => new
@@ -75,15 +65,18 @@ namespace Presentation.User_controls
                                 TrangThai = pc.TrangThai == true ? "Hoàn thành" : "Chưa hoàn thành"
                             });
             gvDanhSachCongViec.ExpandAllGroups();
+            if (user.PHONGBAN1.Count != 0) loadChucNangTruongPhong(user);
+            else layoutBtnThem.Visibility = layoutBtnXoa.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
         }
 
-        private bool kiemTraPhanCong(ICollection<PHANCONG> dsPhanCong, NHANVIEN user)
+        private void loadChucNangTruongPhong(NHANVIEN user)
         {
-            foreach (PHANCONG pc in dsPhanCong)
-            {
-                if (pc.NguoiNhan == user.MaNhanVien) return true;
-            }
-            return false;
+            cbbNhanVien.DataSource = db.NHANVIEN
+                                    .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.MaPhongBan == user.MaPhongBan)
+                                    .Select(nv => new { nv.MaNhanVien, nv.HoTen }).ToList();
+            cbbNhanVien.ValueMember = "MaNhanVien";
+            cbbNhanVien.DisplayMember = "HoTen";
+            layoutBtnThem.Visibility = layoutBtnXoa.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always;
         }
 
         private void gcDanhSachCongViec_Load(object sender, EventArgs e)
@@ -111,29 +104,19 @@ namespace Presentation.User_controls
             {
                 case "HoanThanh": trangThaiCongViec(); break;
                 case "ChuaHoanThanh": trangThaiCongViec(); break;
-                case "Cancel": flyoutPanelEdit.HidePopup(); clearControls(); break;
+                case "Cancel":  clearControls(); flyoutPanelEdit.HidePopup(); break;
             }
         }
 
         private void trangThaiCongViec()
         {
-            //PHANCONG phancong = congviec.PHANCONG.Where(pc => pc.NguoiNhan == MaNV).First();
-            //congviec.PHANCONG.Where(pc =>pc.NguoiNhan == MaNV).First().TrangThai = !congviec.TrangThai;
-            //if (congviec.TrangThai == true)
-            //{
-            //    congviec.NgayHoanThanh = DateTime.Now;
-            //}
-            //else
-            //{
-            //    congviec.NgayHoanThanh = null;
-            //}
             phancong.TrangThai = !phancong.TrangThai;
             phancong.NgayHoanThanh = DateTime.Now;
             db.Entry(phancong).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             //thayDoiTrangThai(congviec.TrangThai.Value);
-            flyoutPanelEdit.HidePopup();
             loadDuLieuGirdView();
+            flyoutPanelEdit.HidePopup();
         }
 
         private void clearControls()
@@ -185,12 +168,103 @@ namespace Presentation.User_controls
             }
         }
 
-        private void gvDanhSachCongViec_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        //private void gvDanhSachCongViec_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        //{
+        //    if(e.FocusedRowHandle >= 0)
+        //    {
+        //        clearControls();
+        //        int maCV = int.Parse(gvDanhSachCongViec.GetRowCellValue(e.FocusedRowHandle, "MaCongViec").ToString());
+        //        phancong = db.PHANCONG
+        //                        .Where(pc => pc.MaCongViec == maCV && pc.NguoiNhan == MaNV).FirstOrDefault();
+        //        if (phancong.TrangThai == true) thayDoiTrangThaiButton(true);
+        //        else thayDoiTrangThaiButton(false);
+        //        loadCongViec(phancong.CONGVIEC);
+        //        flyoutPanelEdit.ShowPopup();
+        //    }
+        //}
+
+        private void flyoutPanelThemNV_ButtonClick(object sender, DevExpress.Utils.FlyoutPanelButtonClickEventArgs e)
         {
-            if(e.FocusedRowHandle >= 0)
+            string tag = e.Button.Tag.ToString();
+            switch (tag)
             {
-                clearControls();
-                int maCV = int.Parse(gvDanhSachCongViec.GetRowCellValue(e.FocusedRowHandle, "MaCongViec").ToString());
+                case "Save": ThemNhanVien(); break;
+                case "Cancel": flyoutPanelThemNV.HidePopup(); cbbNhanVien.SelectedIndex = -1; txtMoTaPC.Text = ""; break;
+            }
+        }
+
+        private void ThemNhanVien()
+        {
+            if(cbbNhanVien.SelectedIndex < 0)
+            {
+                XtraMessageBox.Show("Vui lòng chọn nhân viên", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                bool check = false;
+                for(int i =0; i< gvDSNhanVien.DataRowCount;i++)
+                {
+                    int ma = (int)gvDSNhanVien.GetRowCellValue(i, "NguoiNhan");
+                    if ((int)gvDSNhanVien.GetRowCellValue(i, "NguoiNhan") == int.Parse(cbbNhanVien.SelectedValue.ToString()))
+                    {
+                        check = true;
+                        break;
+                    }
+                }
+                if (!check)
+                {
+                    PHANCONG pc = new PHANCONG();
+                    pc.MaCongViec = phancong.MaCongViec;
+                    pc.NguoiNhan = int.Parse(cbbNhanVien.SelectedValue.ToString());
+                    pc.MoTa = txtMoTaPC.Text;
+                    pc.TrangThai = false;
+                    db.PHANCONG.Add(pc);
+                    db.SaveChanges();
+                    db = new QLCONGVIECEntities();
+                    flyoutPanelThemNV.HidePopup();
+                    phancong = db.PHANCONG
+                                    .Where(p => p.MaCongViec == pc.MaCongViec && p.NguoiNhan == MaNV).FirstOrDefault();
+                    loadCongViec(phancong.CONGVIEC);
+                    cbbNhanVien.SelectedIndex = -1; txtMoTaPC.Text = "";
+                }
+                else
+                {
+                    XtraMessageBox.Show("Bạn chọn nhân viên này rồi", "Thông báo", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            flyoutPanelThemNV.ShowPopup();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            PHANCONG pc = (PHANCONG) gvDSNhanVien.GetFocusedRow();
+            if(pc.NHANVIEN.MaPhongBan != phancong.NHANVIEN.MaPhongBan)
+            {
+                XtraMessageBox.Show("Không được xóa nhân viên phòng khác", "Thông báo", MessageBoxButtons.OK);
+            }
+            else if (pc.NHANVIEN.MaNhanVien == phancong.NHANVIEN.MaNhanVien)
+            {
+                XtraMessageBox.Show("Không được trốn việc :)", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                db.PHANCONG.Remove(pc);
+                db.SaveChanges();
+                //db = new QLCONGVIECEntities();
+                loadCongViec(phancong.CONGVIEC);
+            }
+        }
+
+        private void btnChiTiet_Click(object sender, EventArgs e)
+        {
+            int index = gvDanhSachCongViec.GetSelectedRows()[0];
+            if(index >= 0)
+            {
+                int maCV = int.Parse(gvDanhSachCongViec.GetRowCellValue(index, "MaCongViec").ToString());
                 phancong = db.PHANCONG
                                 .Where(pc => pc.MaCongViec == maCV && pc.NguoiNhan == MaNV).FirstOrDefault();
                 if (phancong.TrangThai == true) thayDoiTrangThaiButton(true);

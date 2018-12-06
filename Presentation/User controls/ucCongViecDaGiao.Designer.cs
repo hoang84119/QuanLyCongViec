@@ -50,6 +50,7 @@
             this.HoTenEditor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumnMoTa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNgayHoanThanh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtNgayBatDau = new DevExpress.XtraEditors.DateEdit();
             this.txtMoTa = new System.Windows.Forms.TextBox();
             this.txtTenCongViec = new DevExpress.XtraEditors.TextEdit();
@@ -70,7 +71,6 @@
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.flyoutPanelEdit = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
-            this.colNgayHoanThanh = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCongViecDaGiao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -309,6 +309,17 @@
             this.colTrangThai.Visible = true;
             this.colTrangThai.VisibleIndex = 2;
             // 
+            // colNgayHoanThanh
+            // 
+            this.colNgayHoanThanh.Caption = "Ngày hoàn thành";
+            this.colNgayHoanThanh.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNgayHoanThanh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colNgayHoanThanh.FieldName = "NgayHoanThanh";
+            this.colNgayHoanThanh.Name = "colNgayHoanThanh";
+            this.colNgayHoanThanh.OptionsColumn.AllowEdit = false;
+            this.colNgayHoanThanh.Visible = true;
+            this.colNgayHoanThanh.VisibleIndex = 3;
+            // 
             // txtNgayBatDau
             // 
             this.txtNgayBatDau.EditValue = null;
@@ -467,8 +478,11 @@
             // 
             this.layoutControlItem8.Control = this.btnXoaNhanVien;
             this.layoutControlItem8.Location = new System.Drawing.Point(530, 158);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(122, 40);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(122, 40);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(122, 40);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
@@ -541,17 +555,6 @@
             this.flyoutPanelControl1.Name = "flyoutPanelControl1";
             this.flyoutPanelControl1.Size = new System.Drawing.Size(839, 222);
             this.flyoutPanelControl1.TabIndex = 0;
-            // 
-            // colNgayHoanThanh
-            // 
-            this.colNgayHoanThanh.Caption = "Ngày hoàn thành";
-            this.colNgayHoanThanh.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.colNgayHoanThanh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colNgayHoanThanh.FieldName = "NgayHoanThanh";
-            this.colNgayHoanThanh.Name = "colNgayHoanThanh";
-            this.colNgayHoanThanh.OptionsColumn.AllowEdit = false;
-            this.colNgayHoanThanh.Visible = true;
-            this.colNgayHoanThanh.VisibleIndex = 3;
             // 
             // ucCongViecDaGiao
             // 

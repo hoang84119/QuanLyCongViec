@@ -43,14 +43,6 @@ namespace Presentation.User_controls
 
             loadDuLieuGirdView();
 
-
-            //cbbDuAn.DataSource = db.DUAN
-            //                .Select(da => new { da.MaDuAn, da.TenDA }).ToList();
-
-            //cbbDuAn.DisplayMember = "TenDA";
-            //cbbDuAn.ValueMember = "MaDuAn";
-            //cbbDuAn.SelectedIndex = -1;
-
             gcDSNhanVien.DataSource = dsPhanCong;
 
             loadNhanVienBangPhanCong();
