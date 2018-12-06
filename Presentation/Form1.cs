@@ -137,8 +137,8 @@ namespace Presentation
 
         public void ShowLoading()
         {
-            bool useFadeIn = false;
-            bool useFadeOut = false;
+            bool useFadeIn = true;
+            bool useFadeOut = true;
             Color backColor = Color.Black;
             Color foreColor = Color.Black;
             double opacity = 0.5;
