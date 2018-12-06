@@ -30,5 +30,28 @@ namespace Presentation.Report
         {
             objectDataSource1.DataSource = nHANVIEN.CONGVIEC;
         }
+
+        private void cfTrangThai_GetValue(object sender, GetValueEventArgs e)
+        {
+            int tienDo = (int)e.GetColumnValue("TienDo");
+            string trangthai = "";
+            if (tienDo != 100)
+            {
+                DateTime ngayHetHan = (DateTime)e.GetColumnValue("NgayHetHan");
+                if (DateTime.Compare(ngayHetHan, DateTime.Now) < 0)
+                {
+                    trangthai = "Chậm tiến độ";
+                }
+                else
+                {
+                    trangthai = "Đang tiến hành";
+                }
+            }
+            else
+            {
+                trangthai = "Đã hoàn thành";
+            }
+            e.Value = trangthai;
+        }
     }
 }
