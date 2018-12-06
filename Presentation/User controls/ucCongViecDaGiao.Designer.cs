@@ -291,6 +291,7 @@
             this.HoTenEditor.Name = "HoTenEditor";
             this.HoTenEditor.NullText = "Chọn nhân viên";
             this.HoTenEditor.ValueMember = "MaNhanVien";
+            this.HoTenEditor.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.HoTenEditor_EditValueChanging);
             // 
             // gridColumnMoTa
             // 

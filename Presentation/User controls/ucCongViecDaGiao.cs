@@ -291,5 +291,25 @@ namespace Presentation.User_controls
             }
 
         }
+
+        private void HoTenEditor_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            NHANVIEN nv = db.NHANVIEN.Where(n => n.MaNhanVien == (int)e.NewValue).First();
+            int count = nv.PHANCONG.Where(pc => pc.CONGVIEC.NgayHetHan >= DateTime.Parse(txtNgayBatDau.Text) && pc.TrangThai == false).Count();
+            if(count > 3)
+            {
+                XtraMessageBox.Show("Người này đã được giao tối đa 3 công việc. Vui lòng chọn ngày bắt đầu khác" , "Thông báo", MessageBoxButtons.OK);
+                e.Cancel = true;
+            }
+            else foreach(PHANCONG pc in dsPhanCong)
+            {
+                if(pc.NguoiNhan == (int) e.NewValue)
+                {
+                    XtraMessageBox.Show("Bạn chọn nhân viên này rồi", "Thông báo", MessageBoxButtons.OK);
+                    e.Cancel = true;
+                    break;
+                }
+            }
+        }
     }
 }

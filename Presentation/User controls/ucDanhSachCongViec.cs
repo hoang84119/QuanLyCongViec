@@ -201,35 +201,44 @@ namespace Presentation.User_controls
             }
             else
             {
-                bool check = false;
-                for(int i =0; i< gvDSNhanVien.DataRowCount;i++)
+                NHANVIEN nv = db.NHANVIEN.Where(n => n.MaNhanVien == (int)cbbNhanVien.SelectedValue).First();
+                int count = nv.PHANCONG.Where(pc => pc.CONGVIEC.NgayHetHan >= DateTime.Parse(txtNgayBatDau.Text) && pc.TrangThai == false).Count();
+                if (count > 3)
                 {
-                    int ma = (int)gvDSNhanVien.GetRowCellValue(i, "NguoiNhan");
-                    if ((int)gvDSNhanVien.GetRowCellValue(i, "NguoiNhan") == int.Parse(cbbNhanVien.SelectedValue.ToString()))
-                    {
-                        check = true;
-                        break;
-                    }
-                }
-                if (!check)
-                {
-                    PHANCONG pc = new PHANCONG();
-                    pc.MaCongViec = phancong.MaCongViec;
-                    pc.NguoiNhan = int.Parse(cbbNhanVien.SelectedValue.ToString());
-                    pc.MoTa = txtMoTaPC.Text;
-                    pc.TrangThai = false;
-                    db.PHANCONG.Add(pc);
-                    db.SaveChanges();
-                    db = new QLCONGVIECEntities();
-                    flyoutPanelThemNV.HidePopup();
-                    phancong = db.PHANCONG
-                                    .Where(p => p.MaCongViec == pc.MaCongViec && p.NguoiNhan == MaNV).FirstOrDefault();
-                    loadCongViec(phancong.CONGVIEC);
-                    cbbNhanVien.SelectedIndex = -1; txtMoTaPC.Text = "";
+                    XtraMessageBox.Show("Người này đã được giao tối đa 3 công việc", "Thông báo", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    XtraMessageBox.Show("Bạn chọn nhân viên này rồi", "Thông báo", MessageBoxButtons.OK);
+                    bool check = false;
+                    for (int i = 0; i < gvDSNhanVien.DataRowCount; i++)
+                    {
+                        int ma = (int)gvDSNhanVien.GetRowCellValue(i, "NguoiNhan");
+                        if ((int)gvDSNhanVien.GetRowCellValue(i, "NguoiNhan") == int.Parse(cbbNhanVien.SelectedValue.ToString()))
+                        {
+                            check = true;
+                            break;
+                        }
+                    }
+                    if (!check)
+                    {
+                        PHANCONG pc = new PHANCONG();
+                        pc.MaCongViec = phancong.MaCongViec;
+                        pc.NguoiNhan = int.Parse(cbbNhanVien.SelectedValue.ToString());
+                        pc.MoTa = txtMoTaPC.Text;
+                        pc.TrangThai = false;
+                        db.PHANCONG.Add(pc);
+                        db.SaveChanges();
+                        db = new QLCONGVIECEntities();
+                        flyoutPanelThemNV.HidePopup();
+                        phancong = db.PHANCONG
+                                        .Where(p => p.MaCongViec == pc.MaCongViec && p.NguoiNhan == MaNV).FirstOrDefault();
+                        loadCongViec(phancong.CONGVIEC);
+                        cbbNhanVien.SelectedIndex = -1; txtMoTaPC.Text = "";
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Bạn chọn nhân viên này rồi", "Thông báo", MessageBoxButtons.OK);
+                    }
                 }
             }
         }
