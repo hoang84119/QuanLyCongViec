@@ -152,7 +152,7 @@
             // 
             this.acDanhSachPhongBan.Name = "acDanhSachPhongBan";
             this.acDanhSachPhongBan.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acDanhSachPhongBan.Text = "Danh sách phòng ban";
+            this.acDanhSachPhongBan.Text = "Phòng ban";
             this.acDanhSachPhongBan.Click += new System.EventHandler(this.acDanhSachPhongBan_Click);
             // 
             // accordionControlElement11

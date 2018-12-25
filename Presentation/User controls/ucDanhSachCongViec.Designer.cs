@@ -134,6 +134,7 @@
             // 
             // gvDanhSachCongViec
             // 
+            this.gvDanhSachCongViec.ColumnPanelRowHeight = 40;
             this.gvDanhSachCongViec.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcMaCV,
             this.gcTenCV,
@@ -150,6 +151,7 @@
             this.gvDanhSachCongViec.OptionsFind.AlwaysVisible = true;
             this.gvDanhSachCongViec.OptionsFind.FindNullPrompt = "Nhập văn bản để tìm kiếm...";
             this.gvDanhSachCongViec.OptionsView.ShowIndicator = false;
+            this.gvDanhSachCongViec.RowHeight = 40;
             this.gvDanhSachCongViec.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcTrangThai, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcNgayHetHan, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -235,10 +237,9 @@
             // 
             // repositoryItemProgressBar1
             // 
-            this.repositoryItemProgressBar1.EndColor = System.Drawing.Color.Plum;
             this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            this.repositoryItemProgressBar1.ProgressPadding = new System.Windows.Forms.Padding(5);
             this.repositoryItemProgressBar1.ShowTitle = true;
-            this.repositoryItemProgressBar1.StartColor = System.Drawing.Color.Purple;
             // 
             // flyoutPanelEdit
             // 

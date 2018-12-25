@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraEditors;
 
 namespace Presentation
 {
@@ -37,6 +38,17 @@ namespace Presentation
             using (var db = new QLCONGVIECEntities())
             {
                 //User = db.NHANVIEN.Where(nv => nv.TenDangNhap == "admin").FirstOrDefault();
+                if(User.MaPhongBan == "GD")
+                {
+                    acBaoCaoCVDuocG.Visible = false;
+                    acDSCV.Visible = false;
+                }
+                else
+                {
+                    //acBaoCaoCVDuocG.Visible = true;
+                    //acDSCV.Visible = true;
+                    acDanhSachPhongBan.Visible = false;
+                }
                 var phong = db.PHONGBAN.Where(p => p.TruongPhong == User.MaNhanVien).Select(p => p);
                 if(phong.Count()==0)
                 {
@@ -116,7 +128,11 @@ namespace Presentation
         private void acDangXuat_Click(object sender, EventArgs e)
         {
             //xoaUC();
-            this.Hide();
+            if (XtraMessageBox.Show("Bạn có đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Hide();
+            }
+            
         }
 
         private void xoaUC()

@@ -119,6 +119,7 @@
             // 
             this.gvCongViecDaGiao.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvCongViecDaGiao.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gvCongViecDaGiao.ColumnPanelRowHeight = 40;
             this.gvCongViecDaGiao.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcMaCV,
             this.gcTenCV,
@@ -134,6 +135,7 @@
             this.gvCongViecDaGiao.OptionsFind.AlwaysVisible = true;
             this.gvCongViecDaGiao.OptionsFind.FindNullPrompt = "Nhập văn bản để tìm kiếm...";
             this.gvCongViecDaGiao.OptionsView.ShowIndicator = false;
+            this.gvCongViecDaGiao.RowHeight = 40;
             // 
             // gcMaCV
             // 
@@ -206,6 +208,7 @@
             // repositoryItemProgressBar1
             // 
             this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            this.repositoryItemProgressBar1.ProgressPadding = new System.Windows.Forms.Padding(5);
             this.repositoryItemProgressBar1.ShowTitle = true;
             // 
             // layoutEdit

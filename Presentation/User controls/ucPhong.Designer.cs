@@ -317,10 +317,12 @@
             this.gcMaPhong,
             this.gcTenPhong,
             this.gcTruongPhong});
+            this.gvPhong.FooterPanelHeight = 40;
             this.gvPhong.GridControl = this.gcPhong;
             this.gvPhong.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvPhong.Name = "gvPhong";
             this.gvPhong.OptionsView.ShowIndicator = false;
+            this.gvPhong.RowHeight = 40;
             // 
             // gcMaPhong
             // 

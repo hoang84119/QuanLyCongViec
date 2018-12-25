@@ -50,7 +50,7 @@ namespace Presentation.User_controls
             gridEditNV.Properties.DataSource = db.NHANVIEN
                                 .Where(nv => nv.MaNhanVien != user.MaNhanVien && nv.PHONGBAN.MaPhongBan == phong.MaPhongBan)
                                 .ToList();
-            if(phong.NHANVIEN1 != null)
+            if (phong.NHANVIEN1 != null)
             {
                 gridEditNV.EditValue = phong.NHANVIEN1.MaNhanVien;
             }
@@ -87,13 +87,21 @@ namespace Presentation.User_controls
                 {
                     phong = (PHONGBAN)gvPhong.GetFocusedRow();
                 }
-                var entry = db.Entry(phong);
-                if (entry.State == System.Data.Entity.EntityState.Detached)
-                    db.PHONGBAN.Attach(phong);
-                db.PHONGBAN.Remove(phong);
-                db.SaveChanges();
-                loadDuLieuGirdView();
-                XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                if (phong.NHANVIEN.Count != 0)
+                {
+                    XtraMessageBox.Show("Không thể xóa phòng đang có nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var entry = db.Entry(phong);
+                    if (entry.State == System.Data.Entity.EntityState.Detached)
+                        db.PHONGBAN.Attach(phong);
+                    db.PHONGBAN.Remove(phong);
+                    db.SaveChanges();
+                    loadDuLieuGirdView();
+                    XtraMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                }
+
             }
         }
 
