@@ -179,6 +179,8 @@
             this.tvNhanVien.ColumnSet.GroupColumn = this.colTenPhong;
             this.tvNhanVien.GridControl = this.gcNhanVien;
             this.tvNhanVien.Name = "tvNhanVien";
+            this.tvNhanVien.OptionsFind.AlwaysVisible = true;
+            this.tvNhanVien.OptionsFind.FindNullPrompt = "Nhập văn bản để tìm kiếm...";
             this.tvNhanVien.OptionsTiles.ItemSize = new System.Drawing.Size(340, 208);
             this.tvNhanVien.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tvNhanVien.OptionsTiles.RowCount = 0;

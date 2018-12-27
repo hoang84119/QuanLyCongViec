@@ -321,6 +321,8 @@
             this.gvPhong.GridControl = this.gcPhong;
             this.gvPhong.GroupPanelText = "Kéo tiêu đề của một cột vào đây để nhóm theo cột đó";
             this.gvPhong.Name = "gvPhong";
+            this.gvPhong.OptionsFind.AlwaysVisible = true;
+            this.gvPhong.OptionsFind.FindNullPrompt = "Nhập văn bản để tìm kiếm...";
             this.gvPhong.OptionsView.ShowIndicator = false;
             this.gvPhong.RowHeight = 40;
             // 
